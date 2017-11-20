@@ -12,9 +12,16 @@ namespace VirusDataApplication
 {
     public partial class Form1 : Form
     {
+        Controller c = new Controller();
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void send_btn_Click(object sender, EventArgs e)
+        {
+            string input = input_tb.Text;
+
         }
     }
 }
