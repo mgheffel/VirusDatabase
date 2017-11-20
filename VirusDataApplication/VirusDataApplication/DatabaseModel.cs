@@ -9,8 +9,7 @@ namespace VirusDataApplication{
     /// Making the database model class static, because there will be only one. The controller will then call methods from it directly.
     /// </summary>
     static class DatabaseModel{
-
-
+    
 
 
     }

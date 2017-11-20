@@ -8,3 +8,5 @@ C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\project\virus_database_repo\Vi
 C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\project\virus_database_repo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.csproj.GenerateResource.Cache
 C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\project\virus_database_repo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.exe
 C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\project\virus_database_repo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.pdb
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\GitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.exe
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\GitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.pdb
