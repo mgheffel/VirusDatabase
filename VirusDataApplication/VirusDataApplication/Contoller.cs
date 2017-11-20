@@ -8,5 +8,10 @@ namespace VirusDataApplication
 {
     class Contoller
     {
+        public void tempQuery(string a)
+        {
+
+        }
+        //code will go here
     }
 }
