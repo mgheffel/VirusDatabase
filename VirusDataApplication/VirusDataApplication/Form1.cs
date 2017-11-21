@@ -22,7 +22,8 @@ namespace VirusDataApplication
         private void send_btn_Click(object sender, EventArgs e)
         {
             string input = input_tb.Text;
-
+            string output = control.tempQuery(input);
+            output_lb.Items.Add(output);
         }
     }
 }

@@ -13,9 +13,11 @@ namespace VirusDataApplication
         {
             model = m;
         }
-        public void tempQuery(string a)
+        public string tempQuery(string a)
         {
             string queryStatement = "SELECT * FROM OpenReadingFrames WHERE strainID = " + a;
+            string result = model.sendQuery(queryStatement);
+            return result;
         }
         //code will go here
     }

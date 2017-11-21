@@ -30,7 +30,7 @@
         {
             this.input_tb = new System.Windows.Forms.TextBox();
             this.send_btn = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.output_lb = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // input_tb
@@ -50,20 +50,21 @@
             this.send_btn.UseVisualStyleBackColor = true;
             this.send_btn.Click += new System.EventHandler(this.send_btn_Click);
             // 
-            // listView1
+            // output_lb
             // 
-            this.listView1.Location = new System.Drawing.Point(23, 53);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(303, 458);
-            this.listView1.TabIndex = 2;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.output_lb.FormattingEnabled = true;
+            this.output_lb.ItemHeight = 20;
+            this.output_lb.Location = new System.Drawing.Point(23, 58);
+            this.output_lb.Name = "output_lb";
+            this.output_lb.Size = new System.Drawing.Size(303, 344);
+            this.output_lb.TabIndex = 2;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(353, 560);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.output_lb);
             this.Controls.Add(this.send_btn);
             this.Controls.Add(this.input_tb);
             this.Name = "Form1";
@@ -77,7 +78,7 @@
 
         private System.Windows.Forms.TextBox input_tb;
         private System.Windows.Forms.Button send_btn;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListBox output_lb;
     }
 }
 
