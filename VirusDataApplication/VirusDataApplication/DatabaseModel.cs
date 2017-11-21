@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using System.Windows.Forms;
 
 namespace VirusDataApplication
 {
@@ -12,7 +13,23 @@ namespace VirusDataApplication
     /// </summary>
     public class DatabaseModel: iDBModel
     {
-        private string myConnectionString = "server=mysql.cis.ksu.edu;database=mgheffel;uid=mgheffel;pwd=insecurepassword;";
+        private string myConnectionString;
+        private MySqlConnection db;
+        public DatabaseModel()
+        {
+            myConnectionString = "server=mysql.cis.ksu.edu;database=mgheffel;uid=mgheffel;pwd=insecurepassword;";
+            db = new MySqlConnection(myConnectionString);
+            try
+            {
+                db.Open();
+                MessageBox.Show("Connection Open!");
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+            db.Close();
+        }
 
         public string sendQuery(string selectSQLStatement)
         {

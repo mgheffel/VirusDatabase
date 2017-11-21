@@ -10,3 +10,19 @@ C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\project\virus_database_repo\Vi
 C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\project\virus_database_repo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.pdb
 C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\GitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.exe
 C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\GitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.pdb
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\GitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\VirusDataApplication.exe
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\GitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\VirusDataApplication.pdb
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\GitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\MySql.Data.dll
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\GitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\MySql.Data.xml
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\GitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.csprojResolveAssemblyReference.cache
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\GitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.Form1.resources
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\GitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.Properties.Resources.resources
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\GitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.csproj.GenerateResource.Cache
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\GitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\GitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\MySql.Web.dll
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\GitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\MySql.Data.Entity.EF6.xml
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\GitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\MySql.Web.xml
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\GitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\MySQL.Data.EntityFrameworkCore.Design.dll
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\GitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\MySQL.Data.EntityFrameworkCore.dll
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\GitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\MySQL.Data.EntityFrameworkCore.xml
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\GitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\MySQL.Data.EntityFrameworkCore.Design.xml
