@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
-using Npgsql;
 
 namespace VirusDataApplication
 {
@@ -18,47 +17,28 @@ namespace VirusDataApplication
         /// Have db and csb right now, because testing
         /// </summary>
         private MySqlConnection db;
-        private string server;
-        private string database;
-        private string uid;
-        private string password;
-
+        private MySqlConnectionStringBuilder csb;
         public DatabaseModel()
         {
-            string connString = "SERVER= postgresql.cis.ksu.edu; PORT=5432; DATABASE=smoylan22; UID=smoylan22; PASSWORD=DarthMoyji66;";
-            NpgsqlConnection conn = new NpgsqlConnection(connString);
-            try
-            {
-                conn.Open();
-                MessageBox.Show("yes");
-                conn.Close();
-            }
-            catch(Exception e)
-            {
-                MessageBox.Show(e.ToString());
-            }
-            //initialize();
-
-        }
-
-        private void initialize()
-        {
-            server = "mysql.cis.ksu.edu";
-            database = "mgheffel";
-            uid = "mgheffel";
-            password = "DarthMoyji66";
-
-            string connString = "SERVER=" + server + "; DATABASE=" + database + "; UID=" + uid + "; PASSWORD=" + password + ";";
-            db = new MySqlConnection(connString);
+            
+            csb = new MySqlConnectionStringBuilder();
+            csb.Server = "mysql.cs.ksu.edu";
+            csb.Database = "mgheffel";
+            csb.UserID = "mgheffel";
+            csb.Password = "insecurepassword";
+            csb.Port = 3306;
+            
+            db = new MySqlConnection(csb.ToString());
+            //db.ConnectionString = "Server=mysql.cs.ksu.edu; User=mgheffel; Database=mgheffel; Password=insecurepassword;";
 
             try
             {
                 db.Open();
                 MessageBox.Show("Connection Open!");
             }
-            catch (MySqlException e)
+            catch(MySqlException e)
             {
-                switch (e.Number)
+                switch(e.Number)
                 {
                     case 0:
                         MessageBox.Show("Cannot connect to server");
@@ -69,7 +49,7 @@ namespace VirusDataApplication
                     default:
                         MessageBox.Show(e.ToString());
                         break;
-                }
+                }                
             }
             db.Close();
         }
