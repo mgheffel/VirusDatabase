@@ -26,3 +26,8 @@ C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\Gi
 C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\GitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\MySQL.Data.EntityFrameworkCore.dll
 C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\GitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\MySQL.Data.EntityFrameworkCore.xml
 C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\GitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\MySQL.Data.EntityFrameworkCore.Design.xml
+C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\project\virus_database_repo\VirusDataApplication\VirusDataApplication\bin\Debug\MySql.Data.xml
+C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\project\virus_database_repo\VirusDataApplication\VirusDataApplication\bin\Debug\MySql.Data.Entity.EF6.xml
+C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\project\virus_database_repo\VirusDataApplication\VirusDataApplication\bin\Debug\MySQL.Data.EntityFrameworkCore.xml
+C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\project\virus_database_repo\VirusDataApplication\VirusDataApplication\bin\Debug\MySQL.Data.EntityFrameworkCore.Design.xml
+C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\project\virus_database_repo\VirusDataApplication\VirusDataApplication\bin\Debug\MySql.Web.xml

@@ -17,6 +17,10 @@ namespace VirusDataApplication
         /// Have db and csb right now, because testing
         /// </summary>
         private MySqlConnection db;
+        private string server;
+        private string database;
+        private string uid;
+        private string password;
         //private MySqlConnectionStringBuilder csb;
         public DatabaseModel()
         {
@@ -28,8 +32,13 @@ namespace VirusDataApplication
             csb.Password = "insecurepassword";
             csb.Port = 3306;
             */
-            db = new MySqlConnection();
-            db.ConnectionString = "Server=mysql.cs.ksu.edu; Port=3306; User=mgheffel; Database=mgheffel; Password=insecurepassword;";
+            server = "mysql.cis.ksu.edu";
+            database = "mgheffel";
+            uid = "mgheffel";
+            password = "insecurepassword";
+
+            string connString = "SERVER=mysql.cs.ksu.edu; DATABASE=mgheffel; UID=mgheffel; PASSWORD=insecurepassword";
+            db = new MySqlConnection(connString);
 
             try
             {
