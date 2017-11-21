@@ -16,7 +16,10 @@ namespace VirusDataApplication
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            DatabaseModel dbModel = new DatabaseModel();
+            Controller c = new Controller(dbModel);
+            Form1 gui = new Form1(c);
         }
     }
 }
