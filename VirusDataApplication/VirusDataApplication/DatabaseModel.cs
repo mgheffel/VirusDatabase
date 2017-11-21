@@ -13,20 +13,43 @@ namespace VirusDataApplication
     /// </summary>
     public class DatabaseModel: iDBModel
     {
-        private string myConnectionString;
+        /// <summary>
+        /// Have db and csb right now, because testing
+        /// </summary>
         private MySqlConnection db;
+        //private MySqlConnectionStringBuilder csb;
         public DatabaseModel()
         {
-            myConnectionString = "server=mysql.cis.ksu.edu;database=mgheffel;uid=mgheffel;pwd=insecurepassword;";
-            db = new MySqlConnection(myConnectionString);
+            /*
+            csb = new MySqlConnectionStringBuilder();
+            csb.Server = "mysql.cs.ksu.edu";
+            csb.Database = "mgheffel";
+            csb.UserID = "mgheffel";
+            csb.Password = "insecurepassword";
+            csb.Port = 3306;
+            */
+            db = new MySqlConnection();
+            db.ConnectionString = "Server=mysql.cs.ksu.edu; Port=3306; User=mgheffel; Database=mgheffel; Password=insecurepassword;";
+
             try
             {
                 db.Open();
                 MessageBox.Show("Connection Open!");
             }
-            catch(Exception e)
+            catch(MySqlException e)
             {
-                MessageBox.Show(e.ToString());
+                switch(e.Number)
+                {
+                    case 0:
+                        MessageBox.Show("Cannot connect to server");
+                        break;
+                    case 1045:
+                        MessageBox.Show("Invalid username/password, please try again");
+                        break;
+                    default:
+                        MessageBox.Show(e.ToString());
+                        break;
+                }                
             }
             db.Close();
         }
