@@ -75,7 +75,7 @@ INSERT INTO OpenReadingFrames VALUES
 
 INSERT INTO Publications VALUES
 (0, 1999, 'North American and European porcine reproductive and respiratory syndrome viruses differ in non-structural protein coding regions.'),
-(1,1,'');
+(1, 2004, 'Two single amino acid changes in GP2a are responsible for cell culture adaptation of European porcine reproductive and respiratory syndrome virus');
 
 INSERT INTO Researchers VALUES
 (0, 'Fernando A. Osorio', 'fosorio1@unl.edu', 'University of Nebraska-Lincoln'),
@@ -86,7 +86,13 @@ INSERT INTO Publication_Researcher VALUES
 (0,1);
 
 INSERT INTO Publishers VALUES
-(0, 'Journal of General Virology');
+(0, 'Journal of General Virology'),
+(1, 'Infectious Diseases, Animal Sciences Group, Edelhertweg 15, Lelystad P.O. Box 65, Netherlands');
 
 INSERT INTO Publisher_Publication VALUES
-(0,0);
+(0,0),
+(1,1);
+
+INSERT INTO Strain_Publication VALUES
+('AF046869', 0),
+('AY588319', 1);

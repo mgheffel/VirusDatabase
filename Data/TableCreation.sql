@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS Strain_Publication;
 DROP TABLE IF EXISTS Publisher_Publication;
 DROP TABLE IF EXISTS Publishers;
 DROP TABLE IF EXISTS Publication_Researcher;
@@ -88,4 +89,12 @@ create table Publisher_Publication(
 	foreign key (publisherID) references Publishers(publisherID),
 	foreign key (pubID) references Publications(pubID),
 	primary key (publisherID, pubID)
-)
+);
+
+create table Strain_Publication(
+	strainID varchar(30),
+	pubID int,
+	foreign key (strainID) references Strains(strainID),
+	foreign key (pubID) references Publications(pubID),
+	primary key (strainID, pubID)
+);
