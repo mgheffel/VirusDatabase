@@ -1,8 +1,8 @@
 import re
 #filename=input("Enter the genome file name")
 #path=path='C:\\Users\\Matt\\Desktop\\Marthaler\\genomes\\'
-path='C:\\Users\\Matt\\Desktop\\Marthaler\\genomes\\AF046869.txt'
-filename=''
+path=''
+filename='dataInput.txt'
 with open(path+filename,'r') as f:
 	rawData=f.read()
 
@@ -12,6 +12,7 @@ def buildDataDictionary(rawData):
 	#get numbe rof bas pairs
 	data['base_pairs']=re.search(r'\d+ bp', rawData).group(0)[0:-3]
 	#get protien starts
+	
 	m=re.findall(r'CDS\s+[0-9]+\.\.[0-9]+',rawData)
 	protienPositions=[]
 	for protien in m:
@@ -67,7 +68,7 @@ def buildDataDictionary(rawData):
 
 dict=buildDataDictionary(rawData)
 f=open('dataOUT.txt','w')
-f.write("('" + dict['id'] + "'," + dict['base_pairs'] + ", SPECIES_ID, '" + dict['genome'] + "')\n")
+f.write("('" + dict['id'] + "'," + dict['base_pairs'] + "0" + dict['genome'] + "')\n")
 for i in dict['protien_positions']:
 	split=i.split('-')
 	f.write("\n('" + dict['id'] + "', ORF_NUMBER, " + "PID, " + split[0] + ", " + split[1] + "),") 
