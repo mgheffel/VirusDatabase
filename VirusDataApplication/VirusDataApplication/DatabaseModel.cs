@@ -17,19 +17,19 @@ namespace VirusDataApplication
         /// Have db and csb right now, because testing
         /// </summary>
         private MySqlConnection db;
-        //private MySqlConnectionStringBuilder csb;
+        private MySqlConnectionStringBuilder csb;
         public DatabaseModel()
         {
-            /*
+            
             csb = new MySqlConnectionStringBuilder();
             csb.Server = "mysql.cs.ksu.edu";
             csb.Database = "mgheffel";
             csb.UserID = "mgheffel";
             csb.Password = "insecurepassword";
             csb.Port = 3306;
-            */
-            db = new MySqlConnection();
-            db.ConnectionString = "Server=mysql.cs.ksu.edu; Port=3306; User=mgheffel; Database=mgheffel; Password=insecurepassword;";
+            
+            db = new MySqlConnection(csb.ToString());
+            //db.ConnectionString = "Server=mysql.cs.ksu.edu; User=mgheffel; Database=mgheffel; Password=insecurepassword;";
 
             try
             {
