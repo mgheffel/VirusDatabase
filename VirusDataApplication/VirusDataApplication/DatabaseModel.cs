@@ -73,7 +73,7 @@ namespace VirusDataApplication
         /// This method will take a query request from the controller and run that request on the database
         /// </summary>
         /// <param name="selectSQLStatement"></param>
-        /// <returns>Still working on return, might be DataTable of some sorts or DataSet</returns>
+        /// <returns>Returns a DataSet, maybe change to DataTable later</returns>
         public DataSet sendQuery(string selectSQLStatement)
         {
             MessageBox.Show("Sending request...");
