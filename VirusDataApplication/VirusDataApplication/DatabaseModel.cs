@@ -16,7 +16,7 @@ namespace VirusDataApplication
     public class DatabaseModel: iDBModel
     {
         /// <summary>
-        /// Have db and csb right now, because testing
+        /// 
         /// </summary>
         private MySqlConnection db;
         private MySqlConnectionStringBuilder csb;
@@ -26,7 +26,7 @@ namespace VirusDataApplication
         {
             /*Do not forget to estabish a VPN with K-State so that the connection will work with mysql.cs.ksu.edu*/
             initialize();
-            sendQuery("test call");
+            //sendQuery("test call");
         }
 
         /// <summary>
@@ -73,23 +73,23 @@ namespace VirusDataApplication
         /// This method will take a query request from the controller and run that request on the database
         /// </summary>
         /// <param name="selectSQLStatement"></param>
-        /// <returns>Still working on return, might be DataTable of some sorts or DataSet</returns>
-        public string sendQuery(string selectSQLStatement)
+        /// <returns>Returns a DataSet, maybe change to DataTable later</returns>
+        public DataSet sendQuery(string selectSQLStatement)
         {
             MessageBox.Show("Sending request...");
             db.Open();
-            //string query = selectSQLStatement;
-            string query = "SELECT * FROM Researchers";
+            string query = selectSQLStatement;
+            //string query = "SELECT * FROM Researchers";
 
             da = new MySqlDataAdapter(query, db);
             MySqlCommandBuilder cb = new MySqlCommandBuilder(da);
             ds = new DataSet();
             da.Fill(ds);
             db.Close();
-            return null;
+            return ds;
         }
 
-        public string sendUpdate(string updateSQLStatement)
+        public DataSet sendUpdate(string updateSQLStatement)
         {
             return null;
         }
