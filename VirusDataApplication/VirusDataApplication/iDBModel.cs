@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 namespace VirusDataApplication{
 
     public interface iDBModel{
-        DataSet sendQuery(string selectSQLStatement);
+        DataTable sendQuery(string selectSQLStatement);
 
-        DataSet sendUpdate(string updateSQLStatement);
+        bool sendUpdate(string updateSQLStatement);
 
-        DataSet sendInsert(string insertSQLStatement);
+        bool sendInsert(string insertSQLStatement);
 
-        DataSet sendDelete(string deleteSQLStatement);
+        bool sendDelete(string deleteSQLStatement);
     }
 }

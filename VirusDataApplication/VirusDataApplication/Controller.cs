@@ -17,7 +17,7 @@ namespace VirusDataApplication
         public string tempQuery(string a)
         {
             string queryStatement = "SELECT * FROM OpenReadingFrames WHERE strainID = " + a;
-            DataSet result = model.sendQuery(queryStatement);
+            DataTable result = model.sendQuery(queryStatement);
             return null;
         }
         //code will go here
