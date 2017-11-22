@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 using System.Threading.Tasks;
+using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 
@@ -19,10 +21,12 @@ namespace VirusDataApplication
         private MySqlConnection db;
         private MySqlConnectionStringBuilder csb;
         private MySqlDataAdapter da;
+        private DataSet ds;
         public DatabaseModel()
         {
             /*Do not forget to estabish a VPN with K-State so that the connection will work with mysql.cs.ksu.edu*/
             initialize();
+            sendQuery("test call");
         }
 
         /// <summary>
@@ -73,10 +77,15 @@ namespace VirusDataApplication
         public string sendQuery(string selectSQLStatement)
         {
             MessageBox.Show("Sending request...");
-            string query = selectSQLStatement;
+            db.Open();
+            //string query = selectSQLStatement;
+            string query = "SELECT * FROM Researchers";
 
-
-
+            da = new MySqlDataAdapter(query, db);
+            MySqlCommandBuilder cb = new MySqlCommandBuilder(da);
+            ds = new DataSet();
+            da.Fill(ds);
+            db.Close();
             return null;
         }
 
