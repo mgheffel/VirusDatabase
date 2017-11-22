@@ -110,9 +110,9 @@ namespace VirusDataApplication
             db.Open();
             int rows_affected;
             //MySqlCommand msc = new MySqlCommand(insertSQLStatement, db);
-            MySqlCommand msc = new MySqlCommand("INSERT INTO Proteins (pID, pType) " + " VALUES(69, 'non-structural')", db);
-            msc.Parameters.Add("pID" , MySqlDbType.Int32).Value = "69";
-            msc.Parameters.Add("pType", MySqlDbType.VarChar).Value = "non-structural";
+            MySqlCommand msc = new MySqlCommand("INSERT INTO Proteins (pID, pType) " + " VALUES(70, 'dickbutt')", db);
+            msc.Parameters.Add("pID" , MySqlDbType.Int32).Value = "70";
+            msc.Parameters.Add("pType", MySqlDbType.VarChar).Value = "dickbutt";
             rows_affected = msc.ExecuteNonQuery();
 
             MessageBox.Show(rows_affected.ToString());
