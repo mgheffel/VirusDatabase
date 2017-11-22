@@ -11,5 +11,9 @@ namespace VirusDataApplication{
         DataSet sendQuery(string selectSQLStatement);
 
         DataSet sendUpdate(string updateSQLStatement);
+
+        DataSet sendInsert(string insertSQLStatement);
+
+        DataSet sendDelete(string deleteSQLStatement);
     }
 }

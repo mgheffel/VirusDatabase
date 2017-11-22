@@ -88,9 +88,40 @@ namespace VirusDataApplication
             db.Close();
             return ds;
         }
-
+        /// <summary>
+        /// This method will update insert or delete from the database.
+        /// </summary>
+        /// <param name="updateSQLStatement"></param>
+        /// <returns>Returns a dataset. Maybe just make it a bool to say that the changes were either done or not done?</returns>
         public DataSet sendUpdate(string updateSQLStatement)
         {
+            db.Open();
+
+            da = new MySqlDataAdapter();
+            MySqlCommand msc = new MySqlCommand(updateSQLStatement, db);
+
+            db.Close();
+            return null;
+        }
+
+        public DataSet sendInsert(string insertSQLStatement)
+        {
+            db.Open();
+
+            da = new MySqlDataAdapter();
+            MySqlCommand msc = new MySqlCommand(insertSQLStatement, db);
+
+            //msc.Parameters.Add();
+
+            db.Close();
+            return null;
+        }
+
+        public DataSet sendDelete(string deleteSQLStatement)
+        {
+            db.Open();
+
+            db.Close();
             return null;
         }
 
