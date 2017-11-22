@@ -26,8 +26,12 @@ namespace VirusDataApplication
         {
             /*Do not forget to estabish a VPN with K-State so that the connection will work with mysql.cs.ksu.edu*/
             initialize();
-            //sendInsert("test call");
-            //sendQuery("test call");
+            sendInsert("test call");
+            sendQuery("test call");
+            sendUpdate("test call");
+            sendQuery("test call");
+            sendDelete("test call");
+            sendQuery("test call");
         }
 
         /// <summary>
@@ -78,8 +82,8 @@ namespace VirusDataApplication
         public DataTable sendQuery(string selectSQLStatement)
         {
             db.Open();
-            string query = selectSQLStatement;
-            //string query = "SELECT * FROM Proteins";
+            //string query = selectSQLStatement;
+            string query = "SELECT * FROM Proteins";
             da = new MySqlDataAdapter(query, db);
             MySqlCommandBuilder cb = new MySqlCommandBuilder(da);        
             dt = new DataTable();
@@ -94,10 +98,16 @@ namespace VirusDataApplication
         /// <returns>Returns a dataset. Maybe just make it a bool to say that the changes were either done or not done?</returns>
         public bool sendUpdate(string updateSQLStatement)
         {
+            int rows_affected;
+
             db.Open();
 
             da = new MySqlDataAdapter();
-            MySqlCommand msc = new MySqlCommand(updateSQLStatement, db);
+            MySqlCommand msc = new MySqlCommand("UPDATE Proteins SET pType = 'cow' " + "WHERE pID > 68", db);
+
+            rows_affected = msc.ExecuteNonQuery();
+
+            MessageBox.Show(rows_affected.ToString());
 
             db.Close();
             return false;
@@ -108,8 +118,8 @@ namespace VirusDataApplication
             int rows_affected;
 
             db.Open();
-            //MySqlCommand msc = new MySqlCommand("INSERT INTO Proteins (pID, pType) " + " VALUES(70, 'dickbutt')", db);
-            MySqlCommand msc = new MySqlCommand(insertSQLStatement, db);            
+            MySqlCommand msc = new MySqlCommand("INSERT INTO Proteins (pID, pType) " + " VALUES(72, 'dickbutt')", db);
+            //MySqlCommand msc = new MySqlCommand(insertSQLStatement, db);            
             rows_affected = msc.ExecuteNonQuery();
             db.Close();
 
@@ -124,7 +134,15 @@ namespace VirusDataApplication
 
         public bool sendDelete(string deleteSQLStatement)
         {
+            int rows_affected;
+
             db.Open();
+
+            MySqlCommand msc = new MySqlCommand("DELETE FROM Proteins WHERE pID > 68", db);
+
+            rows_affected = msc.ExecuteNonQuery();
+
+            MessageBox.Show(rows_affected.ToString());
 
             db.Close();
             return false;
