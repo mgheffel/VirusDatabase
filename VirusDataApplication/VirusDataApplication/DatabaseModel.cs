@@ -16,7 +16,7 @@ namespace VirusDataApplication
     public class DatabaseModel: iDBModel
     {
         /// <summary>
-        /// Have db and csb right now, because testing
+        /// 
         /// </summary>
         private MySqlConnection db;
         private MySqlConnectionStringBuilder csb;
@@ -26,7 +26,7 @@ namespace VirusDataApplication
         {
             /*Do not forget to estabish a VPN with K-State so that the connection will work with mysql.cs.ksu.edu*/
             initialize();
-            sendQuery("test call");
+            //sendQuery("test call");
         }
 
         /// <summary>
