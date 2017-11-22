@@ -26,8 +26,8 @@ namespace VirusDataApplication
         {
             /*Do not forget to estabish a VPN with K-State so that the connection will work with mysql.cs.ksu.edu*/
             initialize();
-            sendQuery("test call");
             sendInsert("test call");
+            sendQuery("test call");
         }
 
         /// <summary>
@@ -108,15 +108,14 @@ namespace VirusDataApplication
         public DataSet sendInsert(string insertSQLStatement)
         {
             db.Open();
-
-            da = new MySqlDataAdapter();
+            int rows_affected;
             //MySqlCommand msc = new MySqlCommand(insertSQLStatement, db);
             MySqlCommand msc = new MySqlCommand("INSERT INTO Proteins (pID, pType) " + " VALUES(69, 'non-structural')", db);
+            msc.Parameters.Add("pID" , MySqlDbType.Int32).Value = "69";
+            msc.Parameters.Add("pType", MySqlDbType.VarChar).Value = "non-structural";
+            rows_affected = msc.ExecuteNonQuery();
 
-            msc.Parameters.Add("69", MySqlDbType.Int32, 11, "pID");
-            msc.Parameters.Add("'non-structural'", MySqlDbType.VarChar, 15, "pType");
-
-            da.InsertCommand = msc;
+            MessageBox.Show(rows_affected.ToString());
 
             db.Close();
             return null;
