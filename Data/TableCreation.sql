@@ -66,8 +66,8 @@ create table Researchers(
 );
 
 create table Publication_Researcher(
-	rID int,
 	pubID int,
+	rID int,
 	foreign key (rID) references Researchers(rID),
 	foreign key (pubID) references Publications(pubID),
 	primary key  (pubID, rID)
