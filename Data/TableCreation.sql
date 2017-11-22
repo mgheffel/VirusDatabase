@@ -31,7 +31,9 @@ create table Species(
 	specID int primary key,
 	sName varchar(150) not null,
 	sAbbreviation varchar(20),
-	description varchar(100)
+	sGenus varchar(30),
+	sFamily varchar(30),
+	sOrder varchar(30)
 );
 
 create table Strains(

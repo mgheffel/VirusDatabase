@@ -1,5 +1,6 @@
 PRRSV
 https://www.ncbi.nlm.nih.gov/nuccore/AF046869
-https://www.ncbi.nlm.nih.gov/nuccore/AY588319 --add researchers
+https://www.ncbi.nlm.nih.gov/nuccore/AY58831
 
 Lactate dehydrogenase elevating virus 
+-all added

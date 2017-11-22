@@ -1,10 +1,10 @@
 
 INSERT INTO Species VALUES 
-(0, 'Porcine reproductive and respiratory syndrome virus', 'PRRSV', 
-'A virus that causes a disease of pigs, PRRSV, also known as blue-ear pig disease.This economically important, panzootic disease causes reproductive failure in breeding stock andrespiratory tract illness in young pigs. The disease costs almost 1.5b€ every year to the swine industry.'),
-(1, 'Lactate dehydrogenase elevating virus', 'LDV',
-"Causes lifelong persistent viremia in mice, but doesn't really harm the host and only slightly harms the immune system."),
-(2, 'temp', 'T', 'temporary variable');
+(0, 'Porcine reproductive and respiratory syndrome virus', 'PRRSV', 'Arterivirus', 'Arteriviridae','Nidovirales'),
+(1, 'Lactate dehydrogenase elevating virus', 'LDV', 'Arterivirus', 'Arteriviridae','Nidovirales'),
+(2, 'Simian hemorrhagic fever virus', 'SHFV', 'Arterivirus', 'Arteriviridae','Nidovirales')
+
+;
 
 
 INSERT INTO Strains VALUES
