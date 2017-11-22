@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 using System.Threading.Tasks;
 
 namespace VirusDataApplication{
 
     public interface iDBModel{
-        string sendQuery(string selectSQLStatement);
+        DataSet sendQuery(string selectSQLStatement);
 
-        string sendUpdate(string updateSQLStatement);
+        DataSet sendUpdate(string updateSQLStatement);
     }
 }

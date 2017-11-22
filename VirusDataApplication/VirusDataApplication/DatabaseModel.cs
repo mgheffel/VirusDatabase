@@ -74,22 +74,22 @@ namespace VirusDataApplication
         /// </summary>
         /// <param name="selectSQLStatement"></param>
         /// <returns>Still working on return, might be DataTable of some sorts or DataSet</returns>
-        public string sendQuery(string selectSQLStatement)
+        public DataSet sendQuery(string selectSQLStatement)
         {
             MessageBox.Show("Sending request...");
             db.Open();
-            //string query = selectSQLStatement;
-            string query = "SELECT * FROM Researchers";
+            string query = selectSQLStatement;
+            //string query = "SELECT * FROM Researchers";
 
             da = new MySqlDataAdapter(query, db);
             MySqlCommandBuilder cb = new MySqlCommandBuilder(da);
             ds = new DataSet();
             da.Fill(ds);
             db.Close();
-            return null;
+            return ds;
         }
 
-        public string sendUpdate(string updateSQLStatement)
+        public DataSet sendUpdate(string updateSQLStatement)
         {
             return null;
         }
