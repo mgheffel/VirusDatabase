@@ -50,7 +50,7 @@ namespace VirusDataApplication
             try
             {
                 db.Open();
-                MessageBox.Show("Connection Open!");
+                //MessageBox.Show("Connection Open!");
             }
             catch (MySqlException e)
             {
@@ -77,7 +77,7 @@ namespace VirusDataApplication
         /// <returns>Returns a DataSet, maybe change to DataTable later</returns>
         public DataSet sendQuery(string selectSQLStatement)
         {
-            MessageBox.Show("Sending request...");
+            //MessageBox.Show("Sending request...");
             db.Open();
             string query = selectSQLStatement;
             //string query = "SELECT * FROM Researchers";
