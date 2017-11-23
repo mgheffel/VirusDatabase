@@ -19,6 +19,7 @@ namespace VirusDataApplication
         /// 
         /// </summary>
         private MySqlConnection db;
+
         private MySqlConnectionStringBuilder csb;
         private MySqlDataAdapter da;
         private DataSet ds;
