@@ -21,7 +21,7 @@ namespace VirusDataApplication
             Controller c = new Controller(dbModel);
             Form1 gui = new Form1(c);
 
-            Application.Run(gui);
+            //Application.Run(gui);
         }
     }
 }

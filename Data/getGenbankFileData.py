@@ -8,7 +8,7 @@ with open(path+filename,'r') as f:
 
 def buildDataDictionary(rawData):
 	data={}
-	data['id']=re.search(r'LOCUS + ..\d+',rawData).group(0)[12:]
+	data['id']=re.search(r'LOCUS + [A-Z]+.\d+',rawData).group(0)[12:]
 	#get numbe rof bas pairs
 	data['base_pairs']=re.search(r'\d+ bp', rawData).group(0)[0:-3]
 	#get protien starts
@@ -68,10 +68,10 @@ def buildDataDictionary(rawData):
 
 dict=buildDataDictionary(rawData)
 f=open('dataOUT.txt','w')
-f.write("('" + dict['id'] + "'," + dict['base_pairs'] + "0" + dict['genome'] + "')\n")
+f.write("('" + dict['id'] + "'," + dict['base_pairs'] + ", "  + "SPECIES, '"+ dict['genome'] + "')\n")
 for i in dict['protien_positions']:
 	split=i.split('-')
-	f.write("\n('" + dict['id'] + "', ORF_NUMBER, " + "PID, " + split[0] + ", " + split[1] + "),") 
+	f.write("\n('" + dict['id'] + "', 'ORF_NUMBER', " + "PID, " + split[0] + ", " + split[1] + "),") 
 #sugguested authors
 f.write('\n')
 f.write('\nSUGGUESTED RESEARCHERS/AUTHORS::: ' + dict['authors']);

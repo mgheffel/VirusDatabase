@@ -22,12 +22,19 @@ namespace VirusDataApplication
 
         private MySqlConnectionStringBuilder csb;
         private MySqlDataAdapter da;
-        private DataSet ds;
+        private DataTable dt;
         public DatabaseModel()
         {
             /*Do not forget to estabish a VPN with K-State so that the connection will work with mysql.cs.ksu.edu*/
             initialize();
-            //sendQuery("test call");
+            /*
+            sendInsert("test call");
+            sendQuery("test call");
+            sendUpdate("test call");
+            sendQuery("test call");
+            sendDelete("test call");
+            sendQuery("test call");
+            */
         }
 
         /// <summary>
@@ -75,24 +82,79 @@ namespace VirusDataApplication
         /// </summary>
         /// <param name="selectSQLStatement"></param>
         /// <returns>Returns a DataSet, maybe change to DataTable later</returns>
-        public DataSet sendQuery(string selectSQLStatement)
+        public DataTable sendQuery(string selectSQLStatement)
         {
-            //MessageBox.Show("Sending request...");
             db.Open();
             string query = selectSQLStatement;
-            //string query = "SELECT * FROM Researchers";
-
+            //string query = "SELECT * FROM Proteins";
             da = new MySqlDataAdapter(query, db);
-            MySqlCommandBuilder cb = new MySqlCommandBuilder(da);
-            ds = new DataSet();
-            da.Fill(ds);
+            MySqlCommandBuilder cb = new MySqlCommandBuilder(da);        
+            dt = new DataTable();
+            da.Fill(dt);
             db.Close();
-            return ds;
+            return dt;
+        }
+        /// <summary>
+        /// This method will update an existing entry in the database
+        /// </summary>
+        /// <param name="updateSQLStatement"></param>
+        /// <returns>Returns a dataset. Maybe just make it a bool to say that the changes were either done or not done?</returns>
+        public bool sendUpdate(string updateSQLStatement)
+        {
+            int rows_affected;
+
+            db.Open();
+            da = new MySqlDataAdapter();
+            //MySqlCommand msc = new MySqlCommand("UPDATE Proteins SET pType = 'cow' " + "WHERE pID > 68", db);
+            MySqlCommand msc = new MySqlCommand(updateSQLStatement, db);
+            rows_affected = msc.ExecuteNonQuery();
+            db.Close();
+
+            //MessageBox.Show(rows_affected.ToString());
+
+            if (rows_affected > 0)
+            {
+                return true;
+            }   
+            return false;
         }
 
-        public DataSet sendUpdate(string updateSQLStatement)
+        public bool sendInsert(string insertSQLStatement)
         {
-            return null;
+            int rows_affected;
+
+            db.Open();
+            //MySqlCommand msc = new MySqlCommand("INSERT INTO Proteins (pID, pType) " + " VALUES(72, 'dickbutt')", db);
+            MySqlCommand msc = new MySqlCommand(insertSQLStatement, db);            
+            rows_affected = msc.ExecuteNonQuery();
+            db.Close();
+
+            //MessageBox.Show(rows_affected.ToString()); 
+
+            if (rows_affected > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool sendDelete(string deleteSQLStatement)
+        {
+            int rows_affected;
+
+            db.Open();
+            //MySqlCommand msc = new MySqlCommand("DELETE FROM Proteins WHERE pID > 68", db);
+            MySqlCommand msc = new MySqlCommand(deleteSQLStatement, db);
+            rows_affected = msc.ExecuteNonQuery();
+            db.Close();
+
+            //MessageBox.Show(rows_affected.ToString());            
+
+            if (rows_affected > 0)
+            {
+                return true;
+            }
+            return false;
         }
 
     }

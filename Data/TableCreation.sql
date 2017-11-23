@@ -4,7 +4,6 @@ DROP TABLE IF EXISTS Publishers;
 DROP TABLE IF EXISTS Publication_Researcher;
 DROP TABLE IF EXISTS Researchers;
 DROP TABLE IF EXISTS Publications;
-DROP TABLE IF EXISTS Strain_Protein;
 DROP TABLE IF EXISTS OpenReadingFrames;
 DROP TABLE IF EXISTS Strains;
 DROP TABLE IF EXISTS Species;
@@ -32,7 +31,9 @@ create table Species(
 	specID int primary key,
 	sName varchar(150) not null,
 	sAbbreviation varchar(20),
-	description varchar(100)
+	sGenus varchar(30),
+	sFamily varchar(30),
+	sOrder varchar(30)
 );
 
 create table Strains(
@@ -51,13 +52,6 @@ create table OpenReadingFrames(
 	foreign key (pID) references Proteins(pID),
 	PRIMARY KEY (strainID, orfID)
 );
-create table Strain_Protein(
-	strainID varchar(10),
-	pID int,
-	foreign key (strainID) references Strains(strainID),
-	foreign key (pID) references Proteins(pID),
-	primary key (strainID, pID)
-);
 
 create table Publications(
 	pubID int primary key,
@@ -72,8 +66,8 @@ create table Researchers(
 );
 
 create table Publication_Researcher(
-	rID int,
 	pubID int,
+	rID int,
 	foreign key (rID) references Researchers(rID),
 	foreign key (pubID) references Publications(pubID),
 	primary key  (pubID, rID)
