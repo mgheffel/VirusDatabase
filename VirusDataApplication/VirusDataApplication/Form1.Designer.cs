@@ -34,13 +34,26 @@
             this.tab_control = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.edit_tab = new System.Windows.Forms.TabPage();
-            this.insert_rb = new System.Windows.Forms.RadioButton();
-            this.delete_rb = new System.Windows.Forms.RadioButton();
-            this.label1 = new System.Windows.Forms.Label();
-            this.edit_rb = new System.Windows.Forms.RadioButton();
             this.edit_tables_lb = new System.Windows.Forms.ListBox();
-            this.selected_table_lb = new System.Windows.Forms.ListBox();
             this.selected_table_lv = new System.Windows.Forms.ListView();
+            this.edit_rb = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.delete_rb = new System.Windows.Forms.RadioButton();
+            this.insert_rb = new System.Windows.Forms.RadioButton();
+            this.insert_btn = new System.Windows.Forms.Button();
+            this.delete_btn = new System.Windows.Forms.Button();
+            this.edit_btn = new System.Windows.Forms.Button();
+            this.selected_table_lbl = new System.Windows.Forms.Label();
+            this.edit_col1_tb = new System.Windows.Forms.TextBox();
+            this.edit_col5_tb = new System.Windows.Forms.TextBox();
+            this.edit_col4_tb = new System.Windows.Forms.TextBox();
+            this.edit_col3_tb = new System.Windows.Forms.TextBox();
+            this.edit_col2_tb = new System.Windows.Forms.TextBox();
+            this.edit_col1_lbl = new System.Windows.Forms.Label();
+            this.edit_col5_lbl = new System.Windows.Forms.Label();
+            this.edit_col4_lbl = new System.Windows.Forms.Label();
+            this.edit_col3_lbl = new System.Windows.Forms.Label();
+            this.edit_col2_lbl = new System.Windows.Forms.Label();
             this.tab_control.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.edit_tab.SuspendLayout();
@@ -97,9 +110,22 @@
             // 
             // edit_tab
             // 
-            this.edit_tab.Controls.Add(this.selected_table_lv);
-            this.edit_tab.Controls.Add(this.selected_table_lb);
+            this.edit_tab.Controls.Add(this.edit_col2_lbl);
+            this.edit_tab.Controls.Add(this.edit_col3_lbl);
+            this.edit_tab.Controls.Add(this.edit_col4_lbl);
+            this.edit_tab.Controls.Add(this.edit_col5_lbl);
+            this.edit_tab.Controls.Add(this.edit_col1_lbl);
+            this.edit_tab.Controls.Add(this.edit_col2_tb);
+            this.edit_tab.Controls.Add(this.edit_col3_tb);
+            this.edit_tab.Controls.Add(this.edit_col4_tb);
+            this.edit_tab.Controls.Add(this.edit_col5_tb);
+            this.edit_tab.Controls.Add(this.edit_col1_tb);
+            this.edit_tab.Controls.Add(this.selected_table_lbl);
+            this.edit_tab.Controls.Add(this.edit_btn);
+            this.edit_tab.Controls.Add(this.delete_btn);
+            this.edit_tab.Controls.Add(this.insert_btn);
             this.edit_tab.Controls.Add(this.edit_tables_lb);
+            this.edit_tab.Controls.Add(this.selected_table_lv);
             this.edit_tab.Controls.Add(this.edit_rb);
             this.edit_tab.Controls.Add(this.label1);
             this.edit_tab.Controls.Add(this.delete_rb);
@@ -112,28 +138,45 @@
             this.edit_tab.Text = "Edit";
             this.edit_tab.UseVisualStyleBackColor = true;
             // 
-            // insert_rb
+            // edit_tables_lb
             // 
-            this.insert_rb.AutoSize = true;
-            this.insert_rb.Location = new System.Drawing.Point(22, 22);
-            this.insert_rb.Name = "insert_rb";
-            this.insert_rb.Size = new System.Drawing.Size(114, 24);
-            this.insert_rb.TabIndex = 0;
-            this.insert_rb.TabStop = true;
-            this.insert_rb.Text = "Insert Data";
-            this.insert_rb.UseVisualStyleBackColor = true;
+            this.edit_tables_lb.FormattingEnabled = true;
+            this.edit_tables_lb.ItemHeight = 20;
+            this.edit_tables_lb.Items.AddRange(new object[] {
+            "Publishers",
+            "Researchers",
+            "Publications",
+            "OpenReadingFrames",
+            "Strains",
+            "Species",
+            "Proteins",
+            "StructuralProteins",
+            "NonStructuralProteins"});
+            this.edit_tables_lb.Location = new System.Drawing.Point(22, 167);
+            this.edit_tables_lb.Name = "edit_tables_lb";
+            this.edit_tables_lb.Size = new System.Drawing.Size(169, 264);
+            this.edit_tables_lb.TabIndex = 8;
+            this.edit_tables_lb.SelectedIndexChanged += new System.EventHandler(this.edit_tables_lb_SelectedIndexChanged);
             // 
-            // delete_rb
+            // selected_table_lv
             // 
-            this.delete_rb.AutoSize = true;
-            this.delete_rb.Location = new System.Drawing.Point(22, 54);
-            this.delete_rb.Name = "delete_rb";
-            this.delete_rb.Size = new System.Drawing.Size(120, 24);
-            this.delete_rb.TabIndex = 1;
-            this.delete_rb.TabStop = true;
-            this.delete_rb.Text = "Delete Data";
-            this.delete_rb.UseVisualStyleBackColor = true;
-            this.delete_rb.CheckedChanged += new System.EventHandler(this.delete_rb_CheckedChanged);
+            this.selected_table_lv.Location = new System.Drawing.Point(256, 167);
+            this.selected_table_lv.Name = "selected_table_lv";
+            this.selected_table_lv.Size = new System.Drawing.Size(723, 428);
+            this.selected_table_lv.TabIndex = 7;
+            this.selected_table_lv.UseCompatibleStateImageBehavior = false;
+            this.selected_table_lv.SelectedIndexChanged += new System.EventHandler(this.selected_table_lv_SelectedIndexChanged);
+            // 
+            // edit_rb
+            // 
+            this.edit_rb.AutoSize = true;
+            this.edit_rb.Location = new System.Drawing.Point(22, 86);
+            this.edit_rb.Name = "edit_rb";
+            this.edit_rb.Size = new System.Drawing.Size(101, 24);
+            this.edit_rb.TabIndex = 3;
+            this.edit_rb.Text = "Edit Data";
+            this.edit_rb.UseVisualStyleBackColor = true;
+            this.edit_rb.CheckedChanged += new System.EventHandler(this.edit_rb_CheckedChanged);
             // 
             // label1
             // 
@@ -144,49 +187,152 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Tables:";
             // 
-            // edit_rb
+            // delete_rb
             // 
-            this.edit_rb.AutoSize = true;
-            this.edit_rb.Location = new System.Drawing.Point(22, 86);
-            this.edit_rb.Name = "edit_rb";
-            this.edit_rb.Size = new System.Drawing.Size(101, 24);
-            this.edit_rb.TabIndex = 3;
-            this.edit_rb.TabStop = true;
-            this.edit_rb.Text = "Edit Data";
-            this.edit_rb.UseVisualStyleBackColor = true;
+            this.delete_rb.AutoSize = true;
+            this.delete_rb.Location = new System.Drawing.Point(22, 54);
+            this.delete_rb.Name = "delete_rb";
+            this.delete_rb.Size = new System.Drawing.Size(120, 24);
+            this.delete_rb.TabIndex = 1;
+            this.delete_rb.Text = "Delete Data";
+            this.delete_rb.UseVisualStyleBackColor = true;
+            this.delete_rb.CheckedChanged += new System.EventHandler(this.delete_rb_CheckedChanged);
             // 
-            // edit_tables_lb
+            // insert_rb
             // 
-            this.edit_tables_lb.FormattingEnabled = true;
-            this.edit_tables_lb.ItemHeight = 20;
-            this.edit_tables_lb.Items.AddRange(new object[] {
-            "Publications",
-            "Publishers",
-            "Researchers"});
-            this.edit_tables_lb.Location = new System.Drawing.Point(22, 154);
-            this.edit_tables_lb.Name = "edit_tables_lb";
-            this.edit_tables_lb.Size = new System.Drawing.Size(120, 84);
-            this.edit_tables_lb.Sorted = true;
-            this.edit_tables_lb.TabIndex = 5;
-            this.edit_tables_lb.SelectedIndexChanged += new System.EventHandler(this.edit_tables_lb_SelectedIndexChanged);
+            this.insert_rb.AutoSize = true;
+            this.insert_rb.Location = new System.Drawing.Point(22, 22);
+            this.insert_rb.Name = "insert_rb";
+            this.insert_rb.Size = new System.Drawing.Size(114, 24);
+            this.insert_rb.TabIndex = 0;
+            this.insert_rb.Text = "Insert Data";
+            this.insert_rb.UseVisualStyleBackColor = true;
+            this.insert_rb.CheckedChanged += new System.EventHandler(this.insert_rb_CheckedChanged);
             // 
-            // selected_table_lb
+            // insert_btn
             // 
-            this.selected_table_lb.Enabled = false;
-            this.selected_table_lb.FormattingEnabled = true;
-            this.selected_table_lb.ItemHeight = 20;
-            this.selected_table_lb.Location = new System.Drawing.Point(227, 154);
-            this.selected_table_lb.Name = "selected_table_lb";
-            this.selected_table_lb.Size = new System.Drawing.Size(363, 344);
-            this.selected_table_lb.TabIndex = 6;
+            this.insert_btn.Enabled = false;
+            this.insert_btn.Location = new System.Drawing.Point(34, 455);
+            this.insert_btn.Name = "insert_btn";
+            this.insert_btn.Size = new System.Drawing.Size(144, 29);
+            this.insert_btn.TabIndex = 9;
+            this.insert_btn.Text = "Insert into Table";
+            this.insert_btn.UseVisualStyleBackColor = true;
+            this.insert_btn.Click += new System.EventHandler(this.insert_btn_Click);
             // 
-            // selected_table_lv
+            // delete_btn
             // 
-            this.selected_table_lv.Location = new System.Drawing.Point(671, 190);
-            this.selected_table_lv.Name = "selected_table_lv";
-            this.selected_table_lv.Size = new System.Drawing.Size(121, 97);
-            this.selected_table_lv.TabIndex = 7;
-            this.selected_table_lv.UseCompatibleStateImageBehavior = false;
+            this.delete_btn.Enabled = false;
+            this.delete_btn.Location = new System.Drawing.Point(34, 510);
+            this.delete_btn.Name = "delete_btn";
+            this.delete_btn.Size = new System.Drawing.Size(144, 29);
+            this.delete_btn.TabIndex = 10;
+            this.delete_btn.Text = "Delete from Table";
+            this.delete_btn.UseVisualStyleBackColor = true;
+            this.delete_btn.Click += new System.EventHandler(this.delete_btn_Click);
+            // 
+            // edit_btn
+            // 
+            this.edit_btn.Enabled = false;
+            this.edit_btn.Location = new System.Drawing.Point(34, 565);
+            this.edit_btn.Name = "edit_btn";
+            this.edit_btn.Size = new System.Drawing.Size(144, 29);
+            this.edit_btn.TabIndex = 11;
+            this.edit_btn.Text = "Edit Row";
+            this.edit_btn.UseVisualStyleBackColor = true;
+            // 
+            // selected_table_lbl
+            // 
+            this.selected_table_lbl.AutoSize = true;
+            this.selected_table_lbl.Location = new System.Drawing.Point(252, 131);
+            this.selected_table_lbl.Name = "selected_table_lbl";
+            this.selected_table_lbl.Size = new System.Drawing.Size(0, 20);
+            this.selected_table_lbl.TabIndex = 12;
+            // 
+            // edit_col1_tb
+            // 
+            this.edit_col1_tb.Enabled = false;
+            this.edit_col1_tb.Location = new System.Drawing.Point(256, 84);
+            this.edit_col1_tb.Name = "edit_col1_tb";
+            this.edit_col1_tb.Size = new System.Drawing.Size(120, 26);
+            this.edit_col1_tb.TabIndex = 13;
+            // 
+            // edit_col5_tb
+            // 
+            this.edit_col5_tb.Enabled = false;
+            this.edit_col5_tb.Location = new System.Drawing.Point(856, 84);
+            this.edit_col5_tb.Name = "edit_col5_tb";
+            this.edit_col5_tb.Size = new System.Drawing.Size(120, 26);
+            this.edit_col5_tb.TabIndex = 14;
+            // 
+            // edit_col4_tb
+            // 
+            this.edit_col4_tb.Enabled = false;
+            this.edit_col4_tb.Location = new System.Drawing.Point(706, 84);
+            this.edit_col4_tb.Name = "edit_col4_tb";
+            this.edit_col4_tb.Size = new System.Drawing.Size(120, 26);
+            this.edit_col4_tb.TabIndex = 15;
+            // 
+            // edit_col3_tb
+            // 
+            this.edit_col3_tb.Enabled = false;
+            this.edit_col3_tb.Location = new System.Drawing.Point(556, 84);
+            this.edit_col3_tb.Name = "edit_col3_tb";
+            this.edit_col3_tb.Size = new System.Drawing.Size(120, 26);
+            this.edit_col3_tb.TabIndex = 16;
+            // 
+            // edit_col2_tb
+            // 
+            this.edit_col2_tb.Enabled = false;
+            this.edit_col2_tb.Location = new System.Drawing.Point(406, 84);
+            this.edit_col2_tb.Name = "edit_col2_tb";
+            this.edit_col2_tb.Size = new System.Drawing.Size(120, 26);
+            this.edit_col2_tb.TabIndex = 17;
+            // 
+            // edit_col1_lbl
+            // 
+            this.edit_col1_lbl.AutoSize = true;
+            this.edit_col1_lbl.Location = new System.Drawing.Point(252, 54);
+            this.edit_col1_lbl.MaximumSize = new System.Drawing.Size(120, 20);
+            this.edit_col1_lbl.Name = "edit_col1_lbl";
+            this.edit_col1_lbl.Size = new System.Drawing.Size(0, 20);
+            this.edit_col1_lbl.TabIndex = 18;
+            // 
+            // edit_col5_lbl
+            // 
+            this.edit_col5_lbl.AutoSize = true;
+            this.edit_col5_lbl.Location = new System.Drawing.Point(852, 54);
+            this.edit_col5_lbl.MaximumSize = new System.Drawing.Size(120, 20);
+            this.edit_col5_lbl.Name = "edit_col5_lbl";
+            this.edit_col5_lbl.Size = new System.Drawing.Size(0, 20);
+            this.edit_col5_lbl.TabIndex = 19;
+            // 
+            // edit_col4_lbl
+            // 
+            this.edit_col4_lbl.AutoSize = true;
+            this.edit_col4_lbl.Location = new System.Drawing.Point(702, 54);
+            this.edit_col4_lbl.MaximumSize = new System.Drawing.Size(120, 20);
+            this.edit_col4_lbl.Name = "edit_col4_lbl";
+            this.edit_col4_lbl.Size = new System.Drawing.Size(0, 20);
+            this.edit_col4_lbl.TabIndex = 20;
+            // 
+            // edit_col3_lbl
+            // 
+            this.edit_col3_lbl.AutoSize = true;
+            this.edit_col3_lbl.Location = new System.Drawing.Point(552, 54);
+            this.edit_col3_lbl.MaximumSize = new System.Drawing.Size(120, 20);
+            this.edit_col3_lbl.Name = "edit_col3_lbl";
+            this.edit_col3_lbl.Size = new System.Drawing.Size(0, 20);
+            this.edit_col3_lbl.TabIndex = 21;
+            // 
+            // edit_col2_lbl
+            // 
+            this.edit_col2_lbl.AutoSize = true;
+            this.edit_col2_lbl.Location = new System.Drawing.Point(402, 54);
+            this.edit_col2_lbl.MaximumSize = new System.Drawing.Size(120, 20);
+            this.edit_col2_lbl.Name = "edit_col2_lbl";
+            this.edit_col2_lbl.Size = new System.Drawing.Size(0, 20);
+            this.edit_col2_lbl.TabIndex = 22;
             // 
             // Form1
             // 
@@ -213,13 +359,26 @@
         private System.Windows.Forms.TabControl tab_control;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage edit_tab;
-        private System.Windows.Forms.ListBox selected_table_lb;
         private System.Windows.Forms.ListBox edit_tables_lb;
         private System.Windows.Forms.RadioButton edit_rb;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton delete_rb;
         private System.Windows.Forms.RadioButton insert_rb;
         private System.Windows.Forms.ListView selected_table_lv;
+        private System.Windows.Forms.Button edit_btn;
+        private System.Windows.Forms.Button delete_btn;
+        private System.Windows.Forms.Button insert_btn;
+        private System.Windows.Forms.Label selected_table_lbl;
+        private System.Windows.Forms.Label edit_col2_lbl;
+        private System.Windows.Forms.Label edit_col3_lbl;
+        private System.Windows.Forms.Label edit_col4_lbl;
+        private System.Windows.Forms.Label edit_col5_lbl;
+        private System.Windows.Forms.Label edit_col1_lbl;
+        private System.Windows.Forms.TextBox edit_col2_tb;
+        private System.Windows.Forms.TextBox edit_col3_tb;
+        private System.Windows.Forms.TextBox edit_col4_tb;
+        private System.Windows.Forms.TextBox edit_col5_tb;
+        private System.Windows.Forms.TextBox edit_col1_tb;
     }
 }
 

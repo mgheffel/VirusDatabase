@@ -17,7 +17,7 @@ namespace VirusDataApplication
         {
             model = m;
         }
-        public DataSet tempQuery(string a)
+        public DataTable tempQuery(string a)
         {
             string queryStatement = "SELECT * FROM OpenReadingFrames WHERE strainID = " + a;
             return model.sendQuery(queryStatement);
@@ -29,11 +29,10 @@ namespace VirusDataApplication
         /// </summary>
         /// <param name="table"></param> table to display contents of
         /// <returns></returns> DataSet containing contents of table param
-        public DataSet displayTableContents(string table)
+        public DataTable displayTableContents(string table)
         {
             string query = "SELECT * FROM " + table;
             return model.sendQuery(query);
-        }
-        //code will go here
-    }
-}
+        }//end displayTableContents
+    }//end class Controller
+}//end namespace
