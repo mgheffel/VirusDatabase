@@ -65,6 +65,8 @@ namespace VirusDataApplication
             edit_col3_lbl.Text = "";
             edit_col4_lbl.Text = "";
             edit_col5_lbl.Text = "";
+            edit_col6_lbl.Text = "";
+            selected_table_lbl.Text = "";
             selected_table_lv.Columns.Clear();
             selected_table_lv.Items.Clear();
             selected_table_lv.View = View.Details;
@@ -93,25 +95,61 @@ namespace VirusDataApplication
             {
                 case 2:
                     chodybanks = 0;
-                        foreach (DataColumn col in resultTable.Columns)
-                        {
-                            colNames[chodybanks] = col.ColumnName;
-                            chodybanks++;
-                        }
-                        edit_col1_lbl.Text = colNames[0];
-                        edit_col2_lbl.Text = colNames[1];
-                        break;
+                    foreach (DataColumn col in resultTable.Columns)
+                    {
+                        colNames[chodybanks] = col.ColumnName;
+                        chodybanks++;
+                    }
+                    edit_col1_lbl.Text = colNames[0];
+                    edit_col2_lbl.Text = colNames[1];
+                    if(insert_rb.Checked || edit_rb.Checked)
+                    {
+                        edit_col1_tb.Enabled = true;
+                        edit_col2_tb.Enabled = true;
+                        edit_col3_tb.Enabled = false;
+                        edit_col4_tb.Enabled = false;
+                        edit_col5_tb.Enabled = false;
+                        edit_col6_tb.Enabled = false;
+                    }
+                    else
+                    {
+                        edit_col1_tb.Enabled = false;
+                        edit_col2_tb.Enabled = false;
+                        edit_col3_tb.Enabled = false;
+                        edit_col4_tb.Enabled = false;
+                        edit_col5_tb.Enabled = false;
+                        edit_col6_tb.Enabled = false;
+                    }
+                    break;
                 case 3:
                     chodybanks = 0;
-                        foreach (DataColumn col in resultTable.Columns)
-                        {
-                            colNames[chodybanks] = col.ColumnName;
-                            chodybanks++;
-                        }
-                        edit_col1_lbl.Text = colNames[0];
-                        edit_col2_lbl.Text = colNames[1];
-                        edit_col3_lbl.Text = colNames[2];
-                        break;
+                    foreach (DataColumn col in resultTable.Columns)
+                    {
+                        colNames[chodybanks] = col.ColumnName;
+                        chodybanks++;
+                    }
+                    edit_col1_lbl.Text = colNames[0];
+                    edit_col2_lbl.Text = colNames[1];
+                    edit_col3_lbl.Text = colNames[2];
+                    if (insert_rb.Checked || edit_rb.Checked)
+                    {
+                        edit_col1_tb.Enabled = true;
+                        edit_col2_tb.Enabled = true;
+                        edit_col3_tb.Enabled = true;
+                        edit_col4_tb.Enabled = false;
+                        edit_col5_tb.Enabled = false;
+                        edit_col6_tb.Enabled = false;
+                    }
+                    else
+                    {
+                        edit_col1_tb.Enabled = false;
+                        edit_col2_tb.Enabled = false;
+                        edit_col3_tb.Enabled = false;
+                        edit_col4_tb.Enabled = false;
+                        edit_col5_tb.Enabled = false;
+                        edit_col6_tb.Enabled = false;
+                    }
+                    break;
                 case 4:
                     chodybanks = 0;
                     foreach (DataColumn col in resultTable.Columns)
@@ -123,6 +161,24 @@ namespace VirusDataApplication
                     edit_col2_lbl.Text = colNames[1];
                     edit_col3_lbl.Text = colNames[2];
                     edit_col4_lbl.Text = colNames[3];
+                    if (insert_rb.Checked || edit_rb.Checked)
+                    {
+                        edit_col1_tb.Enabled = true;
+                        edit_col2_tb.Enabled = true;
+                        edit_col3_tb.Enabled = true;
+                        edit_col4_tb.Enabled = true;
+                        edit_col5_tb.Enabled = false;
+                        edit_col6_tb.Enabled = false;
+                    }
+                    else
+                    {
+                        edit_col1_tb.Enabled = false;
+                        edit_col2_tb.Enabled = false;
+                        edit_col3_tb.Enabled = false;
+                        edit_col4_tb.Enabled = false;
+                        edit_col5_tb.Enabled = false;
+                        edit_col6_tb.Enabled = false;
+                    }
                     break;
                 case 5:
                     chodybanks = 0;
@@ -136,6 +192,24 @@ namespace VirusDataApplication
                     edit_col3_lbl.Text = colNames[2];
                     edit_col4_lbl.Text = colNames[3];
                     edit_col5_lbl.Text = colNames[4];
+                    if (insert_rb.Checked || edit_rb.Checked)
+                    {
+                        edit_col1_tb.Enabled = true;
+                        edit_col2_tb.Enabled = true;
+                        edit_col3_tb.Enabled = true;
+                        edit_col4_tb.Enabled = true;
+                        edit_col5_tb.Enabled = true;
+                        edit_col6_tb.Enabled = false;
+                    }
+                    else
+                    {
+                        edit_col1_tb.Enabled = false;
+                        edit_col2_tb.Enabled = false;
+                        edit_col3_tb.Enabled = false;
+                        edit_col4_tb.Enabled = false;
+                        edit_col5_tb.Enabled = false;
+                        edit_col6_tb.Enabled = false;
+                    }
                     break;
                 case 6:
                     chodybanks = 0;
@@ -149,13 +223,30 @@ namespace VirusDataApplication
                     edit_col3_lbl.Text = colNames[2];
                     edit_col4_lbl.Text = colNames[3];
                     edit_col5_lbl.Text = colNames[4];
-                    edit_col5_lbl.Text = colNames[5];
+                    edit_col6_lbl.Text = colNames[5];
+                    if (insert_rb.Checked || edit_rb.Checked)
+                    {
+                        edit_col1_tb.Enabled = true;
+                        edit_col2_tb.Enabled = true;
+                        edit_col3_tb.Enabled = true;
+                        edit_col4_tb.Enabled = true;
+                        edit_col5_tb.Enabled = true;
+                        edit_col6_tb.Enabled = true;
+                    }
+                    else
+                    {
+                        edit_col1_tb.Enabled = false;
+                        edit_col2_tb.Enabled = false;
+                        edit_col3_tb.Enabled = false;
+                        edit_col4_tb.Enabled = false;
+                        edit_col5_tb.Enabled = false;
+                        edit_col6_tb.Enabled = false;
+                    }
                     break;
                 default:
                     chodybanks = 0;
                     break;
             }
-
         }//end method
 
         /// <summary>
@@ -169,53 +260,10 @@ namespace VirusDataApplication
             if (insert_rb.Checked)
             {
                 insert_btn.Enabled = true;
-                int numCols = selected_table_lv.Columns.Count;
-                switch (numCols)
-                {
-                    case 0:
-                        edit_col1_tb.Enabled = false;
-                        edit_col2_tb.Enabled = false;
-                        edit_col3_tb.Enabled = false;
-                        edit_col4_tb.Enabled = false;
-                        edit_col5_tb.Enabled = false;
-                        break;
-                    case 1:
-                        edit_col1_tb.Enabled = true;
-                        break;
-                    case 2:
-                        edit_col1_tb.Enabled = true;
-                        edit_col2_tb.Enabled = true;
-                        break;
-                    case 3:
-                        edit_col1_tb.Enabled = true;
-                        edit_col2_tb.Enabled = true;
-                        edit_col3_tb.Enabled = true;
-                        break;
-                    case 4:
-                        edit_col1_tb.Enabled = true;
-                        edit_col2_tb.Enabled = true;
-                        edit_col3_tb.Enabled = true;
-                        edit_col4_tb.Enabled = true;
-                        break;
-                    case 5:
-                        edit_col1_tb.Enabled = true;
-                        edit_col2_tb.Enabled = true;
-                        edit_col3_tb.Enabled = true;
-                        edit_col4_tb.Enabled = true;
-                        edit_col5_tb.Enabled = true;
-                        break;
-                    default:
-                        break;
-                }
             }
             else
             {
                 insert_btn.Enabled = false;
-                edit_col1_tb.Enabled = false;
-                edit_col2_tb.Enabled = false;
-                edit_col3_tb.Enabled = false;
-                edit_col4_tb.Enabled = false;
-                edit_col5_tb.Enabled = false;
             }
         }//end method
 
