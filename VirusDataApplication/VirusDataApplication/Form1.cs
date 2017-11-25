@@ -32,28 +32,56 @@ namespace VirusDataApplication
 
 
         /// <summary>
-        /// Event handler to handle enabling/disabling of controls based on 
-        /// whether the insert delete button is selected.
+        /// Event handler for insert button click.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void delete_rb_CheckedChanged(object sender, EventArgs e)
+        private void insert_btn_Click(object sender, EventArgs e)
         {
-            disableEditTBs();
-            if (delete_rb.Checked)
-            {
-                clearEditColLbls();
-                delete_btn.Enabled = true;
-            }
+            if (edit_tables_lb.SelectedIndex < 0)
+                MessageBox.Show("You must select a table to insert into.", "Error");
             else
-            { 
-                delete_btn.Enabled = false;
+            {
+
             }
         }//end method
 
-        
 
-      
+        /// <summary>
+        /// Event handler for delete button click.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void delete_btn_Click(object sender, EventArgs e)
+        {
+            if (edit_tables_lb.SelectedIndex < 0)
+                MessageBox.Show("You must select a table to delete from.", "Error");
+            else if (selected_table_lv.SelectedItems.Count == 0)
+                MessageBox.Show("You must select a row to delete.", "Error");
+            else
+            {
+                string tableName = edit_tables_lb.SelectedItem.ToString();
+                DataTable table = c.displayTableContents(tableName);
+                string[] colNames = new string[table.Columns.Count];
+                int chodybanks = 0;
+                foreach (DataColumn col in table.Columns)
+                {
+                    colNames[chodybanks] = col.ColumnName;
+                    chodybanks++;
+                }
+                string deleteStatementSQL;
+                string[] values = new string[table.Columns.Count];
+                ListViewItem item = selected_table_lv.SelectedItems[0];
+                for (int i = 0; i < values.Length; i++)
+                    values[i] = item.SubItems[i].Text;
+                deleteStatementSQL = writeStatement(values.Length, tableName, colNames, values, "delete");
+                if (c.deleteRow(deleteStatementSQL))
+                    MessageBox.Show("Row was deleted.", "Delete Row Operation");
+                else
+                    MessageBox.Show("Error: Row could not be deleted properly.", "Delete Row Operation");
+            }
+        }//end method
+
 
         /// <summary>
         /// Displays the contents of the table that is selected in the listbox in the listview.
@@ -85,204 +113,13 @@ namespace VirusDataApplication
                 }
                 selected_table_lv.Items.Add(new ListViewItem(strArray));
             }
-            string[] colNames = new string[columnCount];
-            int chodybanks;
-
-            if (insert_rb.Checked || edit_rb.Checked)//***************************************************************************************
-            {                                        //needs fixes
-                switch (columnCount)
-                {
-                    case 2:
-                        chodybanks = 0;
-                        foreach (DataColumn col in resultTable.Columns)
-                        {
-                            colNames[chodybanks] = col.ColumnName;
-                            chodybanks++;
-                        }
-                        edit_col1_lbl.Text = colNames[0];
-                        edit_col2_lbl.Text = colNames[1];
-                        if (insert_rb.Checked || edit_rb.Checked)
-                        {
-                            enableAppropriateTB(2);
-                        }
-                        else
-                        {
-                            disableEditTBs();
-                        }
-                        break;
-                    case 3:
-                        chodybanks = 0;
-                        foreach (DataColumn col in resultTable.Columns)
-                        {
-                            colNames[chodybanks] = col.ColumnName;
-                            chodybanks++;
-                        }
-                        edit_col1_lbl.Text = colNames[0];
-                        edit_col2_lbl.Text = colNames[1];
-                        edit_col3_lbl.Text = colNames[2];
-                        if (insert_rb.Checked || edit_rb.Checked)
-                        {
-                            enableAppropriateTB(3);
-                        }
-                        else
-                        {
-                            disableEditTBs();
-                        }
-                        break;
-                    case 4:
-                        chodybanks = 0;
-                        foreach (DataColumn col in resultTable.Columns)
-                        {
-                            colNames[chodybanks] = col.ColumnName;
-                            chodybanks++;
-                        }
-                        edit_col1_lbl.Text = colNames[0];
-                        edit_col2_lbl.Text = colNames[1];
-                        edit_col3_lbl.Text = colNames[2];
-                        edit_col4_lbl.Text = colNames[3];
-                        if (insert_rb.Checked || edit_rb.Checked)
-                        {
-                            enableAppropriateTB(4);
-                        }
-                        else
-                        {
-                            disableEditTBs();
-                        }
-                        break;
-                    case 5:
-                        chodybanks = 0;
-                        foreach (DataColumn col in resultTable.Columns)
-                        {
-                            colNames[chodybanks] = col.ColumnName;
-                            chodybanks++;
-                        }
-                        edit_col1_lbl.Text = colNames[0];
-                        edit_col2_lbl.Text = colNames[1];
-                        edit_col3_lbl.Text = colNames[2];
-                        edit_col4_lbl.Text = colNames[3];
-                        edit_col5_lbl.Text = colNames[4];
-                        if (insert_rb.Checked || edit_rb.Checked)
-                        {
-                            enableAppropriateTB(5);
-                        }
-                        else
-                        {
-                            disableEditTBs();
-                        }
-                        break;
-                    case 6:
-                        chodybanks = 0;
-                        foreach (DataColumn col in resultTable.Columns)
-                        {
-                            colNames[chodybanks] = col.ColumnName;
-                            chodybanks++;
-                        }
-                        edit_col1_lbl.Text = colNames[0];
-                        edit_col2_lbl.Text = colNames[1];
-                        edit_col3_lbl.Text = colNames[2];
-                        edit_col4_lbl.Text = colNames[3];
-                        edit_col5_lbl.Text = colNames[4];
-                        edit_col6_lbl.Text = colNames[5];
-                        if (insert_rb.Checked || edit_rb.Checked)
-                        {
-                            enableAppropriateTB(6);
-                        }
-                        else
-                        {
-                            disableEditTBs();
-                        }
-                        break;
-                    default:
-                        chodybanks = 0;
-                        break;
-                }
-            }
-        }//end method
-
-        /// <summary>
-        /// Event handler to handle enabling/disabling of controls based on 
-        /// whether the insert radio button is selected.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void insert_rb_CheckedChanged(object sender, EventArgs e)
-        {
-            if (insert_rb.Checked)
+            if (insert_rb.Checked || edit_rb.Checked)
             {
-                clearEditColTBs();
-                insert_btn.Enabled = true;
-                switch (selected_table_lv.Columns.Count)
-                {
-                    case 0:
-                        disableEditTBs();
-                        break;
-                    case 2:
-                        enableAppropriateTB(2);
-                        break;
-                    case 3:
-                        enableAppropriateTB(3);
-                        break;
-                    case 4:
-                        enableAppropriateTB(4);
-                        break;
-                    case 5:
-                        enableAppropriateTB(5);
-                        break;
-                    case 6:
-                        enableAppropriateTB(6);
-                        break;
-                }
-            }
-            else
-            {
-                insert_btn.Enabled = false;
-            }
-        }//end method
-
-        /// <summary>
-        /// Event handler to handle enabling/disabling of controls based on 
-        /// whether the edit radio button is selected.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void edit_rb_CheckedChanged(object sender, EventArgs e)
-        {
-            if(edit_rb.Checked)
-            {
-                edit_btn.Enabled = true;
-                enableAppropriateTB(selected_table_lv.Columns.Count);
-            }
-            else
-            {
-                edit_btn.Enabled = false;
-            }
-        }//end method
-
-
-        /// <summary>
-        /// Event handler for insert button click.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void insert_btn_Click(object sender, EventArgs e)
-        {
-            if(edit_tables_lb.SelectedIndex < 0)
-            {
-                MessageBox.Show("You must select a table to insert into.", "Error");
-            }
-        }//end method
-
-
-        /// <summary>
-        /// Event handler for delete button click.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void delete_btn_Click(object sender, EventArgs e)
-        {
-            if (edit_tables_lb.SelectedIndex < 0)
-            {
-                MessageBox.Show("You must select a table to delete from.", "Error");
+                labelEditTBs(resultTable);
+                if (insert_rb.Checked || edit_rb.Checked)
+                    enableAppropriateTB(resultTable.Columns.Count);
+                else
+                    disableEditTBs();
             }
         }//end method
 
@@ -337,6 +174,75 @@ namespace VirusDataApplication
                 }
             }
         }//end method
+
+
+        /// <summary>
+        /// Event handler to handle enabling/disabling of controls based on 
+        /// whether the insert delete button is selected.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void delete_rb_CheckedChanged(object sender, EventArgs e)
+        {
+            disableEditTBs();
+            if (delete_rb.Checked)
+            {
+                clearEditColLbls();
+                clearEditColTBs();
+                delete_btn.Enabled = true;
+            }
+            else
+            {
+                delete_btn.Enabled = false;
+            }
+        }//end method
+
+
+        /// <summary>
+        /// Event handler to handle enabling/disabling of controls based on 
+        /// whether the insert radio button is selected.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void insert_rb_CheckedChanged(object sender, EventArgs e)
+        {
+            if (insert_rb.Checked)
+            {
+                clearEditColTBs();
+                insert_btn.Enabled = true;
+                if (selected_table_lv.Columns.Count == 0)
+                    disableEditTBs();
+                else
+                    enableAppropriateTB(selected_table_lv.Columns.Count);
+                labelEditTBs(c.displayTableContents(edit_tables_lb.SelectedItem.ToString()));
+            }
+            else
+            {
+                insert_btn.Enabled = false;
+            }
+        }//end method
+
+
+        /// <summary>
+        /// Event handler to handle enabling/disabling of controls based on 
+        /// whether the edit radio button is selected.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void edit_rb_CheckedChanged(object sender, EventArgs e)
+        {
+            if (edit_rb.Checked)
+            {
+                edit_btn.Enabled = true;
+                enableAppropriateTB(selected_table_lv.Columns.Count);
+                labelEditTBs(c.displayTableContents(edit_tables_lb.SelectedItem.ToString()));
+            }
+            else
+            {
+                edit_btn.Enabled = false;
+            }
+        }//end method
+
 
         /// <summary>
         /// Method will clear all the edit_col_tb textboxes.
@@ -438,6 +344,110 @@ namespace VirusDataApplication
             edit_col5_tb.Enabled = false;
             edit_col6_tb.Enabled = false;
         }//end method
+
+
+        /// <summary>
+        /// Method will put text in the labels corresponding to the appropriate edit_col_TB textboxes.
+        /// </summary>
+        /// <param name="table"></param> the current table in the listview
+        private void labelEditTBs(DataTable table)
+        {
+            string[] colNames = new string[table.Columns.Count];
+            int chodybanks;
+
+            switch (table.Columns.Count)
+            {
+                case 2:
+                    chodybanks = 0;
+                    foreach (DataColumn col in table.Columns)
+                    {
+                        colNames[chodybanks] = col.ColumnName;
+                        chodybanks++;
+                    }
+                    edit_col1_lbl.Text = colNames[0];
+                    edit_col2_lbl.Text = colNames[1];
+                    break;
+                case 3:
+                    chodybanks = 0;
+                    foreach (DataColumn col in table.Columns)
+                    {
+                        colNames[chodybanks] = col.ColumnName;
+                        chodybanks++;
+                    }
+                    edit_col1_lbl.Text = colNames[0];
+                    edit_col2_lbl.Text = colNames[1];
+                    edit_col3_lbl.Text = colNames[2];
+                    break;
+                case 4:
+                    chodybanks = 0;
+                    foreach (DataColumn col in table.Columns)
+                    {
+                        colNames[chodybanks] = col.ColumnName;
+                        chodybanks++;
+                    }
+                    edit_col1_lbl.Text = colNames[0];
+                    edit_col2_lbl.Text = colNames[1];
+                    edit_col3_lbl.Text = colNames[2];
+                    edit_col4_lbl.Text = colNames[3];
+                    break;
+                case 5:
+                    chodybanks = 0;
+                    foreach (DataColumn col in table.Columns)
+                    {
+                        colNames[chodybanks] = col.ColumnName;
+                        chodybanks++;
+                    }
+                    edit_col1_lbl.Text = colNames[0];
+                    edit_col2_lbl.Text = colNames[1];
+                    edit_col3_lbl.Text = colNames[2];
+                    edit_col4_lbl.Text = colNames[3];
+                    edit_col5_lbl.Text = colNames[4];
+                    break;
+                case 6:
+                    chodybanks = 0;
+                    foreach (DataColumn col in table.Columns)
+                    {
+                        colNames[chodybanks] = col.ColumnName;
+                        chodybanks++;
+                    }
+                    edit_col1_lbl.Text = colNames[0];
+                    edit_col2_lbl.Text = colNames[1];
+                    edit_col3_lbl.Text = colNames[2];
+                    edit_col4_lbl.Text = colNames[3];
+                    edit_col5_lbl.Text = colNames[4];
+                    edit_col6_lbl.Text = colNames[5];
+                    break;
+                default:
+                    chodybanks = 0;
+                    break;
+            }
+        }//end method
+
+        private string writeStatement(int size, string table, string[] cols, string[] vals, string type)
+        {
+            string statement = null;
+            //DELETE FROM Proteins WHERE pID > 68
+            if (type == "delete")
+            {
+                switch(size)
+                {
+                    case 2:
+                        statement = "DELETE FROM " + table + " WHERE " + cols[0] + " = " + vals[0] + " AND " + cols[1] + " = " + vals[1];
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        break;
+                    case 6:
+                        break;
+                }
+            }
+            return statement;
+        }
+
+
         //END EDIT TAB CODE
         //**********************************************************************************************************************************
 

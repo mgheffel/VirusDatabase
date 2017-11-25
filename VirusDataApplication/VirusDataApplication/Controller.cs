@@ -34,5 +34,16 @@ namespace VirusDataApplication
             string query = "SELECT * FROM " + table;
             return model.sendQuery(query);
         }//end displayTableContents
+
+
+        /// <summary>
+        /// Method will send the DELETE SQL statement to the model.
+        /// </summary>
+        /// <param name="statement"></param> statement to send
+        /// <returns></returns> returns true if delete was executed, false if not
+        public bool deleteRow(string statement)
+        {
+            return model.sendDelete(statement);
+        }
     }//end class Controller
 }//end namespace
