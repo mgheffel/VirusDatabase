@@ -3,8 +3,8 @@ INSERT INTO Species VALUES
 (0, 'Porcine reproductive and respiratory syndrome virus', 'PRRSV', 'Arterivirus', 'Arteriviridae','Nidovirales'),
 (1, 'Lactate dehydrogenase elevating virus', 'LDV', 'Arterivirus', 'Arteriviridae','Nidovirales'),
 (2, 'Simian hemorrhagic fever virus', 'SHFV', 'Arterivirus', 'Arteriviridae','Nidovirales'),
-(3, 'Canine Coronavirus', 'CCoV', 'Alphacoronavirus', 'Coronaviridae','Nidovirales')
-
+(3, 'Canine Coronavirus', 'CCoV', 'Alphacoronavirus', 'Coronaviridae', 'Nidovirales'),
+(4, 'Feline Coronavirus', 'FCoV', 'Alphacoronavirus', 'Coronaviridae', 'Nidovirales')
 ;
 
 
@@ -33,83 +33,84 @@ INSERT INTO Strains VALUES
 ;
 
 INSERT INTO Proteins VALUES
-(0, 'non-structural'),
-(1, 'non-structural'),
-(2, 'structural'),
-(3, 'structural'),
-(4, 'structural'),
-(5, 'structural'),
-(6, 'structural'),
-(7, 'structural'),
-(8, 'structural'),
-(9, 'structural'),
-(10, 'structural'),
-(11, 'structural'),
-(12, 'structural'),
-(13, 'structural'),
-(14, 'structural'),
-(15, 'structural'),
-(16, 'structural'),
-(17, 'structural'),
-(18, 'structural'),
-(19, 'structural'),
-(20, 'structural'),
-(21, 'structural'),
+(0, 'Arterivirus replicase polyprotein'),
+(1, 'Arterivirus replicase complex'),
+(2, 'PRRSV GP2'),
+(3, 'PRRSV GP3'),
+(4, 'PRRSV GP4'),
+(5, 'PRRSV GP5'),
+(6, 'PRRSV membrane'),
+(7, 'PRRSV nucleocapsid'),
+(8, 'PRRSV GP2b'),
+(9, 'LDV GP2'),
+(10, 'LDV GP3'),
+(11, 'LDV GP4'),
+(12, 'LDV GP5'),
+(13, 'LDV membrane'),
+(14, 'LDV nucleocapsid'),
+(15, 'SHDV 2a protein'),
+(16, 'SHDV 2b protein'),
+(17, 'SHDV GP3'),
+(18, 'SHDV GP4'),
+(19, 'SHDV GP5'),
+(20, 'SHDV membrane'),
+(21, 'SHDV nucleocapsid'),
 
-(22, 'non-structural'),
-(23, 'structural'),
-(24, 'non-structural'),
-(25, 'non-structural'),
-(26, 'non-structural'),
-(27, 'structural'),
-(28, 'structural'),
-(29, 'structural'),
-(30, 'non-structural'),
-(31, 'non-structural')
+(22, 'Coronavirus replicase complex'),
+(23, 'Alphacoronavirus spike'),
+(24, 'CCoV ORF3a NSP'),
+(25, 'CCoV ORF3b NSP'),
+(26, 'CCoV ORF3c NSP'),
+(27, 'CCoV envelope'),
+(28, 'CCoV membrane'),
+(29, 'CCoV nucleocapsid'),
+(30, 'CCoV ORF7a NSP'),
+(31, 'CCoV ORF7b NSP')
 ;
 
 
 
 INSERT INTO NonStructuralProteins VALUES
-(0, 'Arterivirus replicase', 'creates cRNA strand from a template RNA strand'),
-(1, 'Arterivirus endopeptiase', 'an enzyme that breaks peptide bonds other than terminal ones in a peptide chain'),
+(0, 'polyprotein with various replication functions'),
+(1, 'creates cRNA strand from a template RNA strand then another cRNA strand using the cRNA1 strand as a template, replicating the arterivirus viral genome'),
 
-(22, 'Coronavirus replicase polyprotein', 'creates cRNA strand from a template RNA strand'),
-(24, 'CCoV ORF3a NSP', ''),
-(25, 'CCoV ORF3b NSP', ''),
-(26, 'CCoV ORF3c NSP', ''),
-(30, 'CCoV ORF7a NSP', ''),
-(31, 'CCoV ORF7b NSP', '')
+(22, 'creates cRNA strand from a template RNA strand then another cRNA strand using the cRNA1 strand as a template, replicating the coronavirus viral genome'),
+(24, 'CCoV ORF3a non structural protein'),
+(25, 'CCoV ORF3b non structural protein'),
+(26, 'CCoV ORF3c non structural protein'),
+(30, 'CCoV ORF7a non structural protein'),
+(31, 'CCoV ORF7b non structural protein')
 
 
 ;
 
 INSERT INTO StructuralProteins VALUES
-(2, 'PRRSV glycosylated envelope protein 2',''),
-(3, 'PRRSV glycosylated envelope protein 3',''),
-(4, 'PRRSV glycosylated envelope protein 4',''),
-(5, 'PRRSV glycosylated envelope protein 5',''),
-(6, 'PRRSV membrane protein 2','encodes the PRRSV membrane'),
-(7, 'PRRSV nucleocapsid', 'encodes the PRRSV nucleocapsid'),
-(8, 'PRRSV glycosylated envelope protein 2b',''),
-(9, 'LDV GP2', ''),
-(10, 'LDV GP3', ''),
-(11, 'LDV GP4', ''),
-(12, 'LDV GP5', ''),
-(13, 'LDV membrane protein', 'non-glycosylated envelope protein, matrix'),
-(14, 'LDV nucleocapsid', 'encodes the LDV nucleocapsid'),
-(15, 'SHDV 2a protein', ''),
-(16, 'SHDV 2b protein', ''),
-(17, 'SHDV GP3', 'minor glycoprotein'),
-(18, 'SHDV GP4', 'minor glycoprotein'),
-(19, 'SHDV membrane protein', 'major glycoprotein'),
-(20, 'SHDV membrane protein', 'non-glycosylated major envelope protein'),
-(21, 'SHDV nucleocapsid', 'encodes the SHDV nucleocapsid'),
+(2, 'PRRSV glycosylated envelope protein 2'),
+(3, 'PRRSV glycosylated envelope protein 3'),
+(4, 'PRRSV glycosylated envelope protein 4'),
+(5, 'PRRSV glycosylated envelope protein 5'),
+(6, 'PRRSV primary membrane matrix protein'),
+(7, 'PRRSV capsid enclosed with the viral genome; nucleic acid'),
+(8, 'PRRSV glycosylated envelope protein 2b'),
+(9, 'LDV glycosylated envelope protein 2'),
+(10, 'LDV glycosylated envelope protein 3'),
+(11, 'LDV glycosylated envelope protein 4'),
+(12, 'LDV glycosylated envelope protein 5'),
+(13, 'LDV primary membrane matrix protein'),
+(14, 'LDV capsid enclosed with the viral genome; nucleic acid'),
+(15, 'SHDV 2a protein'),
+(16, 'SHDV 2b protein'),
+(17, 'SHDV glycosylated envelope protein 3'),
+(18, 'SHDV glycosylated envelope protein 4'),
+(19, 'SHDV glycosylated envelope protein 5'),
+(20, 'SHDV primary membrane matrix protein'),
+(21, 'SHDV capsid enclosed with the viral genome; nucleic acid'),
 
-(23, 'Alphacoronavirus spike', 'mediates coronavirus entry into host cells'),
-(27, 'Alphacoronavirus envelope protein', ''),
-(28, 'Alphacoronavirus membrane protein', ''),
-(29, 'Alphacoronavirus nucleocapsid', 'encodes the nucleocapsid of Alphacoronaviruses')
+(23, 'mediates coronavirus entry into host cells'),
+(27, 'CCoV envelope protein'),
+(28, 'CCoV primary membrane matrix protein'),
+(29, 'CCoV capsid enclosed with the viral genome; nucleic acid')
+
 ;
 
 INSERT INTO OpenReadingFrames VALUES

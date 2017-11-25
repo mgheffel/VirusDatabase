@@ -14,17 +14,17 @@ DROP TABLE IF EXISTS Proteins;
 
 create table Proteins(
 	pID int primary key,
-	pType varchar(15) not null
+	pName varchar(50) not null
 );
 create table StructuralProteins(
 	pID int primary key,
-	pName varchar(50) not null,
-	struct varchar(50) not null
+	struct varchar(50) not null,
+	foreign key (pID) references Proteins(pID)
 );
 create table NonStructuralProteins(
 	pID int primary key,
-	pName varchar(50) not null,
-	funct varchar(50) not null
+	funct varchar(50) not null,
+	foreign key (pID) references Proteins(pID)
 );
 
 create table Species(
@@ -49,6 +49,7 @@ create table OpenReadingFrames(
 	pID int,
 	startIndex int not null,
 	stopIndex int not null,
+	foreign key (strainID) references Strains(strainID),
 	foreign key (pID) references Proteins(pID),
 	PRIMARY KEY (strainID, orfID)
 );
