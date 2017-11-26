@@ -14,6 +14,7 @@ namespace VirusDataApplication
     {
         private DataTable species, strains, subContent, followingSubContent;
         private Controller c;
+        private int dropdownChoice;
 
         public InterfaceV2(Controller c)
         {
@@ -23,19 +24,8 @@ namespace VirusDataApplication
             species = c.displayTableContents("Species");
             populateListView(uxSpeciesBox, species, 1, "Species Name");
         }
-        /// <summary>
-        /// Disable or enable the RadioButtons
-        /// </summary>
-        private void onOffRadioButtons()
-        {
-            if(uxRadioGroup.Enabled == true)
-            {
-                uxRadioGroup.Enabled = false;
-                return;
-            }
-            uxRadioGroup.Enabled = true;
-        }
-
+        
+        
         /// <summary>
         /// When a strain is selected event
         /// </summary>
@@ -43,7 +33,57 @@ namespace VirusDataApplication
         /// <param name="e"></param>
         private void uxStrainsBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            uxChoiceBox.Items.Clear();
+            uxFollowingBox.Items.Clear();
+            uxOptionsDropdown.Enabled = true;
+            if(uxOptionsDropdown.SelectedIndex == -1)//nothing selected yet
+            {
+                MessageBox.Show("Please select an item from the dropdown.");
+                return;
+            }
+            MessageBox.Show(dropdownChoice.ToString());
+            switch(dropdownChoice)
+            {
+                case 1://display protiens
+                    subContent = c.displayTableContents(" OpenReadingFrames WHERE strainID = '" + strains.Rows[uxStrainsBox.SelectedIndex][0].ToString() + "'");
+                    populateListView(uxChoiceBox, subContent, 1, "ORF ID");
+                    break;
+                case 2://display publishers
+                    subContent = c.displayTableContents(" Publications as p JOIN Strain_Publication AS sp ON sp.pubID = p.pubID WHERE sp.strainID = '" + strains.Rows[uxStrainsBox.SelectedIndex][0].ToString() + "'");
+                    populateListView(uxChoiceBox, subContent, 2, "Publication Title");
+                    break;
+                case 3://display researchers
+                    subContent = c.displayTableContents(" Publications as p JOIN Strain_Publication AS sp ON sp.pubID = p.pubID WHERE sp.strainID = '" + strains.Rows[uxStrainsBox.SelectedIndex][0].ToString() + "'");
+                    populateListView(uxChoiceBox, subContent, 2, "Publication Title");
+                    break;
+            }
+        }
 
+        private void uxOptionsDropdown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            uxChoiceBox.Items.Clear();
+            uxFollowingBox.Items.Clear();
+
+            switch (uxOptionsDropdown.SelectedItem.ToString())
+            {
+                case "OpenReadingFrames":
+                    {
+                        dropdownChoice = 1;
+                        break;
+                    }
+                case "Publications - Publishers":
+                    {
+                        dropdownChoice = 2;
+                        break;
+                    }
+                case "Publications - Researchers":
+                    {
+                        dropdownChoice = 3;
+                        break;
+                    }
+            }
+
+            uxStrainsBox_SelectedIndexChanged(sender, e);
         }
 
         /// <summary>
@@ -72,6 +112,7 @@ namespace VirusDataApplication
         /// <param name="e"></param>
         private void uxSpeciesBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            uxOptionsDropdown.Enabled = false;
             uxChoiceBox.Items.Clear();
             uxFollowingBox.Items.Clear();
             uxStrainsBox.Items.Clear();
