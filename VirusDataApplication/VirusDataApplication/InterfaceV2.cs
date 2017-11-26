@@ -22,6 +22,7 @@ namespace VirusDataApplication
             InitializeComponent();
             //onOffRadioButtons();
             this.c = c;
+            contentViewer = new List<ListBox>();
             contentViewer.Add(uxSpeciesBox);
             contentViewer.Add(uxStrainsBox);
             contentViewer.Add(uxChoiceBox);
@@ -105,8 +106,12 @@ namespace VirusDataApplication
         private void uxDetialsButton_Click(object sender, EventArgs e)
         {
             StringBuilder sb = new StringBuilder();
-            int counter = 0;
-            int numOfColumns = 0;
+            List<DataTable> ldt = new List<DataTable>();
+            ldt.Add(species);
+            ldt.Add(strains);
+            ldt.Add(subContent);
+            ldt.Add(followingSubContent);
+            int numOfColumns = 0, counter = 0;
 
             foreach(ListBox view in contentViewer)
             {
@@ -114,32 +119,9 @@ namespace VirusDataApplication
                 {
                     break;
                 }
-                switch(counter)
-                {
-                    case 0:
-                        {
-
-                            break;
-                        }
-                    case 1:
-                        {
-
-                            break;
-                        }
-                    case 2:
-                        {
-
-                            break;
-                        }
-                    case 3:
-                        {
-
-                            break;
-                        }
-                }
+                
 
                 counter++;
-
             }
             MessageBox.Show(sb.ToString());
         }
