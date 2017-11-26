@@ -49,3 +49,5 @@ C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\Gi
 C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\GitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\ja\Npgsql.resources.dll
 C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\GitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\zh-CN\Npgsql.resources.dll
 C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\GitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.InterfaceV2.resources
+C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\project\virus_database_repo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.InterfaceV2.resources
+C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\project\virus_database_repo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.editGUI.resources
