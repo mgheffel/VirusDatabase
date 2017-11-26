@@ -97,6 +97,7 @@
             this.uxDetialsButton.TabIndex = 6;
             this.uxDetialsButton.Text = "DisplayDetails";
             this.uxDetialsButton.UseVisualStyleBackColor = true;
+            this.uxDetialsButton.Click += new System.EventHandler(this.uxDetialsButton_Click);
             // 
             // uxOptionsDropdown
             // 

@@ -13,6 +13,7 @@ namespace VirusDataApplication
     public partial class InterfaceV2 : Form
     {
         private DataTable species, strains, subContent, followingSubContent;
+        private List<ListBox> contentViewer;
         private Controller c;
         private int dropdownChoice;
 
@@ -21,6 +22,10 @@ namespace VirusDataApplication
             InitializeComponent();
             //onOffRadioButtons();
             this.c = c;
+            contentViewer.Add(uxSpeciesBox);
+            contentViewer.Add(uxStrainsBox);
+            contentViewer.Add(uxChoiceBox);
+            contentViewer.Add(uxFollowingBox);
             species = c.displayTableContents("Species");
             populateListView(uxSpeciesBox, species, 1, "Species Name");
         }
@@ -36,12 +41,12 @@ namespace VirusDataApplication
             uxChoiceBox.Items.Clear();
             uxFollowingBox.Items.Clear();
             uxOptionsDropdown.Enabled = true;
-            /*if(uxOptionsDropdown.SelectedIndex == -1)//nothing selected yet
+            if(uxOptionsDropdown.SelectedIndex == -1)//nothing selected yet
             {
                 MessageBox.Show("Please select an item from the dropdown.");
                 return;
-            }*/
-            MessageBox.Show(dropdownChoice.ToString());
+            }
+            //MessageBox.Show(dropdownChoice.ToString());
             switch(dropdownChoice)
             {
                 case 1://display protiens
@@ -74,23 +79,16 @@ namespace VirusDataApplication
             {
                 case "OpenReadingFrames":
                     {
-                        choice_box_lbl.Text = "Open Reading Frames";
-                        following_box_lbl.Text = "Proteins";
                         dropdownChoice = 1;
                         break;
                     }
                 case "Publications - Publishers":
                     {
-                        choice_box_lbl.Text = "Publications";
-                        following_box_lbl.Text = "Publishers";
                         dropdownChoice = 2;
                         break;
                     }
                 case "Publications - Researchers":
                     {
-
-                        choice_box_lbl.Text = "Publications";
-                        following_box_lbl.Text = "Researchers";
                         dropdownChoice = 3;
                         break;
                     }
@@ -99,17 +97,51 @@ namespace VirusDataApplication
             uxStrainsBox_SelectedIndexChanged(sender, e);
         }
 
-
         /// <summary>
-        /// Event handler for edit button press.
+        /// On Button Press
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void edit_btn_Click(object sender, EventArgs e)
+        private void uxDetialsButton_Click(object sender, EventArgs e)
         {
-            
-            editGUI editWindow = new editGUI("chode");
-            editWindow.ShowDialog();
+            StringBuilder sb = new StringBuilder();
+            int counter = 0;
+            int numOfColumns = 0;
+
+            foreach(ListBox view in contentViewer)
+            {
+                if(view.SelectedIndex == -1)
+                {
+                    break;
+                }
+                switch(counter)
+                {
+                    case 0:
+                        {
+
+                            break;
+                        }
+                    case 1:
+                        {
+
+                            break;
+                        }
+                    case 2:
+                        {
+
+                            break;
+                        }
+                    case 3:
+                        {
+
+                            break;
+                        }
+                }
+
+                counter++;
+
+            }
+            MessageBox.Show(sb.ToString());
         }
 
         /// <summary>
