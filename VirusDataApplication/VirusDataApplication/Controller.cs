@@ -35,15 +35,7 @@ namespace VirusDataApplication
             return model.sendQuery(query);
         }//end displayTableContents
 
-        /// <summary>
-        /// Exectues the Wave!
-        /// </summary>
-        /// <param name="sqlStatement"></param>
-        /// <returns></returns>
-        public DataTable executeWave(string sqlStatement)
-        {
-            return model.sendQuery(sqlStatement);
-        }
+
        
         public bool deleteRow(int size, string table, string[] cols, string[] vals, string type)
         {
