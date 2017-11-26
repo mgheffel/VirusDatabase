@@ -47,14 +47,20 @@ namespace VirusDataApplication
                 case 1://display protiens
                     subContent = c.displayTableContents(" OpenReadingFrames WHERE strainID = '" + strains.Rows[uxStrainsBox.SelectedIndex][0].ToString() + "'");
                     populateListView(uxChoiceBox, subContent, 1, "ORF ID");
+                    followingSubContent = c.displayTableContents(" Proteins WHERE pID = " + subContent.Rows[0][2].ToString());
+                    populateListView(uxFollowingBox, followingSubContent, 1, "Protien Name");
                     break;
                 case 2://display publishers
                     subContent = c.displayTableContents(" Publications as p JOIN Strain_Publication AS sp ON sp.pubID = p.pubID WHERE sp.strainID = '" + strains.Rows[uxStrainsBox.SelectedIndex][0].ToString() + "'");
                     populateListView(uxChoiceBox, subContent, 2, "Publication Title");
+                    followingSubContent = c.displayTableContents(" Publishers as p join Publisher_Publication as pp on pp.publisherID = p.publisherID WHERE pp.pubID = " + subContent.Rows[0][0].ToString());
+                    populateListView(uxFollowingBox, followingSubContent, 1, "Publisher Name");
                     break;
                 case 3://display researchers
                     subContent = c.displayTableContents(" Publications as p JOIN Strain_Publication AS sp ON sp.pubID = p.pubID WHERE sp.strainID = '" + strains.Rows[uxStrainsBox.SelectedIndex][0].ToString() + "'");
                     populateListView(uxChoiceBox, subContent, 2, "Publication Title");
+                    followingSubContent = c.displayTableContents(" Researchers as r join Publication_Researcher AS pr ON pr.rID = r.rID WHERE pr.pubID = " + subContent.Rows[0][0].ToString());
+                    populateListView(uxFollowingBox, followingSubContent, 1, "Researcher Name");
                     break;
             }
         }
