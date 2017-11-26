@@ -12,7 +12,7 @@ namespace VirusDataApplication
 {
     public partial class InterfaceV2 : Form
     {
-        private DataTable species, strains, subContent, followingSubContent;
+        private DataTable species, strains, subContent, followingSubContent, alignStrains1, alignORF1, alignStrains2, alignORF2, alignGenome1, alignGenome2;
         private List<ListBox> contentViewer;
         private Controller c;
         private int dropdownChoice;
@@ -22,12 +22,15 @@ namespace VirusDataApplication
             InitializeComponent();
             //onOffRadioButtons();
             this.c = c;
+            contentViewer = new List<ListBox>();
             contentViewer.Add(uxSpeciesBox);
             contentViewer.Add(uxStrainsBox);
             contentViewer.Add(uxChoiceBox);
             contentViewer.Add(uxFollowingBox);
             species = c.displayTableContents("Species");
             populateListView(uxSpeciesBox, species, 1, "Species Name");
+            AlignPopulateDropDown(uxSpecies1Drop, species, 1);
+            AlignPopulateDropDown(uxSpecies2Drop, species, 1);
         }
         
         
@@ -144,6 +147,50 @@ namespace VirusDataApplication
             MessageBox.Show(sb.ToString());
         }
 
+        private void uxSpecies2Drop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            uxStrain2Drop.Items.Clear();
+            uxStrain2Drop.ResetText();
+            alignStrains2 = c.displayTableContents("Strains WHERE specID = " + species.Rows[uxSpecies2Drop.SelectedIndex][0].ToString());
+            AlignPopulateDropDown(uxStrain2Drop, alignStrains2, 0);
+        }
+
+        private void uxStrain2Drop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            uxORF2Drop.Items.Clear();
+            uxORF2Drop.ResetText();
+            alignORF2 = c.displayTableContents(" OpenReadingFrames WHERE strainID = '" + alignStrains2.Rows[uxStrain2Drop.SelectedIndex][0].ToString() + "'");
+            AlignPopulateDropDown(uxORF2Drop, alignORF2, 1);
+        }
+
+        private void uxORF1Drop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (uxORF1Drop.SelectedIndex >= 0 && uxORF2Drop.SelectedIndex >= 0)
+            {
+                uxAlignButton.Enabled = true;
+            }
+            else uxAlignButton.Enabled = false;
+        }
+
+        private void uxORF2Drop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (uxORF1Drop.SelectedIndex >= 0 && uxORF2Drop.SelectedIndex >= 0)
+            {
+                uxAlignButton.Enabled = true;
+            }
+            else uxAlignButton.Enabled = false;
+        }
+
+        private void uxAlignButton_Click(object sender, EventArgs e)
+        {
+            //alignGenome1 = c.displayTableContents("Select genome FROM Strains WHERE")
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -161,6 +208,24 @@ namespace VirusDataApplication
             {
                 lv.Items.Add(dt.Rows[i][colNum].ToString());
             }
+        }
+
+        private void uxSpecies1Drop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            uxStrain1Drop.Items.Clear();
+            uxStrain1Drop.ResetText();
+            alignStrains1 = c.displayTableContents("Strains WHERE specID = " + species.Rows[uxSpecies1Drop.SelectedIndex][0].ToString());
+            //POTENTIAL SOURCE OF ERROR BETWEEN TABS BECAUSE WE ARE UPDATING STRAINS
+            AlignPopulateDropDown(uxStrain1Drop, alignStrains1, 0);
+
+        }
+
+        private void uxStrain1Drop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            uxORF1Drop.Items.Clear();
+            uxORF1Drop.ResetText();
+            alignORF1 = c.displayTableContents(" OpenReadingFrames WHERE strainID = '" + alignStrains1.Rows[uxStrain1Drop.SelectedIndex][0].ToString() + "'");
+            AlignPopulateDropDown(uxORF1Drop, alignORF1, 1);
         }
 
         /// <summary>
@@ -186,6 +251,14 @@ namespace VirusDataApplication
         private void InterfaceV2_Load(object sender, EventArgs e)
         {
             
+        }
+        private void AlignPopulateDropDown(ComboBox dd, DataTable dt, int colNum)
+        {
+            dd.Items.Clear();
+            foreach(DataRow row in dt.Rows)
+            {
+                dd.Items.Add(row[colNum].ToString());
+            }
         }
     }
 }
