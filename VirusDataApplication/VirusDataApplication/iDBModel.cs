@@ -12,7 +12,7 @@ namespace VirusDataApplication{
 
         bool sendUpdate(string updateSQLStatement);
 
-        bool sendInsert(string insertSQLStatement);
+        bool sendExecuteStatement(string insertSQLStatement);
 
         bool sendDelete(string deleteSQLStatement);
     }

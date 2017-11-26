@@ -119,16 +119,21 @@ namespace VirusDataApplication
             return false;
         }
 
-        public bool sendInsert(string insertSQLStatement)
+        public bool sendExecuteStatement(string insertSQLStatement)
         {
-            int rows_affected;
-
-            db.Open();
-            //MySqlCommand msc = new MySqlCommand("INSERT INTO Proteins (pID, pType) " + " VALUES(72, 'dickbutt')", db);
-            MySqlCommand msc = new MySqlCommand(insertSQLStatement, db);            
-            rows_affected = msc.ExecuteNonQuery();
-            db.Close();
-
+            int rows_affected = 0;
+            try
+            {
+                db.Open();
+                //MySqlCommand msc = new MySqlCommand("INSERT INTO Proteins (pID, pType) " + " VALUES(72, 'dickbutt')", db);
+                MySqlCommand msc = new MySqlCommand(insertSQLStatement, db);
+                rows_affected = msc.ExecuteNonQuery();
+                db.Close();
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
             //MessageBox.Show(rows_affected.ToString()); 
 
             if (rows_affected > 0)
