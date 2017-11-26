@@ -12,7 +12,9 @@ namespace VirusDataApplication
 {
     public partial class InterfaceV2 : Form
     {
-        private DataTable species, strains, subContent, followingSubContent, alignStrains1, alignORF1, alignStrains2, alignORF2, alignGenome1, alignGenome2;
+        private DataTable species, strains, subContent, followingSubContent;
+        private List<DataTable> ldt;
+        private List<Label> ll;
         private List<ListBox> contentViewer;
         private Controller c;
         private int dropdownChoice;
@@ -22,7 +24,26 @@ namespace VirusDataApplication
             InitializeComponent();
             //onOffRadioButtons();
             this.c = c;
+            ldt = new List<DataTable>();
+            ll = new List<Label>();            
             contentViewer = new List<ListBox>();
+            addEverything();            
+            species = c.displayTableContents("Species");
+            populateListView(uxSpeciesBox, species, 1, "Species Name");
+        }
+        /// <summary>
+        /// Add all the objects to the global lists
+        /// </summary>
+        private void addEverything()
+        {
+            ll.Add(species_lbl);
+            ll.Add(strain_lbl);
+            ll.Add(choice_lbl);
+            ll.Add(following_lbl);
+            ldt.Add(species);
+            ldt.Add(strains);
+            ldt.Add(subContent);
+            ldt.Add(followingSubContent);
             contentViewer.Add(uxSpeciesBox);
             contentViewer.Add(uxStrainsBox);
             contentViewer.Add(uxChoiceBox);
@@ -32,7 +53,6 @@ namespace VirusDataApplication
             AlignPopulateDropDown(uxSpecies1Drop, species, 1);
             AlignPopulateDropDown(uxSpecies2Drop, species, 1);
         }
-        
         
         /// <summary>
         /// When a strain is selected event
@@ -82,16 +102,28 @@ namespace VirusDataApplication
             {
                 case "OpenReadingFrames":
                     {
+                        choice_lbl.Text = "OpenReadingFrames";
+                        following_lbl.Text = "Protiens";
+                        choice_lbl.Visible = true;
+                        following_lbl.Visible = true;
                         dropdownChoice = 1;
                         break;
                     }
                 case "Publications - Publishers":
                     {
+                        choice_lbl.Text = "Publications";
+                        following_lbl.Text = "Publishers";
+                        choice_lbl.Visible = true;
+                        following_lbl.Visible = true;
                         dropdownChoice = 2;
                         break;
                     }
                 case "Publications - Researchers":
                     {
+                        choice_lbl.Text = "Publications";
+                        following_lbl.Text = "Researchers";
+                        choice_lbl.Visible = true;
+                        following_lbl.Visible = true;
                         dropdownChoice = 3;
                         break;
                     }
@@ -108,8 +140,8 @@ namespace VirusDataApplication
         private void uxDetialsButton_Click(object sender, EventArgs e)
         {
             StringBuilder sb = new StringBuilder();
-            int counter = 0;
-            int numOfColumns = 0;
+            
+            int numOfColumns = 0, counter = 0;
 
             foreach(ListBox view in contentViewer)
             {
@@ -117,34 +149,29 @@ namespace VirusDataApplication
                 {
                     break;
                 }
-                switch(counter)
+                numOfColumns = ldt[counter].Columns.Count;
+                sb.Append(ll[counter].Text + ":\n");
+                for (int i = 0; i < numOfColumns; i++)
                 {
-                    case 0:
-                        {
-
-                            break;
-                        }
-                    case 1:
-                        {
-
-                            break;
-                        }
-                    case 2:
-                        {
-
-                            break;
-                        }
-                    case 3:
-                        {
-
-                            break;
-                        }
+                    
                 }
-
                 counter++;
-
             }
             MessageBox.Show(sb.ToString());
+        }
+
+        private void edit_btn_Click(object sender, EventArgs e)
+        {
+            if(uxSpeciesBox.SelectedIndex >= 0 && uxStrainsBox.SelectedIndex < 0)
+            {
+                MessageBox.Show("Error: Cannot edit species.", "Error");
+            }
+            else if(uxStrainsBox.SelectedIndex >= 0)
+            {
+
+            }
+            editGUI editWindow = new editGUI("chode");
+            editWindow.ShowDialog();
         }
 
         private void uxSpecies2Drop_SelectedIndexChanged(object sender, EventArgs e)
