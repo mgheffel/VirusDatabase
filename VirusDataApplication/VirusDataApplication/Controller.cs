@@ -36,14 +36,38 @@ namespace VirusDataApplication
         }//end displayTableContents
 
 
-        /// <summary>
-        /// Method will send the DELETE SQL statement to the model.
-        /// </summary>
-        /// <param name="statement"></param> statement to send
-        /// <returns></returns> returns true if delete was executed, false if not
-        public bool deleteRow(string statement)
+       
+        public bool deleteRow(int size, string table, string[] cols, string[] vals, string type)
         {
+            string statement = writeStatement(size, table, cols, vals, type);
+            MessageBox.Show(statement);
             return model.sendDelete(statement);
+        }
+
+
+
+        private string writeStatement(int size, string table, string[] cols, string[] vals, string type)
+        {
+            string statement = null;
+            //DELETE FROM Proteins WHERE pID > 68
+            if (type == "delete")
+            {
+                switch (size)
+                {
+                    case 2:
+                        statement = "DELETE FROM " + table + " WHERE " + cols[0] + " = " + vals[0] + " AND " + cols[1] + " = " + vals[1];
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        break;
+                    case 6:
+                        break;
+                }
+            }
+            return statement;
         }
     }//end class Controller
 }//end namespace

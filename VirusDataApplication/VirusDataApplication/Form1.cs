@@ -69,13 +69,11 @@ namespace VirusDataApplication
                     colNames[chodybanks] = col.ColumnName;
                     chodybanks++;
                 }
-                string deleteStatementSQL;
                 string[] values = new string[table.Columns.Count];
                 ListViewItem item = selected_table_lv.SelectedItems[0];
                 for (int i = 0; i < values.Length; i++)
                     values[i] = item.SubItems[i].Text;
-                deleteStatementSQL = writeStatement(values.Length, tableName, colNames, values, "delete");
-                if (c.deleteRow(deleteStatementSQL))
+                if (c.deleteRow(values.Length, tableName, colNames, values, "delete"))
                     MessageBox.Show("Row was deleted.", "Delete Row Operation");
                 else
                     MessageBox.Show("Error: Row could not be deleted properly.", "Delete Row Operation");
@@ -100,10 +98,11 @@ namespace VirusDataApplication
             tableName = edit_tables_lb.SelectedItem.ToString();
             selected_table_lbl.Text = tableName;
             DataTable resultTable = c.displayTableContents(tableName);
+            int[] typeArr = new int[resultTable.Columns.Count];
             int columnCount = resultTable.Columns.Count;
             int rowCount = resultTable.Rows.Count;
-            foreach (DataColumn col in resultTable.Columns)
-                selected_table_lv.Columns.Add(col.ColumnName);
+            int count = 0;
+         
             string[] strArray = new string[columnCount];
             for (int i = 0; i < rowCount; i++)
             {
@@ -422,30 +421,6 @@ namespace VirusDataApplication
                     break;
             }
         }//end method
-
-        private string writeStatement(int size, string table, string[] cols, string[] vals, string type)
-        {
-            string statement = null;
-            //DELETE FROM Proteins WHERE pID > 68
-            if (type == "delete")
-            {
-                switch(size)
-                {
-                    case 2:
-                        statement = "DELETE FROM " + table + " WHERE " + cols[0] + " = " + vals[0] + " AND " + cols[1] + " = " + vals[1];
-                        break;
-                    case 3:
-                        break;
-                    case 4:
-                        break;
-                    case 5:
-                        break;
-                    case 6:
-                        break;
-                }
-            }
-            return statement;
-        }
 
 
         //END EDIT TAB CODE
