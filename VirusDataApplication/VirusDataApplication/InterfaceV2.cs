@@ -128,16 +128,56 @@ namespace VirusDataApplication
 
         private void edit_btn_Click(object sender, EventArgs e)
         {
-            if(uxSpeciesBox.SelectedIndex >= 0 && uxStrainsBox.SelectedIndex < 0)
+            string value = "";
+            string tableName = "";
+            if (uxSpeciesBox.SelectedIndex >= 0 && uxStrainsBox.SelectedIndex < 0)
             {
                 MessageBox.Show("Error: Cannot edit species.", "Error");
             }
-            else if(uxStrainsBox.SelectedIndex >= 0)
-            {
-
+            else
+            { 
+                if (uxStrainsBox.SelectedIndex >= 0 && uxChoiceBox.SelectedIndex < 0 && uxFollowingBox.SelectedIndex < 0)
+                {
+                    value = uxStrainsBox.SelectedItem.ToString();
+                    tableName = "Strains";
+                }
+                else if(uxChoiceBox.SelectedIndex >= 0 && uxFollowingBox.SelectedIndex < 0)
+                {
+                    value = uxChoiceBox.SelectedItem.ToString();
+                    switch(uxOptionsDropdown.SelectedIndex)
+                    {
+                        case 0:
+                            tableName = "OpenReadingFrames";
+                            break;
+                        case 1:
+                        case 2:
+                            tableName = "Publications";
+                            break;
+                    }
+                }
+                else
+                {
+                    value = uxFollowingBox.SelectedItem.ToString();
+                    switch (uxOptionsDropdown.SelectedIndex)
+                    {
+                        case 0:
+                            tableName = "Proteins";
+                            break;
+                        case 1:
+                            tableName = "Publishers";
+                            break;
+                        case 2:
+                            tableName = "Researchers";
+                            break;
+                    }
+                }
+                editGUI editWindow = new editGUI(value);
+                editWindow.ShowDialog();
+                if(editWindow.DialogResult == DialogResult.OK)
+                {
+                    MessageBox.Show("edit made");
+                }
             }
-            editGUI editWindow = new editGUI("chode");
-            editWindow.ShowDialog();
         }
 
         /// <summary>

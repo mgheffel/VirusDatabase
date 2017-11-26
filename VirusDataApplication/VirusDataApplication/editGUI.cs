@@ -12,12 +12,14 @@ namespace VirusDataApplication
 {
     public partial class editGUI : Form
     {
-        public editGUI(string tbValue)
+        string tableName;
+        Controller c;
+        public editGUI(string name, string val, Controller control)
         {
             InitializeComponent();
-            edit_tb.Text = tbValue;
-            edit_tb.SelectionStart = 0;
-            edit_tb.SelectionLength = edit_tb.Text.Length;
+            tableName = name;
+            c = control;
+            
         }
     }
 }

@@ -68,6 +68,16 @@ namespace VirusDataApplication
                 }
             }
             return statement;
+        }//end method
+
+        public bool editTable(string table, string oldVal, string newVal)
+        {
+            return true;
+        }
+
+        public DataTable getRowToEdit(string tableName, string val)
+        {
+            return new DataTable();
         }
     }//end class Controller
 }//end namespace
