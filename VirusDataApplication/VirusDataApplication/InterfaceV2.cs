@@ -13,6 +13,8 @@ namespace VirusDataApplication
     public partial class InterfaceV2 : Form
     {
         private DataTable species, strains, subContent, followingSubContent;
+        private List<DataTable> ldt;
+        private List<Label> ll;
         private List<ListBox> contentViewer;
         private Controller c;
         private int dropdownChoice;
@@ -22,15 +24,35 @@ namespace VirusDataApplication
             InitializeComponent();
             //onOffRadioButtons();
             this.c = c;
+            ldt = new List<DataTable>();
+            ll = new List<Label>();            
             contentViewer = new List<ListBox>();
+            addEverything();            
+            species = c.displayTableContents("Species");
+            populateListView(uxSpeciesBox, species, 1, "Species Name");
+        }
+        /// <summary>
+        /// Add all the objects to the global lists
+        /// </summary>
+        private void addEverything()
+        {
+            ll.Add(species_lbl);
+            ll.Add(strain_lbl);
+            ll.Add(choice_lbl);
+            ll.Add(following_lbl);
+            ldt.Add(species);
+            ldt.Add(strains);
+            ldt.Add(subContent);
+            ldt.Add(followingSubContent);
             contentViewer.Add(uxSpeciesBox);
             contentViewer.Add(uxStrainsBox);
             contentViewer.Add(uxChoiceBox);
             contentViewer.Add(uxFollowingBox);
             species = c.displayTableContents("Species");
             populateListView(uxSpeciesBox, species, 1, "Species Name");
+            AlignPopulateDropDown(uxSpecies1Drop, species, 1);
+            AlignPopulateDropDown(uxSpecies2Drop, species, 1);
         }
-        
         
         /// <summary>
         /// When a strain is selected event
@@ -80,16 +102,28 @@ namespace VirusDataApplication
             {
                 case "OpenReadingFrames":
                     {
+                        choice_lbl.Text = "OpenReadingFrames";
+                        following_lbl.Text = "Protiens";
+                        choice_lbl.Visible = true;
+                        following_lbl.Visible = true;
                         dropdownChoice = 1;
                         break;
                     }
                 case "Publications - Publishers":
                     {
+                        choice_lbl.Text = "Publications";
+                        following_lbl.Text = "Publishers";
+                        choice_lbl.Visible = true;
+                        following_lbl.Visible = true;
                         dropdownChoice = 2;
                         break;
                     }
                 case "Publications - Researchers":
                     {
+                        choice_lbl.Text = "Publications";
+                        following_lbl.Text = "Researchers";
+                        choice_lbl.Visible = true;
+                        following_lbl.Visible = true;
                         dropdownChoice = 3;
                         break;
                     }
@@ -106,11 +140,7 @@ namespace VirusDataApplication
         private void uxDetialsButton_Click(object sender, EventArgs e)
         {
             StringBuilder sb = new StringBuilder();
-            List<DataTable> ldt = new List<DataTable>();
-            ldt.Add(species);
-            ldt.Add(strains);
-            ldt.Add(subContent);
-            ldt.Add(followingSubContent);
+            
             int numOfColumns = 0, counter = 0;
 
             foreach(ListBox view in contentViewer)
@@ -119,8 +149,12 @@ namespace VirusDataApplication
                 {
                     break;
                 }
-                
-
+                numOfColumns = ldt[counter].Columns.Count;
+                sb.Append(ll[counter].Text + ":\n");
+                for (int i = 0; i < numOfColumns; i++)
+                {
+                    
+                }
                 counter++;
             }
             MessageBox.Show(sb.ToString());
@@ -180,6 +214,50 @@ namespace VirusDataApplication
             }
         }
 
+        private void uxSpecies2Drop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            uxStrain2Drop.Items.Clear();
+            uxStrain2Drop.ResetText();
+            alignStrains2 = c.displayTableContents("Strains WHERE specID = " + species.Rows[uxSpecies2Drop.SelectedIndex][0].ToString());
+            AlignPopulateDropDown(uxStrain2Drop, alignStrains2, 0);
+        }
+
+        private void uxStrain2Drop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            uxORF2Drop.Items.Clear();
+            uxORF2Drop.ResetText();
+            alignORF2 = c.displayTableContents(" OpenReadingFrames WHERE strainID = '" + alignStrains2.Rows[uxStrain2Drop.SelectedIndex][0].ToString() + "'");
+            AlignPopulateDropDown(uxORF2Drop, alignORF2, 1);
+        }
+
+        private void uxORF1Drop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (uxORF1Drop.SelectedIndex >= 0 && uxORF2Drop.SelectedIndex >= 0)
+            {
+                uxAlignButton.Enabled = true;
+            }
+            else uxAlignButton.Enabled = false;
+        }
+
+        private void uxORF2Drop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (uxORF1Drop.SelectedIndex >= 0 && uxORF2Drop.SelectedIndex >= 0)
+            {
+                uxAlignButton.Enabled = true;
+            }
+            else uxAlignButton.Enabled = false;
+        }
+
+        private void uxAlignButton_Click(object sender, EventArgs e)
+        {
+            //alignGenome1 = c.displayTableContents("Select genome FROM Strains WHERE")
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -197,6 +275,24 @@ namespace VirusDataApplication
             {
                 lv.Items.Add(dt.Rows[i][colNum].ToString());
             }
+        }
+
+        private void uxSpecies1Drop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            uxStrain1Drop.Items.Clear();
+            uxStrain1Drop.ResetText();
+            alignStrains1 = c.displayTableContents("Strains WHERE specID = " + species.Rows[uxSpecies1Drop.SelectedIndex][0].ToString());
+            //POTENTIAL SOURCE OF ERROR BETWEEN TABS BECAUSE WE ARE UPDATING STRAINS
+            AlignPopulateDropDown(uxStrain1Drop, alignStrains1, 0);
+
+        }
+
+        private void uxStrain1Drop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            uxORF1Drop.Items.Clear();
+            uxORF1Drop.ResetText();
+            alignORF1 = c.displayTableContents(" OpenReadingFrames WHERE strainID = '" + alignStrains1.Rows[uxStrain1Drop.SelectedIndex][0].ToString() + "'");
+            AlignPopulateDropDown(uxORF1Drop, alignORF1, 1);
         }
 
         /// <summary>
@@ -222,6 +318,14 @@ namespace VirusDataApplication
         private void InterfaceV2_Load(object sender, EventArgs e)
         {
             
+        }
+        private void AlignPopulateDropDown(ComboBox dd, DataTable dt, int colNum)
+        {
+            dd.Items.Clear();
+            foreach(DataRow row in dt.Rows)
+            {
+                dd.Items.Add(row[colNum].ToString());
+            }
         }
     }
 }
