@@ -41,8 +41,8 @@
             this.edit_btn = new System.Windows.Forms.Button();
             this.delete_btn = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.SuspendLayout();
@@ -67,7 +67,7 @@
             this.uxStrainsBox.Location = new System.Drawing.Point(219, 49);
             this.uxStrainsBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxStrainsBox.Name = "uxStrainsBox";
-            this.uxStrainsBox.Size = new System.Drawing.Size(190, 304);
+            this.uxStrainsBox.Size = new System.Drawing.Size(193, 304);
             this.uxStrainsBox.TabIndex = 1;
             this.uxStrainsBox.SelectedIndexChanged += new System.EventHandler(this.uxStrainsBox_SelectedIndexChanged);
             // 
@@ -76,10 +76,10 @@
             this.uxChoiceBox.FormattingEnabled = true;
             this.uxChoiceBox.HorizontalScrollbar = true;
             this.uxChoiceBox.ItemHeight = 20;
-            this.uxChoiceBox.Location = new System.Drawing.Point(446, 141);
+            this.uxChoiceBox.Location = new System.Drawing.Point(630, 49);
             this.uxChoiceBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxChoiceBox.Name = "uxChoiceBox";
-            this.uxChoiceBox.Size = new System.Drawing.Size(196, 64);
+            this.uxChoiceBox.Size = new System.Drawing.Size(193, 304);
             this.uxChoiceBox.TabIndex = 2;
             // 
             // uxFollowingBox
@@ -87,15 +87,15 @@
             this.uxFollowingBox.FormattingEnabled = true;
             this.uxFollowingBox.HorizontalScrollbar = true;
             this.uxFollowingBox.ItemHeight = 20;
-            this.uxFollowingBox.Location = new System.Drawing.Point(664, 126);
+            this.uxFollowingBox.Location = new System.Drawing.Point(836, 49);
             this.uxFollowingBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxFollowingBox.Name = "uxFollowingBox";
-            this.uxFollowingBox.Size = new System.Drawing.Size(205, 64);
+            this.uxFollowingBox.Size = new System.Drawing.Size(193, 304);
             this.uxFollowingBox.TabIndex = 3;
             // 
             // uxDetialsButton
             // 
-            this.uxDetialsButton.Location = new System.Drawing.Point(367, 215);
+            this.uxDetialsButton.Location = new System.Drawing.Point(18, 375);
             this.uxDetialsButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxDetialsButton.Name = "uxDetialsButton";
             this.uxDetialsButton.Size = new System.Drawing.Size(176, 35);
@@ -113,7 +113,7 @@
             "OpenReadingFrames",
             "Publications - Publishers",
             "Publications - Researchers"});
-            this.uxOptionsDropdown.Location = new System.Drawing.Point(436, 44);
+            this.uxOptionsDropdown.Location = new System.Drawing.Point(428, 49);
             this.uxOptionsDropdown.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxOptionsDropdown.Name = "uxOptionsDropdown";
             this.uxOptionsDropdown.Size = new System.Drawing.Size(186, 28);
@@ -156,16 +156,17 @@
             // 
             // edit_btn
             // 
-            this.edit_btn.Location = new System.Drawing.Point(633, 281);
+            this.edit_btn.Location = new System.Drawing.Point(689, 373);
             this.edit_btn.Name = "edit_btn";
             this.edit_btn.Size = new System.Drawing.Size(75, 37);
             this.edit_btn.TabIndex = 12;
             this.edit_btn.Text = "Edit";
             this.edit_btn.UseVisualStyleBackColor = true;
+            this.edit_btn.Click += new System.EventHandler(this.edit_btn_Click);
             // 
             // delete_btn
             // 
-            this.delete_btn.Location = new System.Drawing.Point(868, 281);
+            this.delete_btn.Location = new System.Drawing.Point(895, 373);
             this.delete_btn.Name = "delete_btn";
             this.delete_btn.Size = new System.Drawing.Size(75, 37);
             this.delete_btn.TabIndex = 13;
@@ -181,6 +182,16 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1065, 601);
             this.tabControl1.TabIndex = 14;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1057, 568);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // tabPage1
             // 
@@ -202,21 +213,11 @@
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(192, 67);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
             // InterfaceV2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1060, 572);
+            this.ClientSize = new System.Drawing.Size(1060, 471);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.following_box_lbl);
             this.Controls.Add(this.choice_box_lbl);

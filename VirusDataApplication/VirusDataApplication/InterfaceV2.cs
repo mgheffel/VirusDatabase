@@ -144,6 +144,20 @@ namespace VirusDataApplication
             MessageBox.Show(sb.ToString());
         }
 
+        private void edit_btn_Click(object sender, EventArgs e)
+        {
+            if(uxSpeciesBox.SelectedIndex >= 0 && uxStrainsBox.SelectedIndex < 0)
+            {
+                MessageBox.Show("Error: Cannot edit species.", "Error");
+            }
+            else if(uxStrainsBox.SelectedIndex >= 0)
+            {
+
+            }
+            editGUI editWindow = new editGUI("chode");
+            editWindow.ShowDialog();
+        }
+
         /// <summary>
         /// 
         /// </summary>
