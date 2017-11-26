@@ -75,3 +75,4 @@ C:\Users\mslavens\Source\Repos\560FinalProject\VirusDataApplication\VirusDataApp
 C:\Users\mslavens\Source\Repos\560FinalProject\VirusDataApplication\VirusDataApplication\bin\Debug\fr\Npgsql.resources.dll
 C:\Users\mslavens\Source\Repos\560FinalProject\VirusDataApplication\VirusDataApplication\bin\Debug\ja\Npgsql.resources.dll
 C:\Users\mslavens\Source\Repos\560FinalProject\VirusDataApplication\VirusDataApplication\bin\Debug\zh-CN\Npgsql.resources.dll
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\GitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.editGUI.resources
