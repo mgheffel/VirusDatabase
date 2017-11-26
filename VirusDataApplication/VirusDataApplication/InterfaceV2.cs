@@ -239,6 +239,8 @@ namespace VirusDataApplication
             else uxAlignButton.Enabled = false;
         }
 
+        
+
         private void uxORF2Drop_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (uxORF1Drop.SelectedIndex >= 0 && uxORF2Drop.SelectedIndex >= 0)

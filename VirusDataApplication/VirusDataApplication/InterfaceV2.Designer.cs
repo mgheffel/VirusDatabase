@@ -56,8 +56,8 @@
             this.uxStrainLabel1 = new System.Windows.Forms.Label();
             this.uxSpeciesLabel1 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.choice_lbl = new System.Windows.Forms.Label();
             this.following_lbl = new System.Windows.Forms.Label();
+            this.choice_lbl = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -67,9 +67,11 @@
             // 
             this.uxSpeciesBox.FormattingEnabled = true;
             this.uxSpeciesBox.HorizontalScrollbar = true;
-            this.uxSpeciesBox.Location = new System.Drawing.Point(12, 32);
+            this.uxSpeciesBox.ItemHeight = 20;
+            this.uxSpeciesBox.Location = new System.Drawing.Point(18, 49);
+            this.uxSpeciesBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxSpeciesBox.Name = "uxSpeciesBox";
-            this.uxSpeciesBox.Size = new System.Drawing.Size(130, 264);
+            this.uxSpeciesBox.Size = new System.Drawing.Size(193, 404);
             this.uxSpeciesBox.TabIndex = 0;
             this.uxSpeciesBox.SelectedIndexChanged += new System.EventHandler(this.uxSpeciesBox_SelectedIndexChanged);
             // 
@@ -77,9 +79,11 @@
             // 
             this.uxStrainsBox.FormattingEnabled = true;
             this.uxStrainsBox.HorizontalScrollbar = true;
-            this.uxStrainsBox.Location = new System.Drawing.Point(146, 32);
+            this.uxStrainsBox.ItemHeight = 20;
+            this.uxStrainsBox.Location = new System.Drawing.Point(219, 49);
+            this.uxStrainsBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxStrainsBox.Name = "uxStrainsBox";
-            this.uxStrainsBox.Size = new System.Drawing.Size(128, 264);
+            this.uxStrainsBox.Size = new System.Drawing.Size(190, 404);
             this.uxStrainsBox.TabIndex = 1;
             this.uxStrainsBox.SelectedIndexChanged += new System.EventHandler(this.uxStrainsBox_SelectedIndexChanged);
             // 
@@ -87,25 +91,30 @@
             // 
             this.uxChoiceBox.FormattingEnabled = true;
             this.uxChoiceBox.HorizontalScrollbar = true;
-            this.uxChoiceBox.Location = new System.Drawing.Point(411, 33);
+            this.uxChoiceBox.ItemHeight = 20;
+            this.uxChoiceBox.Location = new System.Drawing.Point(616, 51);
+            this.uxChoiceBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxChoiceBox.Name = "uxChoiceBox";
-            this.uxChoiceBox.Size = new System.Drawing.Size(132, 264);
+            this.uxChoiceBox.Size = new System.Drawing.Size(196, 404);
             this.uxChoiceBox.TabIndex = 2;
             // 
             // uxFollowingBox
             // 
             this.uxFollowingBox.FormattingEnabled = true;
             this.uxFollowingBox.HorizontalScrollbar = true;
-            this.uxFollowingBox.Location = new System.Drawing.Point(552, 33);
+            this.uxFollowingBox.ItemHeight = 20;
+            this.uxFollowingBox.Location = new System.Drawing.Point(828, 51);
+            this.uxFollowingBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxFollowingBox.Name = "uxFollowingBox";
-            this.uxFollowingBox.Size = new System.Drawing.Size(138, 264);
+            this.uxFollowingBox.Size = new System.Drawing.Size(205, 404);
             this.uxFollowingBox.TabIndex = 3;
             // 
             // uxDetialsButton
             // 
-            this.uxDetialsButton.Location = new System.Drawing.Point(12, 314);
+            this.uxDetialsButton.Location = new System.Drawing.Point(18, 483);
+            this.uxDetialsButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxDetialsButton.Name = "uxDetialsButton";
-            this.uxDetialsButton.Size = new System.Drawing.Size(130, 23);
+            this.uxDetialsButton.Size = new System.Drawing.Size(195, 35);
             this.uxDetialsButton.TabIndex = 6;
             this.uxDetialsButton.Text = "DisplayDetails";
             this.uxDetialsButton.UseVisualStyleBackColor = true;
@@ -120,66 +129,61 @@
             "OpenReadingFrames",
             "Publications - Publishers",
             "Publications - Researchers"});
-            this.uxOptionsDropdown.Location = new System.Drawing.Point(280, 32);
+            this.uxOptionsDropdown.Location = new System.Drawing.Point(420, 49);
+            this.uxOptionsDropdown.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxOptionsDropdown.Name = "uxOptionsDropdown";
-            this.uxOptionsDropdown.Size = new System.Drawing.Size(125, 21);
+            this.uxOptionsDropdown.Size = new System.Drawing.Size(186, 28);
             this.uxOptionsDropdown.TabIndex = 7;
             this.uxOptionsDropdown.SelectedIndexChanged += new System.EventHandler(this.uxOptionsDropdown_SelectedIndexChanged);
             // 
             // species_lbl
             // 
             this.species_lbl.AutoSize = true;
-            this.species_lbl.Location = new System.Drawing.Point(9, 16);
-            this.species_lbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.species_lbl.Location = new System.Drawing.Point(14, 25);
             this.species_lbl.Name = "species_lbl";
-            this.species_lbl.Size = new System.Drawing.Size(45, 13);
+            this.species_lbl.Size = new System.Drawing.Size(66, 20);
             this.species_lbl.TabIndex = 8;
             this.species_lbl.Text = "Species";
             // 
             // strain_lbl
             // 
             this.strain_lbl.AutoSize = true;
-            this.strain_lbl.Location = new System.Drawing.Point(146, 16);
-            this.strain_lbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.strain_lbl.Location = new System.Drawing.Point(219, 25);
             this.strain_lbl.Name = "strain_lbl";
-            this.strain_lbl.Size = new System.Drawing.Size(39, 13);
+            this.strain_lbl.Size = new System.Drawing.Size(59, 20);
             this.strain_lbl.TabIndex = 9;
             this.strain_lbl.Text = "Strains";
             // 
             // choice_box_lbl
             // 
             this.choice_box_lbl.AutoSize = true;
-            this.choice_box_lbl.Location = new System.Drawing.Point(469, 133);
-            this.choice_box_lbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.choice_box_lbl.Location = new System.Drawing.Point(704, 205);
             this.choice_box_lbl.Name = "choice_box_lbl";
-            this.choice_box_lbl.Size = new System.Drawing.Size(0, 13);
+            this.choice_box_lbl.Size = new System.Drawing.Size(0, 20);
             this.choice_box_lbl.TabIndex = 10;
             // 
             // following_box_lbl
             // 
             this.following_box_lbl.AutoSize = true;
-            this.following_box_lbl.Location = new System.Drawing.Point(595, 95);
-            this.following_box_lbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.following_box_lbl.Location = new System.Drawing.Point(892, 146);
             this.following_box_lbl.Name = "following_box_lbl";
-            this.following_box_lbl.Size = new System.Drawing.Size(0, 13);
+            this.following_box_lbl.Size = new System.Drawing.Size(0, 20);
             this.following_box_lbl.TabIndex = 11;
             // 
             // edit_btn
             // 
-            this.edit_btn.Location = new System.Drawing.Point(411, 299);
-            this.edit_btn.Margin = new System.Windows.Forms.Padding(2);
+            this.edit_btn.Location = new System.Drawing.Point(616, 460);
             this.edit_btn.Name = "edit_btn";
-            this.edit_btn.Size = new System.Drawing.Size(50, 24);
+            this.edit_btn.Size = new System.Drawing.Size(75, 37);
             this.edit_btn.TabIndex = 12;
             this.edit_btn.Text = "Edit";
             this.edit_btn.UseVisualStyleBackColor = true;
             // 
             // delete_btn
             // 
-            this.delete_btn.Location = new System.Drawing.Point(552, 299);
-            this.delete_btn.Margin = new System.Windows.Forms.Padding(2);
+            this.delete_btn.Location = new System.Drawing.Point(828, 460);
             this.delete_btn.Name = "delete_btn";
-            this.delete_btn.Size = new System.Drawing.Size(50, 24);
+            this.delete_btn.Size = new System.Drawing.Size(75, 37);
             this.delete_btn.TabIndex = 13;
             this.delete_btn.Text = "Delete";
             this.delete_btn.UseVisualStyleBackColor = true;
@@ -188,11 +192,10 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Location = new System.Drawing.Point(1, 1);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
+            this.tabControl1.Location = new System.Drawing.Point(2, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(710, 391);
+            this.tabControl1.Size = new System.Drawing.Size(1065, 602);
             this.tabControl1.TabIndex = 14;
             // 
             // tabPage2
@@ -210,11 +213,10 @@
             this.tabPage2.Controls.Add(this.uxOrfLabel1);
             this.tabPage2.Controls.Add(this.uxStrainLabel1);
             this.tabPage2.Controls.Add(this.uxSpeciesLabel1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Size = new System.Drawing.Size(702, 365);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Size = new System.Drawing.Size(1057, 569);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -223,9 +225,10 @@
             // 
             this.uxAlignButton.Enabled = false;
             this.uxAlignButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxAlignButton.Location = new System.Drawing.Point(295, 232);
+            this.uxAlignButton.Location = new System.Drawing.Point(442, 357);
+            this.uxAlignButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxAlignButton.Name = "uxAlignButton";
-            this.uxAlignButton.Size = new System.Drawing.Size(101, 33);
+            this.uxAlignButton.Size = new System.Drawing.Size(152, 51);
             this.uxAlignButton.TabIndex = 12;
             this.uxAlignButton.Text = "Align";
             this.uxAlignButton.UseVisualStyleBackColor = true;
@@ -236,9 +239,10 @@
             this.uxORF2Drop.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.uxORF2Drop.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.uxORF2Drop.FormattingEnabled = true;
-            this.uxORF2Drop.Location = new System.Drawing.Point(494, 146);
+            this.uxORF2Drop.Location = new System.Drawing.Point(741, 225);
+            this.uxORF2Drop.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxORF2Drop.Name = "uxORF2Drop";
-            this.uxORF2Drop.Size = new System.Drawing.Size(121, 21);
+            this.uxORF2Drop.Size = new System.Drawing.Size(180, 28);
             this.uxORF2Drop.TabIndex = 11;
             this.uxORF2Drop.SelectedIndexChanged += new System.EventHandler(this.uxORF2Drop_SelectedIndexChanged);
             // 
@@ -247,9 +251,10 @@
             this.uxStrain2Drop.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.uxStrain2Drop.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.uxStrain2Drop.FormattingEnabled = true;
-            this.uxStrain2Drop.Location = new System.Drawing.Point(494, 91);
+            this.uxStrain2Drop.Location = new System.Drawing.Point(741, 140);
+            this.uxStrain2Drop.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxStrain2Drop.Name = "uxStrain2Drop";
-            this.uxStrain2Drop.Size = new System.Drawing.Size(121, 21);
+            this.uxStrain2Drop.Size = new System.Drawing.Size(180, 28);
             this.uxStrain2Drop.TabIndex = 10;
             this.uxStrain2Drop.SelectedIndexChanged += new System.EventHandler(this.uxStrain2Drop_SelectedIndexChanged);
             // 
@@ -258,9 +263,10 @@
             this.uxSpecies2Drop.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.uxSpecies2Drop.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.uxSpecies2Drop.FormattingEnabled = true;
-            this.uxSpecies2Drop.Location = new System.Drawing.Point(494, 35);
+            this.uxSpecies2Drop.Location = new System.Drawing.Point(741, 54);
+            this.uxSpecies2Drop.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxSpecies2Drop.Name = "uxSpecies2Drop";
-            this.uxSpecies2Drop.Size = new System.Drawing.Size(121, 21);
+            this.uxSpecies2Drop.Size = new System.Drawing.Size(180, 28);
             this.uxSpecies2Drop.TabIndex = 9;
             this.uxSpecies2Drop.SelectedIndexChanged += new System.EventHandler(this.uxSpecies2Drop_SelectedIndexChanged);
             // 
@@ -268,9 +274,10 @@
             // 
             this.uxORF2Label.AutoSize = true;
             this.uxORF2Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxORF2Label.Location = new System.Drawing.Point(431, 147);
+            this.uxORF2Label.Location = new System.Drawing.Point(646, 226);
+            this.uxORF2Label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.uxORF2Label.Name = "uxORF2Label";
-            this.uxORF2Label.Size = new System.Drawing.Size(56, 20);
+            this.uxORF2Label.Size = new System.Drawing.Size(83, 29);
             this.uxORF2Label.TabIndex = 8;
             this.uxORF2Label.Text = "ORF2:";
             // 
@@ -278,9 +285,10 @@
             // 
             this.uxStrain2Label.AutoSize = true;
             this.uxStrain2Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxStrain2Label.Location = new System.Drawing.Point(423, 92);
+            this.uxStrain2Label.Location = new System.Drawing.Point(634, 142);
+            this.uxStrain2Label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.uxStrain2Label.Name = "uxStrain2Label";
-            this.uxStrain2Label.Size = new System.Drawing.Size(64, 20);
+            this.uxStrain2Label.Size = new System.Drawing.Size(94, 29);
             this.uxStrain2Label.TabIndex = 7;
             this.uxStrain2Label.Text = "Strain2:";
             // 
@@ -288,9 +296,10 @@
             // 
             this.uxSpecies2Label.AutoSize = true;
             this.uxSpecies2Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxSpecies2Label.Location = new System.Drawing.Point(408, 37);
+            this.uxSpecies2Label.Location = new System.Drawing.Point(612, 57);
+            this.uxSpecies2Label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.uxSpecies2Label.Name = "uxSpecies2Label";
-            this.uxSpecies2Label.Size = new System.Drawing.Size(79, 20);
+            this.uxSpecies2Label.Size = new System.Drawing.Size(120, 29);
             this.uxSpecies2Label.TabIndex = 6;
             this.uxSpecies2Label.Text = "Species2:";
             // 
@@ -299,9 +308,10 @@
             this.uxORF1Drop.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.uxORF1Drop.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.uxORF1Drop.FormattingEnabled = true;
-            this.uxORF1Drop.Location = new System.Drawing.Point(127, 146);
+            this.uxORF1Drop.Location = new System.Drawing.Point(190, 225);
+            this.uxORF1Drop.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxORF1Drop.Name = "uxORF1Drop";
-            this.uxORF1Drop.Size = new System.Drawing.Size(121, 21);
+            this.uxORF1Drop.Size = new System.Drawing.Size(180, 28);
             this.uxORF1Drop.TabIndex = 5;
             this.uxORF1Drop.SelectedIndexChanged += new System.EventHandler(this.uxORF1Drop_SelectedIndexChanged);
             // 
@@ -310,9 +320,10 @@
             this.uxStrain1Drop.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.uxStrain1Drop.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.uxStrain1Drop.FormattingEnabled = true;
-            this.uxStrain1Drop.Location = new System.Drawing.Point(127, 91);
+            this.uxStrain1Drop.Location = new System.Drawing.Point(190, 140);
+            this.uxStrain1Drop.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxStrain1Drop.Name = "uxStrain1Drop";
-            this.uxStrain1Drop.Size = new System.Drawing.Size(121, 21);
+            this.uxStrain1Drop.Size = new System.Drawing.Size(180, 28);
             this.uxStrain1Drop.TabIndex = 4;
             this.uxStrain1Drop.SelectedIndexChanged += new System.EventHandler(this.uxStrain1Drop_SelectedIndexChanged);
             // 
@@ -321,9 +332,10 @@
             this.uxSpecies1Drop.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.uxSpecies1Drop.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.uxSpecies1Drop.FormattingEnabled = true;
-            this.uxSpecies1Drop.Location = new System.Drawing.Point(127, 35);
+            this.uxSpecies1Drop.Location = new System.Drawing.Point(190, 54);
+            this.uxSpecies1Drop.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uxSpecies1Drop.Name = "uxSpecies1Drop";
-            this.uxSpecies1Drop.Size = new System.Drawing.Size(121, 21);
+            this.uxSpecies1Drop.Size = new System.Drawing.Size(180, 28);
             this.uxSpecies1Drop.TabIndex = 3;
             this.uxSpecies1Drop.SelectedIndexChanged += new System.EventHandler(this.uxSpecies1Drop_SelectedIndexChanged);
             // 
@@ -331,9 +343,10 @@
             // 
             this.uxOrfLabel1.AutoSize = true;
             this.uxOrfLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxOrfLabel1.Location = new System.Drawing.Point(64, 147);
+            this.uxOrfLabel1.Location = new System.Drawing.Point(96, 226);
+            this.uxOrfLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.uxOrfLabel1.Name = "uxOrfLabel1";
-            this.uxOrfLabel1.Size = new System.Drawing.Size(56, 20);
+            this.uxOrfLabel1.Size = new System.Drawing.Size(83, 29);
             this.uxOrfLabel1.TabIndex = 2;
             this.uxOrfLabel1.Text = "ORF1:";
             // 
@@ -341,9 +354,10 @@
             // 
             this.uxStrainLabel1.AutoSize = true;
             this.uxStrainLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxStrainLabel1.Location = new System.Drawing.Point(56, 92);
+            this.uxStrainLabel1.Location = new System.Drawing.Point(84, 142);
+            this.uxStrainLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.uxStrainLabel1.Name = "uxStrainLabel1";
-            this.uxStrainLabel1.Size = new System.Drawing.Size(64, 20);
+            this.uxStrainLabel1.Size = new System.Drawing.Size(94, 29);
             this.uxStrainLabel1.TabIndex = 1;
             this.uxStrainLabel1.Text = "Strain1:";
             // 
@@ -351,9 +365,10 @@
             // 
             this.uxSpeciesLabel1.AutoSize = true;
             this.uxSpeciesLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxSpeciesLabel1.Location = new System.Drawing.Point(41, 37);
+            this.uxSpeciesLabel1.Location = new System.Drawing.Point(62, 57);
+            this.uxSpeciesLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.uxSpeciesLabel1.Name = "uxSpeciesLabel1";
-            this.uxSpeciesLabel1.Size = new System.Drawing.Size(79, 20);
+            this.uxSpeciesLabel1.Size = new System.Drawing.Size(120, 29);
             this.uxSpeciesLabel1.TabIndex = 0;
             this.uxSpeciesLabel1.Text = "Species1:";
             this.uxSpeciesLabel1.Click += new System.EventHandler(this.label1_Click);
@@ -372,41 +387,43 @@
             this.tabPage1.Controls.Add(this.uxOptionsDropdown);
             this.tabPage1.Controls.Add(this.uxDetialsButton);
             this.tabPage1.Controls.Add(this.uxSpeciesBox);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Size = new System.Drawing.Size(702, 365);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Size = new System.Drawing.Size(1057, 569);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // choice_lbl
-            // 
-            this.choice_lbl.AutoSize = true;
-            this.choice_lbl.Location = new System.Drawing.Point(411, 16);
-            this.choice_lbl.Name = "choice_lbl";
-            this.choice_lbl.Size = new System.Drawing.Size(35, 13);
-            this.choice_lbl.TabIndex = 14;
-            this.choice_lbl.Text = "label1";
-            // 
             // following_lbl
             // 
             this.following_lbl.AutoSize = true;
-            this.following_lbl.Location = new System.Drawing.Point(552, 16);
+            this.following_lbl.Location = new System.Drawing.Point(828, 25);
+            this.following_lbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.following_lbl.Name = "following_lbl";
-            this.following_lbl.Size = new System.Drawing.Size(35, 13);
+            this.following_lbl.Size = new System.Drawing.Size(51, 20);
             this.following_lbl.TabIndex = 15;
             this.following_lbl.Text = "label1";
             // 
+            // choice_lbl
+            // 
+            this.choice_lbl.AutoSize = true;
+            this.choice_lbl.Location = new System.Drawing.Point(616, 25);
+            this.choice_lbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.choice_lbl.Name = "choice_lbl";
+            this.choice_lbl.Size = new System.Drawing.Size(51, 20);
+            this.choice_lbl.TabIndex = 14;
+            this.choice_lbl.Text = "label1";
+            // 
             // InterfaceV2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(707, 372);
+            this.ClientSize = new System.Drawing.Size(1060, 572);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.following_box_lbl);
             this.Controls.Add(this.choice_box_lbl);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "InterfaceV2";
             this.Text = "InterfaceV2";
             this.Load += new System.EventHandler(this.InterfaceV2_Load);
