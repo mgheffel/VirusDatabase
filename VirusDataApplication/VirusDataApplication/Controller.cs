@@ -35,6 +35,16 @@ namespace VirusDataApplication
             return model.sendQuery(query);
         }//end displayTableContents
 
+        /// <summary>
+        /// This method will send whatever comes in as a string as a SQL query.
+        /// </summary>
+        /// <param name="query">The query to send</param>
+        /// <returns>the results of the query as a data set.</returns>
+        public DataTable SendTheWave(string query)
+        {
+            return model.sendQuery(query);
+        }
+
 
        
         public bool deleteRow(int size, string table, string[] cols, string[] vals, string type)
