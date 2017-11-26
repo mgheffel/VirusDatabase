@@ -13,6 +13,7 @@ namespace VirusDataApplication
     public partial class InterfaceV2 : Form
     {
         private DataTable species, strains, subContent, followingSubContent;
+        private List<ListBox> contentViewer;
         private Controller c;
         private int dropdownChoice;
 
@@ -21,6 +22,10 @@ namespace VirusDataApplication
             InitializeComponent();
             //onOffRadioButtons();
             this.c = c;
+            contentViewer.Add(uxSpeciesBox);
+            contentViewer.Add(uxStrainsBox);
+            contentViewer.Add(uxChoiceBox);
+            contentViewer.Add(uxFollowingBox);
             species = c.displayTableContents("Species");
             populateListView(uxSpeciesBox, species, 1, "Species Name");
         }
@@ -41,7 +46,7 @@ namespace VirusDataApplication
                 MessageBox.Show("Please select an item from the dropdown.");
                 return;
             }
-            MessageBox.Show(dropdownChoice.ToString());
+            //MessageBox.Show(dropdownChoice.ToString());
             switch(dropdownChoice)
             {
                 case 1://display protiens
@@ -90,6 +95,53 @@ namespace VirusDataApplication
             }
 
             uxStrainsBox_SelectedIndexChanged(sender, e);
+        }
+
+        /// <summary>
+        /// On Button Press
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uxDetialsButton_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            int counter = 0;
+            int numOfColumns = 0;
+
+            foreach(ListBox view in contentViewer)
+            {
+                if(view.SelectedIndex == -1)
+                {
+                    break;
+                }
+                switch(counter)
+                {
+                    case 0:
+                        {
+
+                            break;
+                        }
+                    case 1:
+                        {
+
+                            break;
+                        }
+                    case 2:
+                        {
+
+                            break;
+                        }
+                    case 3:
+                        {
+
+                            break;
+                        }
+                }
+
+                counter++;
+
+            }
+            MessageBox.Show(sb.ToString());
         }
 
         /// <summary>
