@@ -44,6 +44,7 @@
             this.uxSpeciesBox.Name = "uxSpeciesBox";
             this.uxSpeciesBox.Size = new System.Drawing.Size(130, 277);
             this.uxSpeciesBox.TabIndex = 0;
+            this.uxSpeciesBox.SelectedIndexChanged += new System.EventHandler(this.uxSpeciesBox_SelectedIndexChanged);
             // 
             // uxStrainsBox
             // 
