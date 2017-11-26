@@ -153,8 +153,14 @@ namespace VirusDataApplication
                 sb.Append(ll[counter].Text + ":\n");
                 for (int i = 0; i < numOfColumns; i++)
                 {
-                    sb.Append(ldt[counter].Rows[view.SelectedIndex][i].ToString());
+                    if(counter == 1 && i == 3)
+                    {
+                        sb.Append(ldt[counter].Rows[view.SelectedIndex][i].ToString().Substring(0,20));
+                        break;
+                    }
+                    sb.Append(ldt[counter].Rows[view.SelectedIndex][i].ToString() + "\t");
                 }
+                sb.Append("\n");
                 counter++;
             }
             MessageBox.Show(sb.ToString());
