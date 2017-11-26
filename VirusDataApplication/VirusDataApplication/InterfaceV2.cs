@@ -205,7 +205,7 @@ namespace VirusDataApplication
                             break;
                     }
                 }
-                editGUI editWindow = new editGUI(value);
+                editGUI editWindow = new editGUI(value, tableName, c);
                 editWindow.ShowDialog();
                 if(editWindow.DialogResult == DialogResult.OK)
                 {
