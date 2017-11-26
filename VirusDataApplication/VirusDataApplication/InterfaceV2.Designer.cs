@@ -35,6 +35,8 @@
             this.uxPubRadioButton = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.uxDetialsButton = new System.Windows.Forms.Button();
+            this.uxRadioGroup = new System.Windows.Forms.GroupBox();
+            this.uxRadioGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // uxSpeciesBox
@@ -53,6 +55,7 @@
             this.uxStrainsBox.Name = "uxStrainsBox";
             this.uxStrainsBox.Size = new System.Drawing.Size(128, 277);
             this.uxStrainsBox.TabIndex = 1;
+            this.uxStrainsBox.SelectedIndexChanged += new System.EventHandler(this.uxStrainsBox_SelectedIndexChanged);
             // 
             // uxChoiceBox
             // 
@@ -73,7 +76,8 @@
             // uxPubRadioButton
             // 
             this.uxPubRadioButton.AutoSize = true;
-            this.uxPubRadioButton.Location = new System.Drawing.Point(284, 143);
+            this.uxPubRadioButton.Checked = true;
+            this.uxPubRadioButton.Location = new System.Drawing.Point(6, 19);
             this.uxPubRadioButton.Name = "uxPubRadioButton";
             this.uxPubRadioButton.Size = new System.Drawing.Size(82, 17);
             this.uxPubRadioButton.TabIndex = 4;
@@ -84,7 +88,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(285, 167);
+            this.radioButton2.Location = new System.Drawing.Point(6, 42);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(125, 17);
             this.radioButton2.TabIndex = 5;
@@ -101,23 +105,34 @@
             this.uxDetialsButton.Text = "DisplayDetails";
             this.uxDetialsButton.UseVisualStyleBackColor = true;
             // 
+            // uxRadioGroup
+            // 
+            this.uxRadioGroup.Controls.Add(this.uxPubRadioButton);
+            this.uxRadioGroup.Controls.Add(this.radioButton2);
+            this.uxRadioGroup.Enabled = false;
+            this.uxRadioGroup.Location = new System.Drawing.Point(284, 122);
+            this.uxRadioGroup.Name = "uxRadioGroup";
+            this.uxRadioGroup.Size = new System.Drawing.Size(127, 74);
+            this.uxRadioGroup.TabIndex = 7;
+            this.uxRadioGroup.TabStop = false;
+            // 
             // InterfaceV2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(707, 372);
             this.Controls.Add(this.uxDetialsButton);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.uxPubRadioButton);
             this.Controls.Add(this.uxFollowingBox);
             this.Controls.Add(this.uxChoiceBox);
             this.Controls.Add(this.uxStrainsBox);
             this.Controls.Add(this.uxSpeciesBox);
+            this.Controls.Add(this.uxRadioGroup);
             this.Name = "InterfaceV2";
             this.Text = "InterfaceV2";
             this.Load += new System.EventHandler(this.InterfaceV2_Load);
+            this.uxRadioGroup.ResumeLayout(false);
+            this.uxRadioGroup.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -130,5 +145,6 @@
         private System.Windows.Forms.RadioButton uxPubRadioButton;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.Button uxDetialsButton;
+        private System.Windows.Forms.GroupBox uxRadioGroup;
     }
 }
