@@ -12,7 +12,7 @@ namespace VirusDataApplication
 {
     public partial class InterfaceV2 : Form
     {
-        private DataTable species, strains, subContent, followingSubContent;
+        private DataTable species, strains, subContent, followingSubContent, alignStrains1, alignORF1, alignStrains2, alignORF2, alignGenome1, alignGenome2;
         private List<DataTable> ldt;
         private List<Label> ll;
         private List<ListBox> contentViewer;
