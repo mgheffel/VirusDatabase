@@ -37,14 +37,12 @@ namespace VirusDataApplication
         /// </summary>
         private void addEverything()
         {
+            following_lbl.Visible = false;
+            choice_lbl.Visible = false;
             ll.Add(species_lbl);
             ll.Add(strain_lbl);
             ll.Add(choice_lbl);
-            ll.Add(following_lbl);
-            ldt.Add(species);
-            ldt.Add(strains);
-            ldt.Add(subContent);
-            ldt.Add(followingSubContent);
+            ll.Add(following_lbl);            
             contentViewer.Add(uxSpeciesBox);
             contentViewer.Add(uxStrainsBox);
             contentViewer.Add(uxChoiceBox);
@@ -141,10 +139,12 @@ namespace VirusDataApplication
         private void uxDetialsButton_Click(object sender, EventArgs e)
         {
             StringBuilder sb = new StringBuilder();
-            
             int numOfColumns = 0, counter = 0;
-
-            foreach(ListBox view in contentViewer)
+            ldt.Add(species);
+            ldt.Add(strains);
+            ldt.Add(subContent);
+            ldt.Add(followingSubContent);
+            foreach (ListBox view in contentViewer)
             {
                 if(view.SelectedIndex == -1)
                 {
@@ -154,8 +154,14 @@ namespace VirusDataApplication
                 sb.Append(ll[counter].Text + ":\n");
                 for (int i = 0; i < numOfColumns; i++)
                 {
-                    
+                    if(counter == 1 && i == 3)
+                    {
+                        sb.Append(ldt[counter].Rows[view.SelectedIndex][i].ToString().Substring(0,20));
+                        break;
+                    }
+                    sb.Append(ldt[counter].Rows[view.SelectedIndex][i].ToString() + "\t");
                 }
+                sb.Append("\n");
                 counter++;
             }
             MessageBox.Show(sb.ToString());
