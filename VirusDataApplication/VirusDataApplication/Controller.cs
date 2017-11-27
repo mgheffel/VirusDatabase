@@ -46,6 +46,16 @@ namespace VirusDataApplication
         }
 
 
+        /// <summary>
+        /// Method used to send non query statements (update, delete) to the model. 
+        /// </summary>
+        /// <param name="statement"></param> statement to send
+        /// <returns></returns> true if statement was executed, false if not.
+        public bool sendNonQuery(string statement)
+        {
+            return model.sendExecuteStatement(statement);
+        }//end method
+
        
         public bool deleteRow(int size, string table, string[] cols, string[] vals, string type)
         {
@@ -80,14 +90,5 @@ namespace VirusDataApplication
             return statement;
         }//end method
 
-        public bool editTable(string table, string oldVal, string newVal)
-        {
-            return true;
-        }
-
-        public DataTable getRowToEdit(string tableName, string val)
-        {
-            return new DataTable();
-        }
     }//end class Controller
 }//end namespace

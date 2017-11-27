@@ -171,56 +171,96 @@ namespace VirusDataApplication
 
         private void edit_btn_Click(object sender, EventArgs e)
         {
-            string value = "";
+            int intVal;
+            string strVal;
             string tableName = "";
-            if (uxSpeciesBox.SelectedIndex >= 0 && uxStrainsBox.SelectedIndex < 0)
+            string colName = "";
+            editGUI editWindow;
+            if (uxSpeciesBox.SelectedIndex >= 0) //item in first box is selected, nothing else.
             {
-                MessageBox.Show("Error: Cannot edit species.", "Error");
+                tableName = "Species";
+                colName = "specID";
+                intVal = Convert.ToInt32(species.Rows[uxSpeciesBox.SelectedIndex][0]);
+                editWindow = new editGUI(c);
+                editWindow.assignValsSpecies(tableName, colName, intVal);
+                editWindow.ShowDialog();
+            }
+            else if (uxStrainsBox.SelectedIndex >= 0 && uxChoiceBox.SelectedIndex < 0)//item in first and second boxes are selected, nothing else
+                MessageBox.Show("You are unable to edit strains. Sorry.", "Error");
+            else if(uxChoiceBox.SelectedIndex >= 0 && uxFollowingBox.SelectedIndex < 0)//item in boxes 1, 2, 3 are selexcted, not in 4
+            {
+                switch(dropdownChoice)
+                {
+                    case 1:
+                        tableName = "OpenReadingFrames";
+                        colName = "orfID";
+                        strVal = subContent.Rows[uxChoiceBox.SelectedIndex][1].ToString();
+                        break;
+                }
+            }
+            else //item in all four boxes is selected
+            {
+
+            }
+            
+            /*if (uxSpeciesBox.SelectedIndex >= 0 && uxStrainsBox.SelectedIndex < 0)
+            {
+                tableName = "Species";
+                colName = "speciesID";
+                intVal = Convert.ToInt32(species.Rows[uxSpeciesBox.SelectedIndex][0]);
             }
             else
             { 
                 if (uxStrainsBox.SelectedIndex >= 0 && uxChoiceBox.SelectedIndex < 0 && uxFollowingBox.SelectedIndex < 0)
                 {
-                    value = uxStrainsBox.SelectedItem.ToString();
+                    strVal = uxStrainsBox.SelectedItem.ToString();
                     tableName = "Strains";
+                    colName = "strainID";
+                    //editGUI editWindow = new editGUI(strVal, tableName, colName, c);
+                    //editWindow.ShowDialog();
                 }
                 else if(uxChoiceBox.SelectedIndex >= 0 && uxFollowingBox.SelectedIndex < 0)
                 {
-                    value = uxChoiceBox.SelectedItem.ToString();
+                    strVal = uxChoiceBox.SelectedItem.ToString();
                     switch(uxOptionsDropdown.SelectedIndex)
                     {
                         case 0:
                             tableName = "OpenReadingFrames";
+                            colName = "orfID";
                             break;
                         case 1:
                         case 2:
                             tableName = "Publications";
+                            colName = "title";
                             break;
                     }
                 }
                 else
                 {
-                    value = uxFollowingBox.SelectedItem.ToString();
+                    strVal = uxFollowingBox.SelectedItem.ToString();
                     switch (uxOptionsDropdown.SelectedIndex)
                     {
                         case 0:
                             tableName = "Proteins";
+                            colName = "pNAme";
                             break;
                         case 1:
                             tableName = "Publishers";
+                            colName = "name";
                             break;
                         case 2:
                             tableName = "Researchers";
+                            colName = "rNAme";
                             break;
                     }
                 }
-                editGUI editWindow = new editGUI(value, tableName, c);
-                editWindow.ShowDialog();
-                if(editWindow.DialogResult == DialogResult.OK)
-                {
-                    MessageBox.Show("edit made");
-                }
-            }
+                //editGUI editWindow = new editGUI(value, tableName, colName, dropdownChoice, c);
+                //editWindow.ShowDialog();
+                //if(editWindow.DialogResult == DialogResult.OK)
+               // {
+                   // MessageBox.Show("edit made");
+                //}
+            }*/
         }
 
         private void uxSpecies2Drop_SelectedIndexChanged(object sender, EventArgs e)
