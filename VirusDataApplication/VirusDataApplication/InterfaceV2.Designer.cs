@@ -59,11 +59,11 @@
             this.uxSearchEdit = new System.Windows.Forms.TabPage();
             this.following_lbl = new System.Windows.Forms.Label();
             this.choice_lbl = new System.Windows.Forms.Label();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.uxInsert = new System.Windows.Forms.TabPage();
-            this.uxInsertSpeciesLabel = new System.Windows.Forms.Label();
-            this.uxInsertSpeciesDown = new System.Windows.Forms.ComboBox();
             this.uxAddSpecies = new System.Windows.Forms.Button();
+            this.uxInsertSpeciesDown = new System.Windows.Forms.ComboBox();
+            this.uxInsertSpeciesLabel = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.uxTabs.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.uxSearchEdit.SuspendLayout();
@@ -180,6 +180,7 @@
             this.edit_btn.TabIndex = 12;
             this.edit_btn.Text = "Edit";
             this.edit_btn.UseVisualStyleBackColor = true;
+            this.edit_btn.Click += new System.EventHandler(this.edit_btn_Click);
             // 
             // delete_btn
             // 
@@ -416,11 +417,6 @@
             this.choice_lbl.TabIndex = 14;
             this.choice_lbl.Text = "label1";
             // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.WorkerReportsProgress = true;
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            // 
             // uxInsert
             // 
             this.uxInsert.Controls.Add(this.uxAddSpecies);
@@ -435,15 +431,16 @@
             this.uxInsert.UseVisualStyleBackColor = true;
             this.uxInsert.Click += new System.EventHandler(this.uxInsert_Click);
             // 
-            // uxInsertSpeciesLabel
+            // uxAddSpecies
             // 
-            this.uxInsertSpeciesLabel.AutoSize = true;
-            this.uxInsertSpeciesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxInsertSpeciesLabel.Location = new System.Drawing.Point(7, 20);
-            this.uxInsertSpeciesLabel.Name = "uxInsertSpeciesLabel";
-            this.uxInsertSpeciesLabel.Size = new System.Drawing.Size(74, 20);
-            this.uxInsertSpeciesLabel.TabIndex = 0;
-            this.uxInsertSpeciesLabel.Text = "Species: ";
+            this.uxAddSpecies.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxAddSpecies.Location = new System.Drawing.Point(278, 17);
+            this.uxAddSpecies.Name = "uxAddSpecies";
+            this.uxAddSpecies.Size = new System.Drawing.Size(124, 28);
+            this.uxAddSpecies.TabIndex = 2;
+            this.uxAddSpecies.Text = "Add Species";
+            this.uxAddSpecies.UseVisualStyleBackColor = true;
+            this.uxAddSpecies.Click += new System.EventHandler(this.uxAddSpecies_Click);
             // 
             // uxInsertSpeciesDown
             // 
@@ -456,16 +453,20 @@
             this.uxInsertSpeciesDown.Size = new System.Drawing.Size(183, 28);
             this.uxInsertSpeciesDown.TabIndex = 1;
             // 
-            // uxAddSpecies
+            // uxInsertSpeciesLabel
             // 
-            this.uxAddSpecies.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxAddSpecies.Location = new System.Drawing.Point(278, 17);
-            this.uxAddSpecies.Name = "uxAddSpecies";
-            this.uxAddSpecies.Size = new System.Drawing.Size(124, 28);
-            this.uxAddSpecies.TabIndex = 2;
-            this.uxAddSpecies.Text = "Add Species";
-            this.uxAddSpecies.UseVisualStyleBackColor = true;
-            this.uxAddSpecies.Click += new System.EventHandler(this.uxAddSpecies_Click);
+            this.uxInsertSpeciesLabel.AutoSize = true;
+            this.uxInsertSpeciesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxInsertSpeciesLabel.Location = new System.Drawing.Point(7, 20);
+            this.uxInsertSpeciesLabel.Name = "uxInsertSpeciesLabel";
+            this.uxInsertSpeciesLabel.Size = new System.Drawing.Size(74, 20);
+            this.uxInsertSpeciesLabel.TabIndex = 0;
+            this.uxInsertSpeciesLabel.Text = "Species: ";
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.WorkerReportsProgress = true;
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
             // InterfaceV2
             // 
