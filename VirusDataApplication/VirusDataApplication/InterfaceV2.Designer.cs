@@ -40,7 +40,7 @@
             this.following_box_lbl = new System.Windows.Forms.Label();
             this.edit_btn = new System.Windows.Forms.Button();
             this.delete_btn = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.uxTabs = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.uxAlignButton = new System.Windows.Forms.Button();
@@ -56,13 +56,18 @@
             this.uxOrfLabel1 = new System.Windows.Forms.Label();
             this.uxStrainLabel1 = new System.Windows.Forms.Label();
             this.uxSpeciesLabel1 = new System.Windows.Forms.Label();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.uxSearchEdit = new System.Windows.Forms.TabPage();
             this.following_lbl = new System.Windows.Forms.Label();
             this.choice_lbl = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.tabControl1.SuspendLayout();
+            this.uxInsert = new System.Windows.Forms.TabPage();
+            this.uxInsertSpeciesLabel = new System.Windows.Forms.Label();
+            this.uxInsertSpeciesDown = new System.Windows.Forms.ComboBox();
+            this.uxAddSpecies = new System.Windows.Forms.Button();
+            this.uxTabs.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.uxSearchEdit.SuspendLayout();
+            this.uxInsert.SuspendLayout();
             this.SuspendLayout();
             // 
             // uxSpeciesBox
@@ -186,16 +191,17 @@
             this.delete_btn.Text = "Delete";
             this.delete_btn.UseVisualStyleBackColor = true;
             // 
-            // tabControl1
+            // uxTabs
             // 
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Location = new System.Drawing.Point(1, 1);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(710, 391);
-            this.tabControl1.TabIndex = 14;
+            this.uxTabs.Controls.Add(this.tabPage2);
+            this.uxTabs.Controls.Add(this.uxSearchEdit);
+            this.uxTabs.Controls.Add(this.uxInsert);
+            this.uxTabs.Location = new System.Drawing.Point(1, 1);
+            this.uxTabs.Margin = new System.Windows.Forms.Padding(2);
+            this.uxTabs.Name = "uxTabs";
+            this.uxTabs.SelectedIndex = 0;
+            this.uxTabs.Size = new System.Drawing.Size(710, 391);
+            this.uxTabs.TabIndex = 14;
             // 
             // tabPage2
             // 
@@ -219,7 +225,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage2.Size = new System.Drawing.Size(702, 365);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "Align";
             this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
@@ -369,28 +375,28 @@
             this.uxSpeciesLabel1.Text = "Species1:";
             this.uxSpeciesLabel1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // tabPage1
+            // uxSearchEdit
             // 
-            this.tabPage1.Controls.Add(this.following_lbl);
-            this.tabPage1.Controls.Add(this.choice_lbl);
-            this.tabPage1.Controls.Add(this.species_lbl);
-            this.tabPage1.Controls.Add(this.edit_btn);
-            this.tabPage1.Controls.Add(this.delete_btn);
-            this.tabPage1.Controls.Add(this.uxFollowingBox);
-            this.tabPage1.Controls.Add(this.strain_lbl);
-            this.tabPage1.Controls.Add(this.uxChoiceBox);
-            this.tabPage1.Controls.Add(this.uxStrainsBox);
-            this.tabPage1.Controls.Add(this.uxOptionsDropdown);
-            this.tabPage1.Controls.Add(this.uxDetialsButton);
-            this.tabPage1.Controls.Add(this.uxSpeciesBox);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Size = new System.Drawing.Size(702, 365);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.uxSearchEdit.Controls.Add(this.following_lbl);
+            this.uxSearchEdit.Controls.Add(this.choice_lbl);
+            this.uxSearchEdit.Controls.Add(this.species_lbl);
+            this.uxSearchEdit.Controls.Add(this.edit_btn);
+            this.uxSearchEdit.Controls.Add(this.delete_btn);
+            this.uxSearchEdit.Controls.Add(this.uxFollowingBox);
+            this.uxSearchEdit.Controls.Add(this.strain_lbl);
+            this.uxSearchEdit.Controls.Add(this.uxChoiceBox);
+            this.uxSearchEdit.Controls.Add(this.uxStrainsBox);
+            this.uxSearchEdit.Controls.Add(this.uxOptionsDropdown);
+            this.uxSearchEdit.Controls.Add(this.uxDetialsButton);
+            this.uxSearchEdit.Controls.Add(this.uxSpeciesBox);
+            this.uxSearchEdit.Location = new System.Drawing.Point(4, 22);
+            this.uxSearchEdit.Margin = new System.Windows.Forms.Padding(2);
+            this.uxSearchEdit.Name = "uxSearchEdit";
+            this.uxSearchEdit.Padding = new System.Windows.Forms.Padding(2);
+            this.uxSearchEdit.Size = new System.Drawing.Size(702, 365);
+            this.uxSearchEdit.TabIndex = 0;
+            this.uxSearchEdit.Text = "Search/Edit";
+            this.uxSearchEdit.UseVisualStyleBackColor = true;
             // 
             // following_lbl
             // 
@@ -415,22 +421,70 @@
             this.backgroundWorker1.WorkerReportsProgress = true;
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
+            // uxInsert
+            // 
+            this.uxInsert.Controls.Add(this.uxAddSpecies);
+            this.uxInsert.Controls.Add(this.uxInsertSpeciesDown);
+            this.uxInsert.Controls.Add(this.uxInsertSpeciesLabel);
+            this.uxInsert.Location = new System.Drawing.Point(4, 22);
+            this.uxInsert.Name = "uxInsert";
+            this.uxInsert.Padding = new System.Windows.Forms.Padding(3);
+            this.uxInsert.Size = new System.Drawing.Size(702, 365);
+            this.uxInsert.TabIndex = 2;
+            this.uxInsert.Text = "Insert";
+            this.uxInsert.UseVisualStyleBackColor = true;
+            this.uxInsert.Click += new System.EventHandler(this.uxInsert_Click);
+            // 
+            // uxInsertSpeciesLabel
+            // 
+            this.uxInsertSpeciesLabel.AutoSize = true;
+            this.uxInsertSpeciesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxInsertSpeciesLabel.Location = new System.Drawing.Point(7, 20);
+            this.uxInsertSpeciesLabel.Name = "uxInsertSpeciesLabel";
+            this.uxInsertSpeciesLabel.Size = new System.Drawing.Size(74, 20);
+            this.uxInsertSpeciesLabel.TabIndex = 0;
+            this.uxInsertSpeciesLabel.Text = "Species: ";
+            // 
+            // uxInsertSpeciesDown
+            // 
+            this.uxInsertSpeciesDown.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.uxInsertSpeciesDown.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.uxInsertSpeciesDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxInsertSpeciesDown.FormattingEnabled = true;
+            this.uxInsertSpeciesDown.Location = new System.Drawing.Point(89, 17);
+            this.uxInsertSpeciesDown.Name = "uxInsertSpeciesDown";
+            this.uxInsertSpeciesDown.Size = new System.Drawing.Size(183, 28);
+            this.uxInsertSpeciesDown.TabIndex = 1;
+            // 
+            // uxAddSpecies
+            // 
+            this.uxAddSpecies.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxAddSpecies.Location = new System.Drawing.Point(278, 17);
+            this.uxAddSpecies.Name = "uxAddSpecies";
+            this.uxAddSpecies.Size = new System.Drawing.Size(124, 28);
+            this.uxAddSpecies.TabIndex = 2;
+            this.uxAddSpecies.Text = "Add Species";
+            this.uxAddSpecies.UseVisualStyleBackColor = true;
+            this.uxAddSpecies.Click += new System.EventHandler(this.uxAddSpecies_Click);
+            // 
             // InterfaceV2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(707, 372);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.uxTabs);
             this.Controls.Add(this.following_box_lbl);
             this.Controls.Add(this.choice_box_lbl);
             this.Name = "InterfaceV2";
             this.Text = "InterfaceV2";
             this.Load += new System.EventHandler(this.InterfaceV2_Load);
-            this.tabControl1.ResumeLayout(false);
+            this.uxTabs.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.uxSearchEdit.ResumeLayout(false);
+            this.uxSearchEdit.PerformLayout();
+            this.uxInsert.ResumeLayout(false);
+            this.uxInsert.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -450,9 +504,9 @@
         private System.Windows.Forms.Label following_box_lbl;
         private System.Windows.Forms.Button edit_btn;
         private System.Windows.Forms.Button delete_btn;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl uxTabs;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage uxSearchEdit;
         private System.Windows.Forms.Label uxSpeciesLabel1;
         private System.Windows.Forms.Button uxAlignButton;
         private System.Windows.Forms.ComboBox uxORF2Drop;
@@ -470,5 +524,9 @@
         private System.Windows.Forms.Label following_lbl;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.TabPage uxInsert;
+        private System.Windows.Forms.ComboBox uxInsertSpeciesDown;
+        private System.Windows.Forms.Label uxInsertSpeciesLabel;
+        private System.Windows.Forms.Button uxAddSpecies;
     }
 }

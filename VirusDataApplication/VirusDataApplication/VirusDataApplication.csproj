@@ -85,6 +85,12 @@
     </Compile>
     <Compile Include="iController.cs" />
     <Compile Include="iDBModel.cs" />
+    <Compile Include="InsertSpecies.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InsertSpecies.Designer.cs">
+      <DependentUpon>InsertSpecies.cs</DependentUpon>
+    </Compile>
     <Compile Include="InterfaceV2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InsertSpecies.resx">
+      <DependentUpon>InsertSpecies.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InterfaceV2.resx">
       <DependentUpon>InterfaceV2.cs</DependentUpon>
