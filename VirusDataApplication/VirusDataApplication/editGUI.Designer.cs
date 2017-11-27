@@ -40,10 +40,13 @@
             this.tb4_lbl = new System.Windows.Forms.Label();
             this.tb3_lbl = new System.Windows.Forms.Label();
             this.tb2_lbl = new System.Windows.Forms.Label();
+            this.submit_btn = new System.Windows.Forms.Button();
+            this.cancel_btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tb1
             // 
+            this.tb1.Enabled = false;
             this.tb1.Location = new System.Drawing.Point(12, 48);
             this.tb1.Name = "tb1";
             this.tb1.Size = new System.Drawing.Size(122, 26);
@@ -51,6 +54,7 @@
             // 
             // tb6
             // 
+            this.tb6.Enabled = false;
             this.tb6.Location = new System.Drawing.Point(817, 48);
             this.tb6.Name = "tb6";
             this.tb6.Size = new System.Drawing.Size(122, 26);
@@ -58,6 +62,7 @@
             // 
             // tb5
             // 
+            this.tb5.Enabled = false;
             this.tb5.Location = new System.Drawing.Point(656, 48);
             this.tb5.Name = "tb5";
             this.tb5.Size = new System.Drawing.Size(122, 26);
@@ -65,6 +70,7 @@
             // 
             // tb4
             // 
+            this.tb4.Enabled = false;
             this.tb4.Location = new System.Drawing.Point(495, 48);
             this.tb4.Name = "tb4";
             this.tb4.Size = new System.Drawing.Size(122, 26);
@@ -72,6 +78,7 @@
             // 
             // tb3
             // 
+            this.tb3.Enabled = false;
             this.tb3.Location = new System.Drawing.Point(334, 48);
             this.tb3.Name = "tb3";
             this.tb3.Size = new System.Drawing.Size(122, 26);
@@ -79,6 +86,7 @@
             // 
             // tb2
             // 
+            this.tb2.Enabled = false;
             this.tb2.Location = new System.Drawing.Point(173, 48);
             this.tb2.Name = "tb2";
             this.tb2.Size = new System.Drawing.Size(122, 26);
@@ -138,11 +146,34 @@
             this.tb2_lbl.TabIndex = 11;
             this.tb2_lbl.Text = "label1";
             // 
+            // submit_btn
+            // 
+            this.submit_btn.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.submit_btn.Location = new System.Drawing.Point(369, 122);
+            this.submit_btn.Name = "submit_btn";
+            this.submit_btn.Size = new System.Drawing.Size(75, 31);
+            this.submit_btn.TabIndex = 12;
+            this.submit_btn.Text = "Submit";
+            this.submit_btn.UseVisualStyleBackColor = true;
+            this.submit_btn.Click += new System.EventHandler(this.submit_btn_Click);
+            // 
+            // cancel_btn
+            // 
+            this.cancel_btn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancel_btn.Location = new System.Drawing.Point(486, 122);
+            this.cancel_btn.Name = "cancel_btn";
+            this.cancel_btn.Size = new System.Drawing.Size(75, 31);
+            this.cancel_btn.TabIndex = 13;
+            this.cancel_btn.Text = "Cancel";
+            this.cancel_btn.UseVisualStyleBackColor = true;
+            // 
             // editGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(953, 360);
+            this.ClientSize = new System.Drawing.Size(953, 176);
+            this.Controls.Add(this.cancel_btn);
+            this.Controls.Add(this.submit_btn);
             this.Controls.Add(this.tb2_lbl);
             this.Controls.Add(this.tb3_lbl);
             this.Controls.Add(this.tb4_lbl);
@@ -177,5 +208,7 @@
         private System.Windows.Forms.Label tb4_lbl;
         private System.Windows.Forms.Label tb3_lbl;
         private System.Windows.Forms.Label tb2_lbl;
+        private System.Windows.Forms.Button submit_btn;
+        private System.Windows.Forms.Button cancel_btn;
     }
 }
