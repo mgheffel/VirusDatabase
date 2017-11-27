@@ -42,6 +42,7 @@
             this.delete_btn = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.uxAlignButton = new System.Windows.Forms.Button();
             this.uxORF2Drop = new System.Windows.Forms.ComboBox();
             this.uxStrain2Drop = new System.Windows.Forms.ComboBox();
@@ -59,7 +60,6 @@
             this.following_lbl = new System.Windows.Forms.Label();
             this.choice_lbl = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -221,15 +221,23 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(74, 295);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(543, 23);
+            this.progressBar1.TabIndex = 15;
             // 
             // uxAlignButton
             // 
             this.uxAlignButton.Enabled = false;
             this.uxAlignButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxAlignButton.Location = new System.Drawing.Point(295, 232);
+            this.uxAlignButton.Location = new System.Drawing.Point(294, 230);
             this.uxAlignButton.Name = "uxAlignButton";
             this.uxAlignButton.Size = new System.Drawing.Size(101, 33);
-            this.uxAlignButton.TabIndex = 12;
+            this.uxAlignButton.TabIndex = 7;
             this.uxAlignButton.Text = "Align";
             this.uxAlignButton.UseVisualStyleBackColor = true;
             this.uxAlignButton.Click += new System.EventHandler(this.uxAlignButton_Click);
@@ -239,10 +247,10 @@
             this.uxORF2Drop.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.uxORF2Drop.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.uxORF2Drop.FormattingEnabled = true;
-            this.uxORF2Drop.Location = new System.Drawing.Point(494, 146);
+            this.uxORF2Drop.Location = new System.Drawing.Point(456, 149);
             this.uxORF2Drop.Name = "uxORF2Drop";
-            this.uxORF2Drop.Size = new System.Drawing.Size(121, 21);
-            this.uxORF2Drop.TabIndex = 11;
+            this.uxORF2Drop.Size = new System.Drawing.Size(161, 21);
+            this.uxORF2Drop.TabIndex = 6;
             this.uxORF2Drop.SelectedIndexChanged += new System.EventHandler(this.uxORF2Drop_SelectedIndexChanged);
             // 
             // uxStrain2Drop
@@ -250,10 +258,10 @@
             this.uxStrain2Drop.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.uxStrain2Drop.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.uxStrain2Drop.FormattingEnabled = true;
-            this.uxStrain2Drop.Location = new System.Drawing.Point(494, 91);
+            this.uxStrain2Drop.Location = new System.Drawing.Point(456, 91);
             this.uxStrain2Drop.Name = "uxStrain2Drop";
-            this.uxStrain2Drop.Size = new System.Drawing.Size(121, 21);
-            this.uxStrain2Drop.TabIndex = 10;
+            this.uxStrain2Drop.Size = new System.Drawing.Size(161, 21);
+            this.uxStrain2Drop.TabIndex = 4;
             this.uxStrain2Drop.SelectedIndexChanged += new System.EventHandler(this.uxStrain2Drop_SelectedIndexChanged);
             // 
             // uxSpecies2Drop
@@ -261,17 +269,17 @@
             this.uxSpecies2Drop.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.uxSpecies2Drop.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.uxSpecies2Drop.FormattingEnabled = true;
-            this.uxSpecies2Drop.Location = new System.Drawing.Point(494, 35);
+            this.uxSpecies2Drop.Location = new System.Drawing.Point(456, 39);
             this.uxSpecies2Drop.Name = "uxSpecies2Drop";
-            this.uxSpecies2Drop.Size = new System.Drawing.Size(121, 21);
-            this.uxSpecies2Drop.TabIndex = 9;
+            this.uxSpecies2Drop.Size = new System.Drawing.Size(161, 21);
+            this.uxSpecies2Drop.TabIndex = 2;
             this.uxSpecies2Drop.SelectedIndexChanged += new System.EventHandler(this.uxSpecies2Drop_SelectedIndexChanged);
             // 
             // uxORF2Label
             // 
             this.uxORF2Label.AutoSize = true;
             this.uxORF2Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxORF2Label.Location = new System.Drawing.Point(431, 147);
+            this.uxORF2Label.Location = new System.Drawing.Point(394, 147);
             this.uxORF2Label.Name = "uxORF2Label";
             this.uxORF2Label.Size = new System.Drawing.Size(56, 20);
             this.uxORF2Label.TabIndex = 8;
@@ -281,7 +289,7 @@
             // 
             this.uxStrain2Label.AutoSize = true;
             this.uxStrain2Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxStrain2Label.Location = new System.Drawing.Point(423, 92);
+            this.uxStrain2Label.Location = new System.Drawing.Point(386, 89);
             this.uxStrain2Label.Name = "uxStrain2Label";
             this.uxStrain2Label.Size = new System.Drawing.Size(64, 20);
             this.uxStrain2Label.TabIndex = 7;
@@ -291,7 +299,7 @@
             // 
             this.uxSpecies2Label.AutoSize = true;
             this.uxSpecies2Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxSpecies2Label.Location = new System.Drawing.Point(408, 37);
+            this.uxSpecies2Label.Location = new System.Drawing.Point(371, 37);
             this.uxSpecies2Label.Name = "uxSpecies2Label";
             this.uxSpecies2Label.Size = new System.Drawing.Size(79, 20);
             this.uxSpecies2Label.TabIndex = 6;
@@ -302,9 +310,9 @@
             this.uxORF1Drop.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.uxORF1Drop.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.uxORF1Drop.FormattingEnabled = true;
-            this.uxORF1Drop.Location = new System.Drawing.Point(127, 146);
+            this.uxORF1Drop.Location = new System.Drawing.Point(156, 146);
             this.uxORF1Drop.Name = "uxORF1Drop";
-            this.uxORF1Drop.Size = new System.Drawing.Size(121, 21);
+            this.uxORF1Drop.Size = new System.Drawing.Size(161, 21);
             this.uxORF1Drop.TabIndex = 5;
             this.uxORF1Drop.SelectedIndexChanged += new System.EventHandler(this.uxORF1Drop_SelectedIndexChanged);
             // 
@@ -313,10 +321,10 @@
             this.uxStrain1Drop.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.uxStrain1Drop.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.uxStrain1Drop.FormattingEnabled = true;
-            this.uxStrain1Drop.Location = new System.Drawing.Point(127, 91);
+            this.uxStrain1Drop.Location = new System.Drawing.Point(156, 91);
             this.uxStrain1Drop.Name = "uxStrain1Drop";
-            this.uxStrain1Drop.Size = new System.Drawing.Size(121, 21);
-            this.uxStrain1Drop.TabIndex = 4;
+            this.uxStrain1Drop.Size = new System.Drawing.Size(161, 21);
+            this.uxStrain1Drop.TabIndex = 3;
             this.uxStrain1Drop.SelectedIndexChanged += new System.EventHandler(this.uxStrain1Drop_SelectedIndexChanged);
             // 
             // uxSpecies1Drop
@@ -324,17 +332,17 @@
             this.uxSpecies1Drop.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.uxSpecies1Drop.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.uxSpecies1Drop.FormattingEnabled = true;
-            this.uxSpecies1Drop.Location = new System.Drawing.Point(127, 35);
+            this.uxSpecies1Drop.Location = new System.Drawing.Point(156, 35);
             this.uxSpecies1Drop.Name = "uxSpecies1Drop";
-            this.uxSpecies1Drop.Size = new System.Drawing.Size(121, 21);
-            this.uxSpecies1Drop.TabIndex = 3;
+            this.uxSpecies1Drop.Size = new System.Drawing.Size(161, 21);
+            this.uxSpecies1Drop.TabIndex = 1;
             this.uxSpecies1Drop.SelectedIndexChanged += new System.EventHandler(this.uxSpecies1Drop_SelectedIndexChanged);
             // 
             // uxOrfLabel1
             // 
             this.uxOrfLabel1.AutoSize = true;
             this.uxOrfLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxOrfLabel1.Location = new System.Drawing.Point(64, 147);
+            this.uxOrfLabel1.Location = new System.Drawing.Point(93, 147);
             this.uxOrfLabel1.Name = "uxOrfLabel1";
             this.uxOrfLabel1.Size = new System.Drawing.Size(56, 20);
             this.uxOrfLabel1.TabIndex = 2;
@@ -344,7 +352,7 @@
             // 
             this.uxStrainLabel1.AutoSize = true;
             this.uxStrainLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxStrainLabel1.Location = new System.Drawing.Point(56, 92);
+            this.uxStrainLabel1.Location = new System.Drawing.Point(85, 92);
             this.uxStrainLabel1.Name = "uxStrainLabel1";
             this.uxStrainLabel1.Size = new System.Drawing.Size(64, 20);
             this.uxStrainLabel1.TabIndex = 1;
@@ -354,7 +362,7 @@
             // 
             this.uxSpeciesLabel1.AutoSize = true;
             this.uxSpeciesLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxSpeciesLabel1.Location = new System.Drawing.Point(41, 37);
+            this.uxSpeciesLabel1.Location = new System.Drawing.Point(70, 37);
             this.uxSpeciesLabel1.Name = "uxSpeciesLabel1";
             this.uxSpeciesLabel1.Size = new System.Drawing.Size(79, 20);
             this.uxSpeciesLabel1.TabIndex = 0;
@@ -406,13 +414,6 @@
             // 
             this.backgroundWorker1.WorkerReportsProgress = true;
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(155, 295);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(385, 23);
-            this.progressBar1.TabIndex = 15;
             // 
             // InterfaceV2
             // 

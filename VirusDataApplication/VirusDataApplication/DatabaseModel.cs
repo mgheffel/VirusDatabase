@@ -74,7 +74,8 @@ namespace VirusDataApplication
                         break;
                 }
             }
-            /*Will move this to a function call or exit button press.*/
+            /*Will move this to a function call or exit 
+             *  press.*/
             db.Close();
         }
         /// <summary>

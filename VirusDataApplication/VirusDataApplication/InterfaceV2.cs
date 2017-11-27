@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Diagnostics;
 
 namespace VirusDataApplication
 {
@@ -224,6 +225,8 @@ namespace VirusDataApplication
         private void uxSpecies2Drop_SelectedIndexChanged(object sender, EventArgs e)
         {
             uxAlignButton.Enabled = false;
+            uxORF2Drop.Items.Clear();
+            uxORF2Drop.ResetText();
             uxStrain2Drop.Items.Clear();
             uxStrain2Drop.ResetText();
             alignStrains2 = c.displayTableContents("Strains WHERE specID = " + species.Rows[uxSpecies2Drop.SelectedIndex][0].ToString());
@@ -280,6 +283,15 @@ namespace VirusDataApplication
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
+            Invoke(new Action(() => {
+                uxAlignButton.Enabled = false;
+                uxSpecies1Drop.Enabled = false;
+                uxStrain1Drop.Enabled = false;
+                uxORF1Drop.Enabled = false;
+                uxSpecies2Drop.Enabled = false;
+                uxStrain2Drop.Enabled = false;
+                uxORF2Drop.Enabled = false;
+            }));
             SaveFileDialog sf = new SaveFileDialog();
             sf.FileName = "AlignedORFs.txt";
             sf.Filter = "Text File | *.txt";
@@ -290,17 +302,28 @@ namespace VirusDataApplication
                 int end1 = Convert.ToInt32(alignGenome.Rows[0][3].ToString());
                 int start2 = Convert.ToInt32(alignGenome.Rows[1][2].ToString());
                 int end2 = Convert.ToInt32(alignGenome.Rows[1][3].ToString());
-                Tuple<string, string> values = alignORF(alignGenome.Rows[0][4].ToString().Substring(start1, end1-start1), alignGenome.Rows[1][4].ToString().Substring(start2, end2-start2));
-                sw.WriteLine(values.Item1.ToString());
-                sw.WriteLine();
-                sw.WriteLine();
-                sw.WriteLine(values.Item2.ToString());
+                Tuple<string, string, string> values = alignORF(alignGenome.Rows[0][4].ToString().Substring(start1, end1-start1), alignGenome.Rows[1][4].ToString().Substring(start2, end2-start2));
+                Invoke((Action)(() =>
+                {
+                    sw.WriteLine(uxSpecies1Drop.SelectedItem.ToString() + " |" + uxStrain1Drop.SelectedItem.ToString() + " | " + uxORF1Drop.SelectedItem.ToString());
+                    sw.WriteLine(values.Item1.ToString().ToUpper());
+                    sw.WriteLine(uxSpecies2Drop.SelectedItem.ToString() + " |" + uxStrain2Drop.SelectedItem.ToString() + " | " + uxORF2Drop.SelectedItem.ToString());
+                    sw.WriteLine(values.Item2.ToString().ToUpper());
+                    sw.WriteLine("Annotation");
+                    sw.WriteLine(values.Item3.ToString());
+                }));
+                Process.Start("notepad.exe", sf.FileName);
                 sw.Dispose();
                 sw.Close();
-                MessageBox.Show(values.Item1.ToString() + values.Item2.ToString());
             }
             Invoke(new Action(() => {
                 uxAlignButton.Enabled = true;
+                uxSpecies1Drop.Enabled = true;
+                uxStrain1Drop.Enabled = true;
+                uxORF1Drop.Enabled = true;
+                uxSpecies2Drop.Enabled = true;
+                uxStrain2Drop.Enabled = true;
+                uxORF2Drop.Enabled = true;
             }));
             
             
@@ -311,8 +334,12 @@ namespace VirusDataApplication
             progressBar1.Value = e.ProgressPercentage;
         }
 
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
 
-        private Tuple<string, string> alignORF (string refSeq, string alignSeq)
+        }
+
+        private Tuple<string, string, string> alignORF (string refSeq, string alignSeq)
         {
            
 
@@ -408,7 +435,7 @@ namespace VirusDataApplication
                     ann += 'X';
                 }
             }
-            Tuple<string, string> values = new Tuple<string, string>(AlignmentA, AlignmentB);
+            Tuple<string, string, string> values = new Tuple<string, string, string>(AlignmentA, AlignmentB, ann);
             return values;
         }
 
@@ -439,6 +466,8 @@ namespace VirusDataApplication
         private void uxSpecies1Drop_SelectedIndexChanged(object sender, EventArgs e)
         {
             uxAlignButton.Enabled = false;
+            uxORF1Drop.Items.Clear();
+            uxORF1Drop.ResetText();
             uxStrain1Drop.Items.Clear();
             uxStrain1Drop.ResetText();
             alignStrains1 = c.displayTableContents("Strains WHERE specID = " + species.Rows[uxSpecies1Drop.SelectedIndex][0].ToString());
