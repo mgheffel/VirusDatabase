@@ -476,6 +476,7 @@
             this.Controls.Add(this.uxTabs);
             this.Controls.Add(this.following_box_lbl);
             this.Controls.Add(this.choice_box_lbl);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "InterfaceV2";
             this.Text = "InterfaceV2";
             this.Load += new System.EventHandler(this.InterfaceV2_Load);
