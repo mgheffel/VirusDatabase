@@ -56,8 +56,10 @@
             this.uxStrainLabel1 = new System.Windows.Forms.Label();
             this.uxSpeciesLabel1 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.choice_lbl = new System.Windows.Forms.Label();
             this.following_lbl = new System.Windows.Forms.Label();
+            this.choice_lbl = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -197,6 +199,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.progressBar1);
             this.tabPage2.Controls.Add(this.uxAlignButton);
             this.tabPage2.Controls.Add(this.uxORF2Drop);
             this.tabPage2.Controls.Add(this.uxStrain2Drop);
@@ -381,6 +384,15 @@
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // following_lbl
+            // 
+            this.following_lbl.AutoSize = true;
+            this.following_lbl.Location = new System.Drawing.Point(552, 16);
+            this.following_lbl.Name = "following_lbl";
+            this.following_lbl.Size = new System.Drawing.Size(35, 13);
+            this.following_lbl.TabIndex = 15;
+            this.following_lbl.Text = "label1";
+            // 
             // choice_lbl
             // 
             this.choice_lbl.AutoSize = true;
@@ -390,14 +402,17 @@
             this.choice_lbl.TabIndex = 14;
             this.choice_lbl.Text = "label1";
             // 
-            // following_lbl
+            // backgroundWorker1
             // 
-            this.following_lbl.AutoSize = true;
-            this.following_lbl.Location = new System.Drawing.Point(552, 16);
-            this.following_lbl.Name = "following_lbl";
-            this.following_lbl.Size = new System.Drawing.Size(35, 13);
-            this.following_lbl.TabIndex = 15;
-            this.following_lbl.Text = "label1";
+            this.backgroundWorker1.WorkerReportsProgress = true;
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(155, 295);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(385, 23);
+            this.progressBar1.TabIndex = 15;
             // 
             // InterfaceV2
             // 
@@ -452,5 +467,7 @@
         private System.Windows.Forms.Label uxStrainLabel1;
         private System.Windows.Forms.Label choice_lbl;
         private System.Windows.Forms.Label following_lbl;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
