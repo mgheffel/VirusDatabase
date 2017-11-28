@@ -101,3 +101,33 @@ C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\virus_database_repo_copy\Virus
 C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\virus_database_repo_copy\VirusDataApplication\VirusDataApplication\bin\Debug\ja\Npgsql.resources.dll
 C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\virus_database_repo_copy\VirusDataApplication\VirusDataApplication\bin\Debug\zh-CN\Npgsql.resources.dll
 C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\virus_database_repo_copy\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.InsertSpecies.resources
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\VirusDataApplication.exe.config
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\VirusDataApplication.exe
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\VirusDataApplication.pdb
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\MySql.Data.dll
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\MySQL.Data.EntityFrameworkCore.Design.dll
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\MySQL.Data.EntityFrameworkCore.dll
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\MySql.Web.dll
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\Mono.Security.dll
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\MySql.Data.xml
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\MySql.Data.Entity.EF6.xml
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\MySQL.Data.EntityFrameworkCore.xml
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\MySQL.Data.EntityFrameworkCore.Design.xml
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\MySql.Web.xml
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\Npgsql.xml
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\de\Npgsql.resources.dll
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\es\Npgsql.resources.dll
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\fi\Npgsql.resources.dll
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\fr\Npgsql.resources.dll
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\ja\Npgsql.resources.dll
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\zh-CN\Npgsql.resources.dll
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.csprojResolveAssemblyReference.cache
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.editGUI.resources
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.Form1.resources
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.InsertSpecies.resources
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.InterfaceV2.resources
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.Properties.Resources.resources
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.csproj.GenerateResource.Cache
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.exe
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.pdb

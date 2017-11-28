@@ -15,7 +15,8 @@ namespace VirusDataApplication
     public partial class InterfaceV2 : Form
     {
         private DataTable species, strains, subContent, followingSubContent, alignStrains1, alignORF1, alignStrains2, alignORF2, alignGenome;
-        private List<DataTable> ldt;
+        //private List<DataTable> ldt;
+        private DataTable[] ldt;
         private List<Label> ll;
         private List<ListBox> contentViewer;
         private Controller c;
@@ -26,7 +27,7 @@ namespace VirusDataApplication
             InitializeComponent();
             //onOffRadioButtons();
             this.c = c;
-            ldt = new List<DataTable>();
+            ldt = new DataTable[4];
             ll = new List<Label>();            
             contentViewer = new List<ListBox>();
             addEverything();            
@@ -50,11 +51,13 @@ namespace VirusDataApplication
             contentViewer.Add(uxFollowingBox);
             species = c.displayTableContents("Species");
             populateListView(uxSpeciesBox, species, 1, "Species Name");
-            
+            ldt[0] = species;//if species is added or removed, this needs to be done in that method, INSERT, DELETE
+
             PopulateDropDown(uxSpecies1Drop, species, 1);
             PopulateDropDown(uxSpecies2Drop, species, 1);
         }
         
+
         /// <summary>
         /// When a strain is selected event
         /// </summary>
@@ -76,22 +79,21 @@ namespace VirusDataApplication
                 case 1://display protiens
                     subContent = c.displayTableContents(" OpenReadingFrames WHERE strainID = '" + strains.Rows[uxStrainsBox.SelectedIndex][0].ToString() + "'");
                     populateListView(uxChoiceBox, subContent, 1, "ORF ID");
-                    followingSubContent = c.displayTableContents(" Proteins WHERE pID = " + subContent.Rows[0][2].ToString());
-                    populateListView(uxFollowingBox, followingSubContent, 1, "Protien Name");
+                    
                     break;
                 case 2://display publishers
                     subContent = c.displayTableContents(" Publications as p JOIN Strain_Publication AS sp ON sp.pubID = p.pubID WHERE sp.strainID = '" + strains.Rows[uxStrainsBox.SelectedIndex][0].ToString() + "'");
                     populateListView(uxChoiceBox, subContent, 2, "Publication Title");
-                    followingSubContent = c.displayTableContents(" Publishers as p join Publisher_Publication as pp on pp.publisherID = p.publisherID WHERE pp.pubID = " + subContent.Rows[0][0].ToString());
-                    populateListView(uxFollowingBox, followingSubContent, 1, "Publisher Name");
+                    
                     break;
                 case 3://display researchers
                     subContent = c.displayTableContents(" Publications as p JOIN Strain_Publication AS sp ON sp.pubID = p.pubID WHERE sp.strainID = '" + strains.Rows[uxStrainsBox.SelectedIndex][0].ToString() + "'");
                     populateListView(uxChoiceBox, subContent, 2, "Publication Title");
-                    followingSubContent = c.displayTableContents(" Researchers as r join Publication_Researcher AS pr ON pr.rID = r.rID WHERE pr.pubID = " + subContent.Rows[0][0].ToString());
-                    populateListView(uxFollowingBox, followingSubContent, 1, "Researcher Name");
+                    
                     break;
             }
+            ldt[2] = subContent;
+            ldt[3] = followingSubContent;
         }
 
         private void uxOptionsDropdown_SelectedIndexChanged(object sender, EventArgs e)
@@ -142,10 +144,7 @@ namespace VirusDataApplication
         {
             StringBuilder sb = new StringBuilder();
             int numOfColumns = 0, counter = 0;
-            ldt.Add(species);
-            ldt.Add(strains);
-            ldt.Add(subContent);
-            ldt.Add(followingSubContent);
+            
             foreach (ListBox view in contentViewer)
             {
                 if(view.SelectedIndex == -1)
@@ -380,6 +379,41 @@ namespace VirusDataApplication
 
 
         }
+        /// <summary>
+        /// When a new index is selected in the uxChoiceBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uxChoiceBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch(dropdownChoice)
+            {
+                case 1:
+                    if (subContent.Rows.Count > 0 && uxChoiceBox.SelectedIndex >= 0)
+                    {
+                        followingSubContent = c.displayTableContents(" Proteins WHERE pID = " + subContent.Rows[uxChoiceBox.SelectedIndex][2].ToString());
+                        populateListView(uxFollowingBox, followingSubContent, 1, "Protien Name");
+                    }
+                    break;
+                case 2:
+                    if (subContent.Rows.Count > 0)
+                    {
+                        followingSubContent = c.displayTableContents(" Publishers as p join Publisher_Publication as pp on pp.publisherID = p.publisherID WHERE pp.pubID = " + subContent.Rows[0][0].ToString());
+                        populateListView(uxFollowingBox, followingSubContent, 1, "Publisher Name");
+                    }
+                    break;
+                case 3:
+                    if (subContent.Rows.Count > 0)
+                    {
+                        followingSubContent = c.displayTableContents(" Researchers as r join Publication_Researcher AS pr ON pr.rID = r.rID WHERE pr.pubID = " + subContent.Rows[0][0].ToString());
+                        populateListView(uxFollowingBox, followingSubContent, 1, "Researcher Name");
+                    }
+                    break;
+            }
+            
+            
+            
+        }
 
 
         /// <summary>
@@ -582,6 +616,7 @@ namespace VirusDataApplication
             uxStrainsBox.Items.Clear();
             strains = c.displayTableContents("Strains WHERE specID = " + species.Rows[uxSpeciesBox.SelectedIndex][0].ToString());
             populateListView(uxStrainsBox, strains, 0, "Strain ID");
+            ldt[1] = strains;
         }
         
         /// <summary>
