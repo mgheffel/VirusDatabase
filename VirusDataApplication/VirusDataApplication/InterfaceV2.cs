@@ -15,7 +15,8 @@ namespace VirusDataApplication
     public partial class InterfaceV2 : Form
     {
         private DataTable species, strains, subContent, followingSubContent, alignStrains1, alignORF1, alignStrains2, alignORF2, alignGenome;
-        private List<DataTable> ldt;
+        //private List<DataTable> ldt;
+        private DataTable[] ldt;
         private List<Label> ll;
         private List<ListBox> contentViewer;
         private Controller c;
@@ -26,7 +27,7 @@ namespace VirusDataApplication
             InitializeComponent();
             //onOffRadioButtons();
             this.c = c;
-            ldt = new List<DataTable>();
+            ldt = new DataTable[4];
             ll = new List<Label>();            
             contentViewer = new List<ListBox>();
             addEverything();            
@@ -50,7 +51,8 @@ namespace VirusDataApplication
             contentViewer.Add(uxFollowingBox);
             species = c.displayTableContents("Species");
             populateListView(uxSpeciesBox, species, 1, "Species Name");
-            
+            ldt[0] = species;//if species is added or removed, this needs to be done in that method, INSERT, DELETE
+
             PopulateDropDown(uxSpecies1Drop, species, 1);
             PopulateDropDown(uxSpecies2Drop, species, 1);
         }
@@ -92,6 +94,8 @@ namespace VirusDataApplication
                     populateListView(uxFollowingBox, followingSubContent, 1, "Researcher Name");
                     break;
             }
+            ldt[2] = subContent;
+            ldt[3] = followingSubContent;
         }
 
         private void uxOptionsDropdown_SelectedIndexChanged(object sender, EventArgs e)
@@ -142,10 +146,7 @@ namespace VirusDataApplication
         {
             StringBuilder sb = new StringBuilder();
             int numOfColumns = 0, counter = 0;
-            ldt.Add(species);
-            ldt.Add(strains);
-            ldt.Add(subContent);
-            ldt.Add(followingSubContent);
+            
             foreach (ListBox view in contentViewer)
             {
                 if(view.SelectedIndex == -1)
@@ -540,6 +541,7 @@ namespace VirusDataApplication
             uxStrainsBox.Items.Clear();
             strains = c.displayTableContents("Strains WHERE specID = " + species.Rows[uxSpeciesBox.SelectedIndex][0].ToString());
             populateListView(uxStrainsBox, strains, 0, "Strain ID");
+            ldt[1] = strains;
         }
         
         /// <summary>
