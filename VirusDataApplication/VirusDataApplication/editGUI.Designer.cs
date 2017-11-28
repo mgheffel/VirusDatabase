@@ -97,54 +97,48 @@
             this.tb1_lbl.AutoSize = true;
             this.tb1_lbl.Location = new System.Drawing.Point(12, 25);
             this.tb1_lbl.Name = "tb1_lbl";
-            this.tb1_lbl.Size = new System.Drawing.Size(51, 20);
+            this.tb1_lbl.Size = new System.Drawing.Size(0, 20);
             this.tb1_lbl.TabIndex = 6;
-            this.tb1_lbl.Text = "label1";
             // 
             // tb6_lbl
             // 
             this.tb6_lbl.AutoSize = true;
             this.tb6_lbl.Location = new System.Drawing.Point(813, 25);
             this.tb6_lbl.Name = "tb6_lbl";
-            this.tb6_lbl.Size = new System.Drawing.Size(51, 20);
+            this.tb6_lbl.Size = new System.Drawing.Size(0, 20);
             this.tb6_lbl.TabIndex = 7;
-            this.tb6_lbl.Text = "label1";
             // 
             // tb5_lbl
             // 
             this.tb5_lbl.AutoSize = true;
             this.tb5_lbl.Location = new System.Drawing.Point(652, 25);
             this.tb5_lbl.Name = "tb5_lbl";
-            this.tb5_lbl.Size = new System.Drawing.Size(51, 20);
+            this.tb5_lbl.Size = new System.Drawing.Size(0, 20);
             this.tb5_lbl.TabIndex = 8;
-            this.tb5_lbl.Text = "label1";
             // 
             // tb4_lbl
             // 
             this.tb4_lbl.AutoSize = true;
             this.tb4_lbl.Location = new System.Drawing.Point(491, 25);
             this.tb4_lbl.Name = "tb4_lbl";
-            this.tb4_lbl.Size = new System.Drawing.Size(51, 20);
+            this.tb4_lbl.Size = new System.Drawing.Size(0, 20);
             this.tb4_lbl.TabIndex = 9;
-            this.tb4_lbl.Text = "label1";
             // 
             // tb3_lbl
             // 
             this.tb3_lbl.AutoSize = true;
             this.tb3_lbl.Location = new System.Drawing.Point(330, 25);
             this.tb3_lbl.Name = "tb3_lbl";
-            this.tb3_lbl.Size = new System.Drawing.Size(51, 20);
+            this.tb3_lbl.Size = new System.Drawing.Size(0, 20);
             this.tb3_lbl.TabIndex = 10;
-            this.tb3_lbl.Text = "label1";
             // 
             // tb2_lbl
             // 
             this.tb2_lbl.AutoSize = true;
             this.tb2_lbl.Location = new System.Drawing.Point(169, 25);
             this.tb2_lbl.Name = "tb2_lbl";
-            this.tb2_lbl.Size = new System.Drawing.Size(51, 20);
+            this.tb2_lbl.Size = new System.Drawing.Size(0, 20);
             this.tb2_lbl.TabIndex = 11;
-            this.tb2_lbl.Text = "label1";
             // 
             // submit_btn
             // 

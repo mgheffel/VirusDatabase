@@ -100,3 +100,4 @@ C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\virus_database_repo_copy\Virus
 C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\virus_database_repo_copy\VirusDataApplication\VirusDataApplication\bin\Debug\fr\Npgsql.resources.dll
 C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\virus_database_repo_copy\VirusDataApplication\VirusDataApplication\bin\Debug\ja\Npgsql.resources.dll
 C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\virus_database_repo_copy\VirusDataApplication\VirusDataApplication\bin\Debug\zh-CN\Npgsql.resources.dll
+C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\virus_database_repo_copy\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.InsertSpecies.resources
