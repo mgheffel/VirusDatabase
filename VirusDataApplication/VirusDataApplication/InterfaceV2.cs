@@ -57,6 +57,7 @@ namespace VirusDataApplication
             PopulateDropDown(uxSpecies2Drop, species, 1);
         }
         
+
         /// <summary>
         /// When a strain is selected event
         /// </summary>
@@ -78,29 +79,17 @@ namespace VirusDataApplication
                 case 1://display protiens
                     subContent = c.displayTableContents(" OpenReadingFrames WHERE strainID = '" + strains.Rows[uxStrainsBox.SelectedIndex][0].ToString() + "'");
                     populateListView(uxChoiceBox, subContent, 1, "ORF ID");
-                    if (subContent.Rows.Count > 0)
-                    {
-                        followingSubContent = c.displayTableContents(" Proteins WHERE pID = " + subContent.Rows[0][2].ToString());
-                        populateListView(uxFollowingBox, followingSubContent, 1, "Protien Name");
-                    }
+                    
                     break;
                 case 2://display publishers
                     subContent = c.displayTableContents(" Publications as p JOIN Strain_Publication AS sp ON sp.pubID = p.pubID WHERE sp.strainID = '" + strains.Rows[uxStrainsBox.SelectedIndex][0].ToString() + "'");
                     populateListView(uxChoiceBox, subContent, 2, "Publication Title");
-                    if (subContent.Rows.Count > 0)
-                    {
-                        followingSubContent = c.displayTableContents(" Publishers as p join Publisher_Publication as pp on pp.publisherID = p.publisherID WHERE pp.pubID = " + subContent.Rows[0][0].ToString());
-                        populateListView(uxFollowingBox, followingSubContent, 1, "Publisher Name");
-                    }
+                    
                     break;
                 case 3://display researchers
                     subContent = c.displayTableContents(" Publications as p JOIN Strain_Publication AS sp ON sp.pubID = p.pubID WHERE sp.strainID = '" + strains.Rows[uxStrainsBox.SelectedIndex][0].ToString() + "'");
                     populateListView(uxChoiceBox, subContent, 2, "Publication Title");
-                    if (subContent.Rows.Count > 0)
-                    {
-                        followingSubContent = c.displayTableContents(" Researchers as r join Publication_Researcher AS pr ON pr.rID = r.rID WHERE pr.pubID = " + subContent.Rows[0][0].ToString());
-                        populateListView(uxFollowingBox, followingSubContent, 1, "Researcher Name");
-                    }
+                    
                     break;
             }
             ldt[2] = subContent;
@@ -389,6 +378,41 @@ namespace VirusDataApplication
 
 
 
+        }
+        /// <summary>
+        /// When a new index is selected in the uxChoiceBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uxChoiceBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch(dropdownChoice)
+            {
+                case 1:
+                    if (subContent.Rows.Count > 0 && uxChoiceBox.SelectedIndex >= 0)
+                    {
+                        followingSubContent = c.displayTableContents(" Proteins WHERE pID = " + subContent.Rows[uxChoiceBox.SelectedIndex][2].ToString());
+                        populateListView(uxFollowingBox, followingSubContent, 1, "Protien Name");
+                    }
+                    break;
+                case 2:
+                    if (subContent.Rows.Count > 0)
+                    {
+                        followingSubContent = c.displayTableContents(" Publishers as p join Publisher_Publication as pp on pp.publisherID = p.publisherID WHERE pp.pubID = " + subContent.Rows[0][0].ToString());
+                        populateListView(uxFollowingBox, followingSubContent, 1, "Publisher Name");
+                    }
+                    break;
+                case 3:
+                    if (subContent.Rows.Count > 0)
+                    {
+                        followingSubContent = c.displayTableContents(" Researchers as r join Publication_Researcher AS pr ON pr.rID = r.rID WHERE pr.pubID = " + subContent.Rows[0][0].ToString());
+                        populateListView(uxFollowingBox, followingSubContent, 1, "Researcher Name");
+                    }
+                    break;
+            }
+            
+            
+            
         }
 
         private Tuple<string, string, string> alignORF (string refSeq, string alignSeq)

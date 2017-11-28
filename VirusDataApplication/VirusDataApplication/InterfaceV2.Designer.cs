@@ -98,6 +98,7 @@
             this.uxChoiceBox.Name = "uxChoiceBox";
             this.uxChoiceBox.Size = new System.Drawing.Size(132, 264);
             this.uxChoiceBox.TabIndex = 2;
+            this.uxChoiceBox.SelectedIndexChanged += new System.EventHandler(this.uxChoiceBox_SelectedIndexChanged);
             // 
             // uxFollowingBox
             // 
