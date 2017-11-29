@@ -228,7 +228,7 @@ namespace VirusDataApplication
         {
             if(tableName == "OpenReadingFrames")
             {
-                for (int i = 2; i < numCol; i++)
+                for (int i = 3; i < numCol; i++)
                     tbArr[i].Enabled = true;
             }
             else

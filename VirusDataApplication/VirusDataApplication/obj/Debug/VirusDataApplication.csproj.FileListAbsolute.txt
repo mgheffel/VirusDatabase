@@ -131,3 +131,6 @@ C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\Fi
 C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.csproj.GenerateResource.Cache
 C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.exe
 C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.pdb
+C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\virus_database_repo_copy\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.InsertPublication.resources
+C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\virus_database_repo_copy\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.InsertResearcher.resources
+C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\virus_database_repo_copy\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.InsertStrain.resources
