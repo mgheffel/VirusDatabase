@@ -474,6 +474,7 @@ namespace VirusDataApplication
                     MessageBox.Show("Selected strain has been deleted.", "Delete Operation");
                 else
                     MessageBox.Show("Error: Unable to delete selected strain.", "Delete Operation");
+
             }
             else if (uxSpeciesBox.SelectedIndex >= 0)
             {//species box is most recent
@@ -484,6 +485,12 @@ namespace VirusDataApplication
             }
             else
                 MessageBox.Show("Error. You must select an item to delete", "Delete Operation");
+            uxSpeciesBox.Items.Clear();
+            uxStrainsBox.Items.Clear();
+            uxChoiceBox.Items.Clear();
+            uxFollowingBox.Items.Clear();
+            species = c.displayTableContents("Species");
+            populateListView(uxSpeciesBox, species, 1, "speciesName");
         }//end method
 
         private void button1_Click(object sender, EventArgs e)
@@ -673,7 +680,7 @@ namespace VirusDataApplication
                 int[][] nucCounts = { new int[initiators[0].Length], new int[initiators[0].Length], new int[initiators[0].Length], new int[initiators[0].Length] };
                 for (int i = 0; i < nucCounts.Length; i++)
                 {
-                    for (int j = 0; j < initiators[i].Length; j++)
+                    for (int j = 0; j < initiators[0].Length; j++)
                     {
                         nucCounts[i][j] = 0;
                     }
@@ -895,7 +902,10 @@ namespace VirusDataApplication
         private bool deletePublisher()
         {
             int publisherID = Convert.ToInt32(followingSubContent.Rows[uxFollowingBox.SelectedIndex][0]);
-            string deleteStatement = "DELETE FROM Publishers WHERE publisherID = " + publisherID;
+            string deleteStatement = "DELETE from Publisher_Publication WHERE publisherID = " + publisherID;
+            if (!c.sendNonQuery(deleteStatement))
+                return false;
+            deleteStatement = "DELETE FROM Publishers WHERE publisherID = " + publisherID;
             if (!c.sendNonQuery(deleteStatement))
                 return false;
             return true;
@@ -904,7 +914,10 @@ namespace VirusDataApplication
         private bool deleteResearcher()
         {
             int rID = Convert.ToInt32(followingSubContent.Rows[uxFollowingBox.SelectedIndex][0]);
-            string deleteStatement = "DELETE FROM Researchers WHERE rID = " + rID;
+            string deleteStatement = "DELETE FROM Publication_Researcher WHERE rID = " + rID;
+            if (!c.sendNonQuery(deleteStatement))
+                return false;
+            deleteStatement = "DELETE FROM Researchers WHERE rID = " + rID;
             if (!c.sendNonQuery(deleteStatement))
                 return false;
             return true;
@@ -927,7 +940,10 @@ namespace VirusDataApplication
         {
             int pubID;
             pubID = Convert.ToInt32(subContent.Rows[uxChoiceBox.SelectedIndex][0]);
-            string deleteStatement = "DELETE FROM Publishers WHERE pubID = " + pubID;
+            string deleteStatement = "DELETE FROM Strain_Publication WHERE pubID = " + pubID;
+            if (!c.sendNonQuery(deleteStatement))
+                return false;
+            deleteStatement = "DELETE FROM Publications WHERE pubID = " + pubID;
             if (!c.sendNonQuery(deleteStatement))
                 return false;
             return true;
@@ -937,6 +953,9 @@ namespace VirusDataApplication
         {
             string strainID, deleteStatement;
             strainID = strains.Rows[uxStrainsBox.SelectedIndex][0].ToString();
+            deleteStatement = "DELETE FROM Strain_Publication WHERE strainID = '" + strainID + "'";
+            if (!c.sendNonQuery(deleteStatement))
+                return false;
             deleteStatement = "DELETE FROM Strains WHERE strainID = '" + strainID + "'";
             if (!c.sendNonQuery(deleteStatement))
                 return false;
