@@ -85,6 +85,12 @@
     </Compile>
     <Compile Include="iController.cs" />
     <Compile Include="iDBModel.cs" />
+    <Compile Include="InsertORF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InsertORF.Designer.cs">
+      <DependentUpon>InsertORF.cs</DependentUpon>
+    </Compile>
     <Compile Include="InsertPublication.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InsertORF.resx">
+      <DependentUpon>InsertORF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InsertPublication.resx">
       <DependentUpon>InsertPublication.cs</DependentUpon>
