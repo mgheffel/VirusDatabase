@@ -423,9 +423,9 @@ namespace VirusDataApplication
         /// <param name="e"></param>
         private void delete_btn_Click(object sender, EventArgs e)
         {
-            if(uxFollowingBox.SelectedIndex >= 0)
-            {//all four boxes selected, item selected in fourth box is to be deleted.
-                switch(dropdownChoice)
+            if (uxFollowingBox.SelectedIndex >= 0)
+            {//fourth box is most recently selected
+                switch (dropdownChoice)
                 {
                     case 1:
                         if (deleteProtein())
@@ -447,22 +447,41 @@ namespace VirusDataApplication
                         break;
                 }
             }
-            else if(uxChoiceBox.SelectedIndex >= 0)
-            {//Third box is most recently selected item, don't have to check if uxFollowingBox.Selected index < 0, you know this because of the previous if statement
-                switch(dropdownChoice)
+            else if (uxChoiceBox.SelectedIndex >= 0)
+            {//Third box is most recently selected item
+                switch (dropdownChoice)
                 {
-                    case 1://delete ORF
+                    case 1:// ORF
+                        if (deleteORF())
+                            MessageBox.Show("Selected ORF has been deleted.", "Delete Operation");
+                        else
+                            MessageBox.Show("Error: Unable to delete selected ORF.", "Delete Operation");
                         break;
-                    case 2://will be the same as 3, delete Publication
-                        break;
-                    case 3://will be the same as 2, delete Publication
+                    case 2://Publication
+                    case 3://Publication
+                        if (deletePublication())
+                            MessageBox.Show("Selected Publication has been deleted", "Delete Operation");
+                        else
+                            MessageBox.Show("Error: Unable to delete selected publication.", "Delete Operation");
                         break;
                 }
             }
-            else if(uxStrainsBox.SelectedIndex >= 0)
+            else if (uxStrainsBox.SelectedIndex >= 0)
             {//Second box is most recently selected.
-                
+                if (deleteStrain())
+                    MessageBox.Show("Selected strain has been deleted.", "Delete Operation");
+                else
+                    MessageBox.Show("Error: Unable to delete selected strain.", "Delete Operation");
             }
+            else if (uxSpeciesBox.SelectedIndex >= 0)
+            {//species box is most recent
+                if (deleteSpecies())
+                    MessageBox.Show("Selected species has been deleted.", "Delete Operation");
+                else
+                    MessageBox.Show("Error: Unable to delete selected species.", "Delete Operation");
+            }
+            else
+                MessageBox.Show("Error. You must select an item to delete", "Delete Operation");
         }//end method
 
         private void button1_Click(object sender, EventArgs e)
@@ -622,7 +641,6 @@ namespace VirusDataApplication
             alignStrains1 = c.displayTableContents("Strains WHERE specID = " + species.Rows[uxSpecies1Drop.SelectedIndex][0].ToString());
             //POTENTIAL SOURCE OF ERROR BETWEEN TABS BECAUSE WE ARE UPDATING STRAINS
             PopulateDropDown(uxStrain1Drop, alignStrains1, 0);
-
         }
 
         private void uxStrain1Drop_SelectedIndexChanged(object sender, EventArgs e)
@@ -668,62 +686,74 @@ namespace VirusDataApplication
             }
         }
 
-        /// <summary>
-        /// Deletes the selected item from Proteins table.
-        /// Tables affected: Proteins, StructuralProteins, NonStructuralProteins, OpenReadingFrames
-        /// </summary>
-        /// <returns></returns>true if delete was executed, false if not
+
+        //Following methods perform the delete operation on the selected item
+
         private bool deleteProtein()
         {
-            string deleteStatement = "";
             int pID = Convert.ToInt32(followingSubContent.Rows[uxFollowingBox.SelectedIndex][0]);
-            /*deleteStatement = "DELETE FROM StructuralProteins WHERE pID = " + pID;
-            if (!c.sendNonQuery(deleteStatement))
-            {
-                deleteStatement = "DELETE FROM NonStructuralProteins WHERE pID = " + pID;
-                if (!c.sendNonQuery(deleteStatement))
-                    return false;
-            }
-            //c.sendNonQuery(deleteStatement), delete happened in either Non-Structural or Structural
-            deleteStatement = "DELETE FROM OpenReadingFrames WHERE pID = " + pID;
-            if (!c.sendNonQuery(deleteStatement))
-                return false;*/
-            deleteStatement = "DELETE FROM Proteins WHERE pID = " + pID;
+            string deleteStatement = "DELETE FROM Proteins WHERE pID = " + pID;
             if (!c.sendNonQuery(deleteStatement))
                 return false;
-
             return true;
         }//end method
 
-        /// <summary>
-        /// Method will delete the selected item from the Publishers table and all associated tables.
-        /// Tables affected: Publishers, Publisher_Publication
-        /// </summary>
-        /// <returns></returns>true if deleted properly, false if not
         private bool deletePublisher()
         {
             int publisherID = Convert.ToInt32(followingSubContent.Rows[uxFollowingBox.SelectedIndex][0]);
-            string deleteStatement = "DELETE FROM Publisher_Publication WHERE publisherID = " + publisherID;
-            if (!c.sendNonQuery(deleteStatement))
-                return false;
-            deleteStatement = "DELETE FROM Publishers WHERE publisherID = " + publisherID;
+            string deleteStatement = "DELETE FROM Publishers WHERE publisherID = " + publisherID;
             if (!c.sendNonQuery(deleteStatement))
                 return false;
             return true;
         }//end method
 
-        /// <summary>
-        /// Method will delete the selected item from Researchers table and all associated tables.
-        /// Affected tables: Researchers, Publication_Researchers
-        /// </summary>
-        /// <returns></returns>
         private bool deleteResearcher()
         {
             int rID = Convert.ToInt32(followingSubContent.Rows[uxFollowingBox.SelectedIndex][0]);
-            string deleteStatement = "DELETE FROM Publication_Researchers WHERE rID = " + rID;
+            string deleteStatement = "DELETE FROM Researchers WHERE rID = " + rID;
             if (!c.sendNonQuery(deleteStatement))
                 return false;
-            deleteStatement = "DELETE FROM Researchers WHERE rID = " + rID;
+            return true;
+        }//end method
+
+        private bool deleteORF()
+        {
+            string orfID, strainID, deleteStatement;
+            orfID = subContent.Rows[uxChoiceBox.SelectedIndex][1].ToString();
+            strainID = strains.Rows[uxStrainsBox.SelectedIndex][0].ToString();
+            deleteStatement = "DELETE FROM OpenReadingFrames WHERE strainID = '" + strainID + "' AND orfID = '"
+                            + orfID + "'";
+            if (!c.sendNonQuery(deleteStatement))
+                return false;
+            else
+                return true;
+        }//end method
+
+        private bool deletePublication()
+        {
+            int pubID;
+            pubID = Convert.ToInt32(subContent.Rows[uxChoiceBox.SelectedIndex][0]);
+            string deleteStatement = "DELETE FROM Publishers WHERE pubID = " + pubID;
+            if (!c.sendNonQuery(deleteStatement))
+                return false;
+            return true;
+        }//end method
+
+        private bool deleteStrain()
+        {
+            string strainID, deleteStatement;
+            strainID = strains.Rows[uxStrainsBox.SelectedIndex][0].ToString();
+            deleteStatement = "DELETE FROM Strains WHERE strainID = '" + strainID + "'";
+            if (!c.sendNonQuery(deleteStatement))
+                return false;
+            return true;
+        }//end method
+
+        private bool deleteSpecies()
+        {
+            int specID;
+            specID = Convert.ToInt32(species.Rows[uxSpeciesBox.SelectedIndex][0]);
+            string deleteStatement = "DELETE FROM Species where specID = " + specID;
             if (!c.sendNonQuery(deleteStatement))
                 return false;
             return true;
