@@ -19,7 +19,6 @@ namespace VirusDataApplication
 
             DatabaseModel dbModel = new DatabaseModel();
             Controller c = new Controller(dbModel);
-            Form1 gui = new Form1(c);
             InterfaceV2 gui2 = new InterfaceV2(c);
             gui2.ShowDialog();
             //gui.ShowDialog();

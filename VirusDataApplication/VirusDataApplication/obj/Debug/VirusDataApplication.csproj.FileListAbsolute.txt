@@ -78,7 +78,6 @@ C:\Users\mslavens\Source\Repos\560FinalProject\VirusDataApplication\VirusDataApp
 C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\GitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.editGUI.resources
 C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\virus_database_repo_copy\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.csprojResolveAssemblyReference.cache
 C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\virus_database_repo_copy\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.editGUI.resources
-C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\virus_database_repo_copy\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.Form1.resources
 C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\virus_database_repo_copy\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.InterfaceV2.resources
 C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\virus_database_repo_copy\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.Properties.Resources.resources
 C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\virus_database_repo_copy\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.csproj.GenerateResource.Cache
@@ -124,7 +123,6 @@ C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\Fi
 C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\bin\Debug\zh-CN\Npgsql.resources.dll
 C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.csprojResolveAssemblyReference.cache
 C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.editGUI.resources
-C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.Form1.resources
 C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.InsertSpecies.resources
 C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.InterfaceV2.resources
 C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.Properties.Resources.resources
@@ -162,3 +160,6 @@ C:\Users\Matt\Desktop\VirusDB\VirusDataApplication\VirusDataApplication\obj\Debu
 C:\Users\Matt\Desktop\VirusDB\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.csproj.GenerateResource.Cache
 C:\Users\Matt\Desktop\VirusDB\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.exe
 C:\Users\Matt\Desktop\VirusDB\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.pdb
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.InsertPublication.resources
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.InsertResearcher.resources
+C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.InsertStrain.resources
