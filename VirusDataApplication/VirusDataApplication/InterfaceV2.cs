@@ -57,6 +57,7 @@ namespace VirusDataApplication
             PopulateDropDown(uxSpecies2Drop, species, 1);
         }
         
+
         /// <summary>
         /// When a strain is selected event
         /// </summary>
@@ -69,7 +70,7 @@ namespace VirusDataApplication
             uxOptionsDropdown.Enabled = true;
             if(uxOptionsDropdown.SelectedIndex == -1)//nothing selected yet
             {
-                MessageBox.Show("Please select an item from the dropdown.");
+                //MessageBox.Show("Please select an item from the dropdown.");
                 return;
             }
             //MessageBox.Show(dropdownChoice.ToString());
@@ -78,29 +79,17 @@ namespace VirusDataApplication
                 case 1://display protiens
                     subContent = c.displayTableContents(" OpenReadingFrames WHERE strainID = '" + strains.Rows[uxStrainsBox.SelectedIndex][0].ToString() + "'");
                     populateListView(uxChoiceBox, subContent, 1, "ORF ID");
-                    if (subContent.Rows.Count > 0)
-                    {
-                        followingSubContent = c.displayTableContents(" Proteins WHERE pID = " + subContent.Rows[0][2].ToString());
-                        populateListView(uxFollowingBox, followingSubContent, 1, "Protien Name");
-                    }
+                    
                     break;
                 case 2://display publishers
                     subContent = c.displayTableContents(" Publications as p JOIN Strain_Publication AS sp ON sp.pubID = p.pubID WHERE sp.strainID = '" + strains.Rows[uxStrainsBox.SelectedIndex][0].ToString() + "'");
                     populateListView(uxChoiceBox, subContent, 2, "Publication Title");
-                    if (subContent.Rows.Count > 0)
-                    {
-                        followingSubContent = c.displayTableContents(" Publishers as p join Publisher_Publication as pp on pp.publisherID = p.publisherID WHERE pp.pubID = " + subContent.Rows[0][0].ToString());
-                        populateListView(uxFollowingBox, followingSubContent, 1, "Publisher Name");
-                    }
+                    
                     break;
                 case 3://display researchers
                     subContent = c.displayTableContents(" Publications as p JOIN Strain_Publication AS sp ON sp.pubID = p.pubID WHERE sp.strainID = '" + strains.Rows[uxStrainsBox.SelectedIndex][0].ToString() + "'");
                     populateListView(uxChoiceBox, subContent, 2, "Publication Title");
-                    if (subContent.Rows.Count > 0)
-                    {
-                        followingSubContent = c.displayTableContents(" Researchers as r join Publication_Researcher AS pr ON pr.rID = r.rID WHERE pr.pubID = " + subContent.Rows[0][0].ToString());
-                        populateListView(uxFollowingBox, followingSubContent, 1, "Researcher Name");
-                    }
+                    
                     break;
             }
             ldt[2] = subContent;
@@ -390,6 +379,83 @@ namespace VirusDataApplication
 
 
         }
+        /// <summary>
+        /// When a new index is selected in the uxChoiceBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uxChoiceBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch(dropdownChoice)
+            {
+                case 1:
+                    if (subContent.Rows.Count > 0 && uxChoiceBox.SelectedIndex >= 0)
+                    {
+                        followingSubContent = c.displayTableContents(" Proteins WHERE pID = " + subContent.Rows[uxChoiceBox.SelectedIndex][2].ToString());
+                        populateListView(uxFollowingBox, followingSubContent, 1, "Protien Name");
+                    }
+                    break;
+                case 2:
+                    if (subContent.Rows.Count > 0)
+                    {
+                        followingSubContent = c.displayTableContents(" Publishers as p join Publisher_Publication as pp on pp.publisherID = p.publisherID WHERE pp.pubID = " + subContent.Rows[0][0].ToString());
+                        populateListView(uxFollowingBox, followingSubContent, 1, "Publisher Name");
+                    }
+                    break;
+                case 3:
+                    if (subContent.Rows.Count > 0)
+                    {
+                        followingSubContent = c.displayTableContents(" Researchers as r join Publication_Researcher AS pr ON pr.rID = r.rID WHERE pr.pubID = " + subContent.Rows[0][0].ToString());
+                        populateListView(uxFollowingBox, followingSubContent, 1, "Researcher Name");
+                    }
+                    break;
+            }
+            
+            
+            
+        }
+
+
+        /// <summary>
+        /// Event handler for delete button click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void delete_btn_Click(object sender, EventArgs e)
+        {
+            if(uxFollowingBox.SelectedIndex >= 0)
+            {//all four boxes selected, item selected in fourth box is to be deleted.
+                switch(dropdownChoice)
+                {
+                    case 1:
+                        if (deleteProtein())
+                            MessageBox.Show("Selected protein has been deleted.", "Delete Operation");
+                        else
+                            MessageBox.Show("Error: Unable to delete selected protein.", "Delete Operation");
+                        break;
+                    case 2:
+                        if (deletePublisher())
+                            MessageBox.Show("Selected publisher has been deleted.", "Delete Operation");
+                        else
+                            MessageBox.Show("Error: Unable to delete selected publisher.", "Delete Operation");
+                        break;
+                    case 3:
+                        if (deleteResearcher())
+                            MessageBox.Show("Selected researcher has been deleted.", "Delete Operation");
+                        else
+                            MessageBox.Show("Error: Unable to delete selected researcher.", "Delete Operation");
+                        break;
+                }
+            }
+            else if(uxChoiceBox.SelectedIndex >= 0 && uxFollowingBox.SelectedIndex < 0)
+            {//Third box is most recently selected item.
+
+            }
+            else if(uxStrainsBox.SelectedIndex >= 0 && uxChoiceBox.SelectedIndex < 0)
+            {//Second box is most recently selected.
+                
+            }
+        }//end method
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -593,5 +659,70 @@ namespace VirusDataApplication
                 dd.Items.Add(row[colNum].ToString());
             }
         }
+
+        /// <summary>
+        /// Deletes the selected item from Proteins table.
+        /// Tables affected: Proteins, StructuralProteins, NonStructuralProteins, OpenReadingFrames
+        /// </summary>
+        /// <returns></returns>true if delete was executed, false if not
+        private bool deleteProtein()
+        {
+            string deleteStatement = "";
+            int pID = Convert.ToInt32(followingSubContent.Rows[uxFollowingBox.SelectedIndex][0]);
+            deleteStatement = "DELETE FROM StructuralProteins WHERE pID = " + pID;
+            if (!c.sendNonQuery(deleteStatement))
+            {
+                deleteStatement = "DELETE FROM NonStructuralProteins WHERE pID = " + pID;
+                if (!c.sendNonQuery(deleteStatement))
+                    return false;
+            }
+            else
+            {
+                deleteStatement = "DELETE FROM NonStructuralProteins WHERE pID = " + pID;
+                if (!c.sendNonQuery(deleteStatement))
+                    return false;
+            }
+            deleteStatement = "DELETE FROM OpenReadingFrames WHERE pID = " + pID;
+            if (!c.sendNonQuery(deleteStatement))
+                return false;
+            deleteStatement = "DELETE FROM Proteins WHERE pID = " + pID;
+            if (!c.sendNonQuery(deleteStatement))
+                return false;
+            return true;
+        }//end method
+
+        /// <summary>
+        /// Method will delete the selected item from the Publishers table and all associated tables.
+        /// Tables affected: Publishers, Publisher_Publication
+        /// </summary>
+        /// <returns></returns>true if deleted properly, false if not
+        private bool deletePublisher()
+        {
+            int publisherID = Convert.ToInt32(followingSubContent.Rows[uxFollowingBox.SelectedIndex][0]);
+            string deleteStatement = "DELETE FROM Publisher_Publication WHERE publisherID = " + publisherID;
+            if (!c.sendNonQuery(deleteStatement))
+                return false;
+            deleteStatement = "DELETE FROM Publishers WHERE publisherID = " + publisherID;
+            if (!c.sendNonQuery(deleteStatement))
+                return false;
+            return true;
+        }//end method
+
+        /// <summary>
+        /// Method will delete the selected item from Researchers table and all associated tables.
+        /// Affected tables: Researchers, Publication_Researchers
+        /// </summary>
+        /// <returns></returns>
+        private bool deleteResearcher()
+        {
+            int rID = Convert.ToInt32(followingSubContent.Rows[uxFollowingBox.SelectedIndex][0]);
+            string deleteStatement = "DELETE FROM Publication_Researchers WHERE rID = " + rID;
+            if (!c.sendNonQuery(deleteStatement))
+                return false;
+            deleteStatement = "DELETE FROM Researchers WHERE rID = " + rID;
+            if (!c.sendNonQuery(deleteStatement))
+                return false;
+            return true;
+        }//end method
     }
 }
