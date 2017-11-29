@@ -30,7 +30,6 @@ namespace VirusDataApplication
         {
             string q = "INSERT INTO Species (sName, sAbbreviation, sGenus, SFamily, sOrder)"
                         + " VALUES ('" + uxName.Text + "', '" + uxAbbreviation.Text + "', '" + uxGenus.Text + "', '" + uxFamily.Text + "', '" + uxOrder.Text + "'); ";
-            MessageBox.Show(c.sendNonQuery(q).ToString());
         }
 
         private void buttonUpdate(object sender, EventArgs e)

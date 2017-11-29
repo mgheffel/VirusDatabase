@@ -800,7 +800,8 @@ namespace VirusDataApplication
                 uxConsensusORFDrop.ResetText();
                 DataTable d = c.SendTheWave("SELECT DISTINCT orfID FROM OpenReadingFrames where"
                     + " strainID in (SELECT strainID FROM Strains s join Species as species"
-                    + " on s.specID = species.specID where sName = '" + uxConsensusSpeciesDrop.SelectedItem.ToString() + "')");
+                    + " on s.specID = species.specID where sName = '" + uxConsensusSpeciesDrop.SelectedItem.ToString() + "')"
+                    + " and (orfID like '%a%' or orfID not regexp '[b-z]')");
                 PopulateDropDown(uxConsensusORFDrop, d, 0);
                 uxGenerateSpeciesConsensusButton.Enabled = true;
                 uxConsensusORFDrop.Enabled = true;
