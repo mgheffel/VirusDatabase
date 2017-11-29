@@ -47,10 +47,10 @@ namespace VirusDataApplication
         private void uxCreateStructuralProteinButton_Click(object sender, EventArgs e)
         {
             //First Create the protein in the Proteins table.
-            c.sendNonQuery("INSERT INTO Proteins(pName) VALUES ('" + uxProteinName.Text + "');");
+            c.sendNonQuery("INSERT INTO Proteins(pName) VALUES ('" + uxProteinName.Text + "')");
             //Now Create it in the StructuralProteins table after finding pID
             DataTable d = c.SendTheWave("SELECT pID from Proteins where pName = '" + uxProteinName.Text + "'");
-            c.sendNonQuery("INSERT INTO StructuralProteins(pID, struct) VALUES ('" + d.Rows[0][0].ToString() + "', '" + uxStructTextBox.Text + "');");
+            c.sendNonQuery("INSERT INTO StructuralProteins(pID, struct) VALUES ('" + d.Rows[0][0].ToString() + "', '" + uxStructTextBox.Text + "')");
             uxProteinName.ResetText();
             uxStructTextBox.ResetText();
             PopulateProteinsDropDown();
@@ -64,7 +64,7 @@ namespace VirusDataApplication
             c.sendNonQuery("INSERT INTO Proteins(pName) VALUES ('" + uxProteinName.Text + "');");
             //Now Create it in the NonStructuralProteins table after finding pID
             DataTable d = c.SendTheWave("SELECT pID from Proteins where pName = '" + uxProteinName.Text + "'");
-            c.sendNonQuery("INSERT INTO NonStructuralProteins(pID, funct) VALUES ('" + d.Rows[0][0].ToString() + "', '" + uxFunctTextBox.Text + "');");
+            c.sendNonQuery("INSERT INTO NonStructuralProteins(pID, funct) VALUES ('" + d.Rows[0][0].ToString() + "', '" + uxFunctTextBox.Text + "')");
             uxProteinName.ResetText();
             uxFunctTextBox.ResetText();
             PopulateProteinsDropDown();
@@ -105,7 +105,7 @@ namespace VirusDataApplication
             DataTable pID = c.SendTheWave("SELECT pID from Proteins where pName = '" + uxSelectProteinDown.SelectedItem.ToString() + "'");
             //Do sql insert
             string sendString = "INSERT INTO OpenReadingFrames(strainID, orfID, pID, startIndex, stopIndex) VALUES ('" + StrainID + "', '" + uxORFID.Text
-                            + "', " + pID.Rows[0][0].ToString() + ", " + uxStartIndex.Value.ToString() + ", " + uxStopIndex.Value.ToString() + ");";
+                            + "', " + pID.Rows[0][0].ToString() + ", " + uxStartIndex.Value.ToString() + ", " + uxStopIndex.Value.ToString() + ")";
             c.sendNonQuery(sendString);
             this.Close();
         }

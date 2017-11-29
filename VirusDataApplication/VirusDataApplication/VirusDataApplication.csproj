@@ -77,12 +77,6 @@
     <Compile Include="editGUI.Designer.cs">
       <DependentUpon>editGUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="iController.cs" />
     <Compile Include="iDBModel.cs" />
     <Compile Include="InsertORF.cs">
@@ -125,9 +119,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="editGUI.resx">
       <DependentUpon>editGUI.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InsertORF.resx">
       <DependentUpon>InsertORF.cs</DependentUpon>

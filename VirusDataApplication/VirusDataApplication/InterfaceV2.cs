@@ -43,6 +43,7 @@ namespace VirusDataApplication
         {
             following_lbl.Visible = false;
             choice_lbl.Visible = false;
+            uxNumOfStrainsLabel.Text = "";
             ll.Add(species_lbl);
             ll.Add(strain_lbl);
             ll.Add(choice_lbl);
