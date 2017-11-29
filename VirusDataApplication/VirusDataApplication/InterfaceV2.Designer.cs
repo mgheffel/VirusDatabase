@@ -60,6 +60,12 @@
             this.following_lbl = new System.Windows.Forms.Label();
             this.choice_lbl = new System.Windows.Forms.Label();
             this.uxInsert = new System.Windows.Forms.TabPage();
+            this.uxAddPublicationButton = new System.Windows.Forms.Button();
+            this.uxInsertPublicationDrop = new System.Windows.Forms.ComboBox();
+            this.uxAddPublicationLabel = new System.Windows.Forms.Label();
+            this.uxAddStrainButton = new System.Windows.Forms.Button();
+            this.uxInsertStrainDrop = new System.Windows.Forms.ComboBox();
+            this.uxStrainInsertLabel = new System.Windows.Forms.Label();
             this.uxAddSpecies = new System.Windows.Forms.Button();
             this.uxInsertSpeciesDown = new System.Windows.Forms.ComboBox();
             this.uxInsertSpeciesLabel = new System.Windows.Forms.Label();
@@ -419,6 +425,12 @@
             // 
             // uxInsert
             // 
+            this.uxInsert.Controls.Add(this.uxAddPublicationButton);
+            this.uxInsert.Controls.Add(this.uxInsertPublicationDrop);
+            this.uxInsert.Controls.Add(this.uxAddPublicationLabel);
+            this.uxInsert.Controls.Add(this.uxAddStrainButton);
+            this.uxInsert.Controls.Add(this.uxInsertStrainDrop);
+            this.uxInsert.Controls.Add(this.uxStrainInsertLabel);
             this.uxInsert.Controls.Add(this.uxAddSpecies);
             this.uxInsert.Controls.Add(this.uxInsertSpeciesDown);
             this.uxInsert.Controls.Add(this.uxInsertSpeciesLabel);
@@ -431,12 +443,78 @@
             this.uxInsert.UseVisualStyleBackColor = true;
             this.uxInsert.Click += new System.EventHandler(this.uxInsert_Click);
             // 
+            // uxAddPublicationButton
+            // 
+            this.uxAddPublicationButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxAddPublicationButton.Location = new System.Drawing.Point(298, 69);
+            this.uxAddPublicationButton.Name = "uxAddPublicationButton";
+            this.uxAddPublicationButton.Size = new System.Drawing.Size(140, 28);
+            this.uxAddPublicationButton.TabIndex = 8;
+            this.uxAddPublicationButton.Text = "Add Publication";
+            this.uxAddPublicationButton.UseVisualStyleBackColor = true;
+            this.uxAddPublicationButton.Click += new System.EventHandler(this.uxAddPublicationButton_Click);
+            // 
+            // uxInsertPublicationDrop
+            // 
+            this.uxInsertPublicationDrop.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.uxInsertPublicationDrop.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.uxInsertPublicationDrop.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxInsertPublicationDrop.FormattingEnabled = true;
+            this.uxInsertPublicationDrop.Location = new System.Drawing.Point(109, 69);
+            this.uxInsertPublicationDrop.Name = "uxInsertPublicationDrop";
+            this.uxInsertPublicationDrop.Size = new System.Drawing.Size(183, 28);
+            this.uxInsertPublicationDrop.TabIndex = 7;
+            this.uxInsertPublicationDrop.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged_1);
+            // 
+            // uxAddPublicationLabel
+            // 
+            this.uxAddPublicationLabel.AutoSize = true;
+            this.uxAddPublicationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxAddPublicationLabel.Location = new System.Drawing.Point(7, 72);
+            this.uxAddPublicationLabel.Name = "uxAddPublicationLabel";
+            this.uxAddPublicationLabel.Size = new System.Drawing.Size(90, 20);
+            this.uxAddPublicationLabel.TabIndex = 6;
+            this.uxAddPublicationLabel.Text = "Publication:";
+            // 
+            // uxAddStrainButton
+            // 
+            this.uxAddStrainButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxAddStrainButton.Location = new System.Drawing.Point(298, 121);
+            this.uxAddStrainButton.Name = "uxAddStrainButton";
+            this.uxAddStrainButton.Size = new System.Drawing.Size(140, 28);
+            this.uxAddStrainButton.TabIndex = 5;
+            this.uxAddStrainButton.Text = "Add Strain";
+            this.uxAddStrainButton.UseVisualStyleBackColor = true;
+            this.uxAddStrainButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // uxInsertStrainDrop
+            // 
+            this.uxInsertStrainDrop.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.uxInsertStrainDrop.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.uxInsertStrainDrop.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxInsertStrainDrop.FormattingEnabled = true;
+            this.uxInsertStrainDrop.Location = new System.Drawing.Point(109, 121);
+            this.uxInsertStrainDrop.Name = "uxInsertStrainDrop";
+            this.uxInsertStrainDrop.Size = new System.Drawing.Size(183, 28);
+            this.uxInsertStrainDrop.TabIndex = 4;
+            this.uxInsertStrainDrop.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // uxStrainInsertLabel
+            // 
+            this.uxStrainInsertLabel.AutoSize = true;
+            this.uxStrainInsertLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxStrainInsertLabel.Location = new System.Drawing.Point(7, 124);
+            this.uxStrainInsertLabel.Name = "uxStrainInsertLabel";
+            this.uxStrainInsertLabel.Size = new System.Drawing.Size(59, 20);
+            this.uxStrainInsertLabel.TabIndex = 3;
+            this.uxStrainInsertLabel.Text = "Strain: ";
+            // 
             // uxAddSpecies
             // 
             this.uxAddSpecies.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxAddSpecies.Location = new System.Drawing.Point(278, 17);
+            this.uxAddSpecies.Location = new System.Drawing.Point(298, 17);
             this.uxAddSpecies.Name = "uxAddSpecies";
-            this.uxAddSpecies.Size = new System.Drawing.Size(124, 28);
+            this.uxAddSpecies.Size = new System.Drawing.Size(140, 28);
             this.uxAddSpecies.TabIndex = 2;
             this.uxAddSpecies.Text = "Add Species";
             this.uxAddSpecies.UseVisualStyleBackColor = true;
@@ -448,7 +526,7 @@
             this.uxInsertSpeciesDown.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.uxInsertSpeciesDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uxInsertSpeciesDown.FormattingEnabled = true;
-            this.uxInsertSpeciesDown.Location = new System.Drawing.Point(89, 17);
+            this.uxInsertSpeciesDown.Location = new System.Drawing.Point(109, 17);
             this.uxInsertSpeciesDown.Name = "uxInsertSpeciesDown";
             this.uxInsertSpeciesDown.Size = new System.Drawing.Size(183, 28);
             this.uxInsertSpeciesDown.TabIndex = 1;
@@ -530,5 +608,11 @@
         private System.Windows.Forms.ComboBox uxInsertSpeciesDown;
         private System.Windows.Forms.Label uxInsertSpeciesLabel;
         private System.Windows.Forms.Button uxAddSpecies;
+        private System.Windows.Forms.Button uxAddStrainButton;
+        private System.Windows.Forms.ComboBox uxInsertStrainDrop;
+        private System.Windows.Forms.Label uxStrainInsertLabel;
+        private System.Windows.Forms.Button uxAddPublicationButton;
+        private System.Windows.Forms.ComboBox uxInsertPublicationDrop;
+        private System.Windows.Forms.Label uxAddPublicationLabel;
     }
 }

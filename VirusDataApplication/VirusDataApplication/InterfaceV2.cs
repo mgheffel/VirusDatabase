@@ -391,6 +391,29 @@ namespace VirusDataApplication
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //CODE TO OPEN UP GUI FOR ADDING STRAINS GOES HERE.
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void uxAddPublicationButton_Click(object sender, EventArgs e)
+        {
+            //CODE FOR OPENING ADD PUBLICATION GUI GOES HERE
+            InsertPublication ip = new InsertPublication(c);
+            ip.ShowDialog();
+        }
+
         private Tuple<string, string, string> alignORF (string refSeq, string alignSeq)
         {
            

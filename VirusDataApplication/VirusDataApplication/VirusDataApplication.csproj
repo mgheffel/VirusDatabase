@@ -85,11 +85,29 @@
     </Compile>
     <Compile Include="iController.cs" />
     <Compile Include="iDBModel.cs" />
+    <Compile Include="InsertPublication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InsertPublication.Designer.cs">
+      <DependentUpon>InsertPublication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InsertResearcher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InsertResearcher.Designer.cs">
+      <DependentUpon>InsertResearcher.cs</DependentUpon>
+    </Compile>
     <Compile Include="InsertSpecies.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="InsertSpecies.Designer.cs">
       <DependentUpon>InsertSpecies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InsertStrain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InsertStrain.Designer.cs">
+      <DependentUpon>InsertStrain.cs</DependentUpon>
     </Compile>
     <Compile Include="InterfaceV2.cs">
       <SubType>Form</SubType>
@@ -105,8 +123,17 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="InsertPublication.resx">
+      <DependentUpon>InsertPublication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InsertResearcher.resx">
+      <DependentUpon>InsertResearcher.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InsertSpecies.resx">
       <DependentUpon>InsertSpecies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InsertStrain.resx">
+      <DependentUpon>InsertStrain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InterfaceV2.resx">
       <DependentUpon>InterfaceV2.cs</DependentUpon>
