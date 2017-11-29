@@ -673,7 +673,7 @@ namespace VirusDataApplication
                 int[][] nucCounts = { new int[initiators[0].Length], new int[initiators[0].Length], new int[initiators[0].Length], new int[initiators[0].Length] };
                 for (int i = 0; i < nucCounts.Length; i++)
                 {
-                    for (int j = 0; j < initiators[i].Length; j++)
+                    for (int j = 0; j < initiators[0].Length; j++)
                     {
                         nucCounts[i][j] = 0;
                     }
