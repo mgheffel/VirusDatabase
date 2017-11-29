@@ -33,14 +33,17 @@ namespace VirusDataApplication
             addEverything();            
             species = c.displayTableContents("Species");
             populateListView(uxSpeciesBox, species, 1, "Species Name");
+            
+
         }
         /// <summary>
         /// Add all the objects to the global lists
         /// </summary>
-        private void addEverything()
+        public void addEverything()
         {
             following_lbl.Visible = false;
             choice_lbl.Visible = false;
+            uxNumOfStrainsLabel.Text = "";
             ll.Add(species_lbl);
             ll.Add(strain_lbl);
             ll.Add(choice_lbl);
@@ -52,10 +55,14 @@ namespace VirusDataApplication
             species = c.displayTableContents("Species");
             populateListView(uxSpeciesBox, species, 1, "Species Name");
             ldt[0] = species;//if species is added or removed, this needs to be done in that method, INSERT, DELETE
-
             PopulateDropDown(uxSpecies1Drop, species, 1);
             PopulateDropDown(uxSpecies2Drop, species, 1);
             PopulateDropDown(uxConsensusSpeciesDrop, species, 1);
+            PopulateDropDown(uxInsertSpeciesDown, species, 1);
+            uxInsertStrainDrop.Items.Clear();
+           
+
+
 
         }
         
@@ -365,18 +372,19 @@ namespace VirusDataApplication
 
         }
 
-        private void uxInsert_Click(object sender, EventArgs e)
+        /*private void uxInsert_Click(object sender, EventArgs e)
         {
             PopulateDropDown(uxInsertSpeciesDown, species, 1);
-        }
+        }*/
 
         private void uxAddSpecies_Click(object sender, EventArgs e)
         {
             InsertSpecies insertSpecies = new InsertSpecies(c);
-            if (insertSpecies.ShowDialog() == DialogResult.OK)
-            {
-
-            }
+            insertSpecies.ShowDialog();
+            addEverything();
+            uxInsertSpeciesDown.SelectedIndex = -1;
+            uxAddStrainButton.Enabled = false;
+            uxAddORFButton.Enabled = false;
 
 
 
@@ -491,16 +499,34 @@ namespace VirusDataApplication
             uxFollowingBox.Items.Clear();
             species = c.displayTableContents("Species");
             populateListView(uxSpeciesBox, species, 1, "speciesName");
+            addEverything();
         }//end method
 
         private void button1_Click(object sender, EventArgs e)
         {
             //CODE TO OPEN UP GUI FOR ADDING STRAINS GOES HERE.
+            InsertStrain insertStrain = new InsertStrain(this);
+            insertStrain.ShowDialog();
+            addEverything();
+            
+        }
+
+        public void insertStrain(Tuple<string, string, string> st)
+        {
+            DataTable d = c.SendTheWave("SELECT specID FROM Species WHERE sName = '" + uxInsertSpeciesDown.SelectedItem.ToString() + "'");
+            string sendString = "INSERT INTO Strains VALUES ('" + st.Item1 + "', '" + st.Item2 + "', " + d.Rows[0][0].ToString() + ", '" + st.Item3 + "')";
+            c.sendNonQuery(sendString);
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            DataTable d = c.SendTheWave("SELECT orfID from OpenReadingFrames where strainID = '" + uxInsertStrainDrop.SelectedItem.ToString() + "'");
+            PopulateDropDown(uxInsertORFDrop, d, 0);
+            if (uxInsertStrainDrop.SelectedIndex >= 0)
+            {
+                uxAddORFButton.Enabled = true;
+            }
+            else uxAddORFButton.Enabled = false;
         }
 
 
@@ -512,8 +538,9 @@ namespace VirusDataApplication
         private void uxAddPublicationButton_Click(object sender, EventArgs e)
         {
             //CODE FOR OPENING ADD PUBLICATION GUI GOES HERE
-            InsertPublication ip = new InsertPublication(c);
+            InsertPublication ip = new InsertPublication(c, uxInsertSpeciesDown.SelectedItem.ToString(), this);
             ip.ShowDialog();
+            addEverything();
         }
 
         private Tuple<string, string, string> alignORF (string refSeq, string alignSeq)
@@ -860,13 +887,18 @@ namespace VirusDataApplication
         /// <param name="e"></param>
         private void uxSpeciesBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            uxOptionsDropdown.Enabled = false;
-            uxChoiceBox.Items.Clear();
-            uxFollowingBox.Items.Clear();
-            uxStrainsBox.Items.Clear();
-            strains = c.displayTableContents("Strains WHERE specID = " + species.Rows[uxSpeciesBox.SelectedIndex][0].ToString());
-            populateListView(uxStrainsBox, strains, 0, "Strain ID");
-            ldt[1] = strains;
+            if (uxSpeciesBox.SelectedIndex >= 0)
+            {
+                uxOptionsDropdown.Enabled = false;
+                uxChoiceBox.Items.Clear();
+                uxFollowingBox.Items.Clear();
+                uxStrainsBox.Items.Clear();
+                strains = c.displayTableContents("Strains WHERE specID = " + species.Rows[uxSpeciesBox.SelectedIndex][0].ToString());
+                populateListView(uxStrainsBox, strains, 0, "Strain ID");
+                DataTable numOfStrains = c.SendTheWave("SELECT count(*) from Strains where specID = " + species.Rows[uxSpeciesBox.SelectedIndex][0].ToString());
+                uxNumOfStrainsLabel.Text = numOfStrains.Rows[0][0].ToString();                                      
+                ldt[1] = strains;
+            }
         }
         
         /// <summary>
@@ -878,6 +910,52 @@ namespace VirusDataApplication
         {
             
         }
+
+        private void uxInsertSpeciesDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (uxInsertSpeciesDown.SelectedIndex >= 0)
+            {
+                uxAddPublicationButton.Enabled = true;
+                uxAddStrainButton.Enabled = true;
+                DataTable d = c.SendTheWave("SELECT strainID from Strains st join Species as sp on st.specID = sp.specID where sName = '" + uxInsertSpeciesDown.SelectedItem.ToString() + "'");
+                PopulateDropDown(uxInsertStrainDrop, d, 0);
+            }
+            else
+            {
+                uxAddPublicationButton.Enabled = false;
+                uxAddStrainButton.Enabled = false;
+            }
+        }
+
+        private void uxAddORFButton_Click(object sender, EventArgs e)
+        {
+            if (uxInsertORFDrop.SelectedIndex < 0)
+            {
+                InsertORF io = new InsertORF(c, "", uxInsertStrainDrop.SelectedItem.ToString());
+                io.ShowDialog();
+            }
+            else
+            {
+                InsertORF io = new InsertORF(c, uxInsertORFDrop.SelectedItem.ToString(), uxInsertStrainDrop.SelectedItem.ToString());
+                io.ShowDialog();
+            }
+            addEverything();
+            
+        }
+
+        public void EnableInsertORFButton(object sender, EventArgs e)
+        {
+            if (uxInsertORFDrop.Text.Length == 0 && uxInsertSpeciesDown.Text.Length > 0 && uxInsertStrainDrop.Text.Length > 0)
+            {
+                uxAddORFButton.Enabled = true;
+            }
+            else if (!uxInsertORFDrop.Items.Contains(uxInsertORFDrop.Text) && uxInsertSpeciesDown.Text.Length > 0 && uxInsertStrainDrop.Text.Length > 0)
+            {
+                uxAddORFButton.Enabled = true;
+            }
+            else uxAddORFButton.Enabled = false;
+        }
+
         private void PopulateDropDown(ComboBox dd, DataTable dt, int colNum)
         {
             dd.Items.Clear();

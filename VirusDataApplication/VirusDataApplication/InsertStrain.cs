@@ -15,9 +15,26 @@ namespace VirusDataApplication
     {
         private InsertPublication ip;
         private string genome;
+        private bool noPublication;
+        private InterfaceV2 iv2;
+
+        /// <summary>
+        /// This version is for when there is a publisher
+        /// </summary>
+        /// <param name="ipub">Handle to publication insert gui</param>
         public InsertStrain(InsertPublication ipub)
         {
             ip = ipub;
+            InitializeComponent();
+        }
+
+        /// <summary>
+        /// This version is for when there is no publisher.
+        /// </summary>
+        public InsertStrain(InterfaceV2 iv)
+        {
+            iv2 = iv;
+            noPublication = true;
             InitializeComponent();
         }
 
@@ -44,7 +61,14 @@ namespace VirusDataApplication
 
         private void uxAddStrainButton_Click(object sender, EventArgs e)
         {
-            ip.AddStrainToList(new Tuple<string, string, string>(uxStrainID.Text, uxBasePairs.Text, genome));
+            if (noPublication)
+            {
+                iv2.insertStrain(new Tuple<string, string, string>(uxStrainID.Text, uxBasePairs.Text, genome));
+            }
+            else
+            {
+                ip.AddStrainToList(new Tuple<string, string, string>(uxStrainID.Text, uxBasePairs.Text, genome));
+            }
             this.Close();
         }
     }

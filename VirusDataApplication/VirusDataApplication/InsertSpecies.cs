@@ -29,7 +29,9 @@ namespace VirusDataApplication
         private void uxAddButton_Click(object sender, EventArgs e)
         {
             string q = "INSERT INTO Species (sName, sAbbreviation, sGenus, SFamily, sOrder)"
-                        + " VALUES ('" + uxName.Text + "', '" + uxAbbreviation.Text + "', '" + uxGenus.Text + "', '" + uxFamily.Text + "', '" + uxOrder.Text + "'); ";
+                        + " VALUES ('" + uxName.Text + "', '" + uxAbbreviation.Text + "', '" + uxGenus.Text + "', '" + uxFamily.Text + "', '" + uxOrder.Text + "')";
+            c.sendNonQuery(q);
+            this.Close();
         }
 
         private void buttonUpdate(object sender, EventArgs e)
