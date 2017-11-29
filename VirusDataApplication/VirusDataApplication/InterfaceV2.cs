@@ -55,6 +55,8 @@ namespace VirusDataApplication
 
             PopulateDropDown(uxSpecies1Drop, species, 1);
             PopulateDropDown(uxSpecies2Drop, species, 1);
+            PopulateDropDown(uxConsensusSpeciesDrop, species, 1);
+
         }
         
 
@@ -610,6 +612,197 @@ namespace VirusDataApplication
             {
                 lv.Items.Add(dt.Rows[i][colNum].ToString());
             }
+        }
+
+        private void uxGenerateSpeciesConsensusButton_Click(object sender, EventArgs e)
+        {
+            //CODE TO GENERATE SPECIES CONSENSUS
+            DataTable d = c.SendTheWave(
+                          "SELECT UPPER(SUBSTRING(strains.genome, orf.startIndex - 10, 20)) as Kozak FROM OpenReadingFrames orf"
+                        + " join Strains as strains on orf.strainID = strains.strainID"
+                        + " where orf.strainID in (SELECT strainID from Strains s"
+                        + " join Species as species on s.specID = species.specID"
+                        + " where sName = '" + uxConsensusSpeciesDrop.SelectedItem.ToString() + "')");
+            string[] KozakArray = new string[d.Rows.Count];
+            int index = 0;
+            foreach (DataRow dr in d.Rows)
+            {
+                KozakArray[index] = dr[0].ToString();
+                index++;
+            }
+            GenerateConsensus(KozakArray, uxConsensusSpeciesDrop.SelectedItem.ToString(), null);
+        }
+
+
+        private void GenerateConsensus(string [] initiators, string spec, string orf)
+        {
+
+            // String[] initiators = { "ATGCGTCAGTATGTGCAGTC", "ATGCGTCATGATGATGCTGA", "AATGCTTGACATGCAGTAAA", "AGCTGAACGAATGAGTCCTA", "ATTGCCGTAAATGATGTCCC", "ATTGCCGTAAATGTTGCGAT", "GGTCTCAACTATGCCGTAAT", "ATGTCCTGATATGTTCGAAA" };
+            //0=A 1=T 2=G 3=C
+            SaveFileDialog sf = new SaveFileDialog();
+            sf.FileName = "Consensus.txt";
+            sf.Filter = "Text File | *.txt";
+            if (sf.ShowDialog() == DialogResult.OK)
+            {
+                StreamWriter sw = new StreamWriter(sf.FileName);
+                sw.WriteLine("Species: " + spec);
+                if(orf != null)
+                {
+                    sw.WriteLine("ORF: " + orf);
+                }
+                sw.WriteLine();
+                int[][] nucCounts = { new int[initiators[0].Length], new int[initiators[0].Length], new int[initiators[0].Length], new int[initiators[0].Length] };
+                for (int i = 0; i < nucCounts.Length; i++)
+                {
+                    for (int j = 0; j < initiators[i].Length; j++)
+                    {
+                        nucCounts[i][j] = 0;
+                    }
+                }
+                for (int i = 0; i < initiators.Length; i++)
+                {
+                    for (int j = 0; j < initiators[0].Length; j++)
+                    {
+                        String temp = initiators[i].Substring(j, 1);
+                        if (temp.Equals("A"))
+                        {
+                            nucCounts[0][j]++;
+                        }
+                        else if (temp.Equals("T"))
+                        {
+                            nucCounts[1][j]++;
+                        }
+                        else if (temp.Equals("G"))
+                        {
+                            nucCounts[2][j]++;
+                        }
+                        else
+                        {
+                            nucCounts[3][j]++;
+                        }
+                    }
+                }
+                String header = "Pos: ";
+                for (int i = 0; i < initiators[0].Length; i++)
+                {
+                    if (i <= 8) header += i + 1 + "     ";
+                    else if (i == 10) header += i + 1 + "-A  ";
+                    else if (i == 11) header += i + 1 + "-T  ";
+                    else if (i == 12) header += i + 1 + "-G  ";
+                    else header += i + 1 + "    ";
+                }
+                sw.WriteLine(header);
+                for (int i = 0; i < nucCounts.Length; i++)
+                {
+                    String lineString = "";
+                    if (i == 0) lineString += "A:   ";
+                    else if (i == 1) lineString += "T:   ";
+                    else if (i == 2) lineString += "G:   ";
+                    else lineString += "C:   ";
+                    for (int j = 0; j < initiators[0].Length; j++)
+                    {
+                        double percent = nucCounts[i][j] * 100.0 / initiators.Length;
+                        if (percent == 100) lineString += string.Format("{0:0}", percent) + "%  ";
+                        else if (percent >= 10) lineString += string.Format("{0:0}", percent) + "%   ";
+                        else lineString += string.Format("{0:0}", percent) + "%    ";
+                    }
+                    sw.WriteLine(lineString);
+                }
+
+                sw.WriteLine();
+                String consensus = "";
+                String[] consensesPercent = new String[20];
+                for (int i = 0; i < initiators[0].Length; i++)
+                {
+                    int maxIndex = 0;
+                    for (int j = 1; j < nucCounts.Length; j++)
+                    {
+                        if (nucCounts[j][i] > nucCounts[maxIndex][i])
+                        {
+                            maxIndex = j;
+                        }
+                    }
+
+                    double percent = nucCounts[maxIndex][i] * 100.0 / initiators.Length;
+                    if (percent == 100) consensesPercent[i] = string.Format("{0:0}", percent) + "%  ";
+                    else if (percent >= 10) consensesPercent[i] += string.Format("{0:0}", percent) + "%   ";
+                    else consensesPercent[i] += string.Format("{0:0}", percent) + "%    ";
+
+                    if (maxIndex == 0) consensus += 'A';
+                    else if (maxIndex == 1) consensus += 'T';
+                    else if (maxIndex == 2) consensus += 'G';
+                    else consensus += 'C';
+                }
+                    sw.WriteLine("Consensus Sequence: " + consensus);
+                    sw.WriteLine();
+                    for (int i = 0; i < consensesPercent.Length; i++)
+                    {
+                        sw.Write(" " + consensus.Substring(i, 1) + "    ");
+                    }
+                    sw.WriteLine();
+                    for (int i = 0; i < consensesPercent.Length; i++)
+                    {
+                        sw.Write(consensesPercent[i]);
+                    }
+                sw.Dispose();
+                sw.Close();
+                Process.Start("notepad.exe", sf.FileName);
+
+
+            }//End Dialog
+        }
+
+        private void uxGenerateORFConsensusButton_Click(object sender, EventArgs e)
+        {
+            //CODE TO GENERATE ORF CONSENSUS
+
+            DataTable d = c.SendTheWave(
+                          "SELECT UPPER(SUBSTRING(strains.genome, orf.startIndex - 10, 20)) as Kozak FROM OpenReadingFrames orf"
+                        + " join Strains as strains on orf.strainID = strains.strainID"
+                        + " where orf.strainID in (SELECT strainID from Strains s"
+                        + " join Species as species on s.specID = species.specID"
+                        + " where sName = '" + uxConsensusSpeciesDrop.SelectedItem.ToString() + "')"
+                        + " AND orf.orfID = '" + uxConsensusORFDrop.SelectedItem.ToString() + "'");
+            string[] KozakArray = new string[d.Rows.Count];
+            int index = 0;
+            foreach (DataRow dr in d.Rows)
+            {
+                KozakArray[index] = dr[0].ToString();
+                index++;
+            }
+            GenerateConsensus(KozakArray, uxConsensusSpeciesDrop.SelectedItem.ToString(), uxConsensusORFDrop.SelectedItem.ToString());
+        }
+
+        private void uxConsensusSpeciesDrop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (uxConsensusSpeciesDrop.SelectedIndex >= 0)
+            {
+                uxConsensusORFDrop.Items.Clear();
+                uxConsensusORFDrop.ResetText();
+                DataTable d = c.SendTheWave("SELECT DISTINCT orfID FROM OpenReadingFrames where"
+                    + " strainID in (SELECT strainID FROM Strains s join Species as species"
+                    + " on s.specID = species.specID where sName = '" + uxConsensusSpeciesDrop.SelectedItem.ToString() + "')");
+                PopulateDropDown(uxConsensusORFDrop, d, 0);
+                uxGenerateSpeciesConsensusButton.Enabled = true;
+                uxConsensusORFDrop.Enabled = true;
+            }
+            else
+            {
+                uxConsensusORFDrop.Items.Clear();
+                uxConsensusORFDrop.ResetText();
+                uxGenerateSpeciesConsensusButton.Enabled = false;
+                uxConsensusORFDrop.Enabled = false;
+                uxGenerateORFConsensusButton.Enabled = false;
+            }
+        }
+
+        private void uxConsensusORFDrop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (uxConsensusORFDrop.SelectedIndex >= 0)
+            {
+                uxGenerateORFConsensusButton.Enabled = true;
+            }
+            else uxGenerateORFConsensusButton.Enabled = false;
         }
 
         private void uxSpecies1Drop_SelectedIndexChanged(object sender, EventArgs e)
