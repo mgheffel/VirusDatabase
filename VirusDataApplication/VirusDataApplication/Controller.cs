@@ -17,11 +17,7 @@ namespace VirusDataApplication
         {
             model = m;
         }
-        public DataTable tempQuery(string a)
-        {
-            string queryStatement = "SELECT * FROM OpenReadingFrames WHERE strainID = " + a;
-            return model.sendQuery(queryStatement);
-        }
+        
 
         /// <summary>
         /// Method will take a table name as a parameter and return a DataSet containing
@@ -31,6 +27,8 @@ namespace VirusDataApplication
         /// <returns></returns> DataSet containing contents of table param
         public DataTable displayTableContents(string table)
         {
+            if (table.Contains(";"))
+                return new DataTable();
             string query = "SELECT * FROM " + table;
             return model.sendQuery(query);
         }//end displayTableContents
@@ -42,6 +40,8 @@ namespace VirusDataApplication
         /// <returns>the results of the query as a data set.</returns>
         public DataTable SendTheWave(string query)
         {
+            if (query.Contains(";"))
+                return new DataTable();
             return model.sendQuery(query);
         }
 
@@ -53,41 +53,9 @@ namespace VirusDataApplication
         /// <returns></returns> true if statement was executed, false if not.
         public bool sendNonQuery(string statement)
         {
+            if (statement.Contains(";"))
+                return false;
             return model.sendExecuteStatement(statement);
-        }//end method
-
-       
-        public bool deleteRow(int size, string table, string[] cols, string[] vals, string type)
-        {
-            string statement = writeStatement(size, table, cols, vals, type);
-            MessageBox.Show(statement);
-            return model.sendDelete(statement);
-        }
-
-
-
-        private string writeStatement(int size, string table, string[] cols, string[] vals, string type)
-        {
-            string statement = null;
-            //DELETE FROM Proteins WHERE pID > 68
-            if (type == "delete")
-            {
-                switch (size)
-                {
-                    case 2:
-                        statement = "DELETE FROM " + table + " WHERE " + cols[0] + " = " + vals[0] + " AND " + cols[1] + " = " + vals[1];
-                        break;
-                    case 3:
-                        break;
-                    case 4:
-                        break;
-                    case 5:
-                        break;
-                    case 6:
-                        break;
-                }
-            }
-            return statement;
         }//end method
 
     }//end class Controller
