@@ -447,11 +447,19 @@ namespace VirusDataApplication
                         break;
                 }
             }
-            else if(uxChoiceBox.SelectedIndex >= 0 && uxFollowingBox.SelectedIndex < 0)
-            {//Third box is most recently selected item.
-
+            else if(uxChoiceBox.SelectedIndex >= 0)
+            {//Third box is most recently selected item, don't have to check if uxFollowingBox.Selected index < 0, you know this because of the previous if statement
+                switch(dropdownChoice)
+                {
+                    case 1://delete ORF
+                        break;
+                    case 2://will be the same as 3, delete Publication
+                        break;
+                    case 3://will be the same as 2, delete Publication
+                        break;
+                }
             }
-            else if(uxStrainsBox.SelectedIndex >= 0 && uxChoiceBox.SelectedIndex < 0)
+            else if(uxStrainsBox.SelectedIndex >= 0)
             {//Second box is most recently selected.
                 
             }
@@ -669,25 +677,21 @@ namespace VirusDataApplication
         {
             string deleteStatement = "";
             int pID = Convert.ToInt32(followingSubContent.Rows[uxFollowingBox.SelectedIndex][0]);
-            deleteStatement = "DELETE FROM StructuralProteins WHERE pID = " + pID;
+            /*deleteStatement = "DELETE FROM StructuralProteins WHERE pID = " + pID;
             if (!c.sendNonQuery(deleteStatement))
             {
                 deleteStatement = "DELETE FROM NonStructuralProteins WHERE pID = " + pID;
                 if (!c.sendNonQuery(deleteStatement))
                     return false;
             }
-            else
-            {
-                deleteStatement = "DELETE FROM NonStructuralProteins WHERE pID = " + pID;
-                if (!c.sendNonQuery(deleteStatement))
-                    return false;
-            }
+            //c.sendNonQuery(deleteStatement), delete happened in either Non-Structural or Structural
             deleteStatement = "DELETE FROM OpenReadingFrames WHERE pID = " + pID;
             if (!c.sendNonQuery(deleteStatement))
-                return false;
+                return false;*/
             deleteStatement = "DELETE FROM Proteins WHERE pID = " + pID;
             if (!c.sendNonQuery(deleteStatement))
                 return false;
+
             return true;
         }//end method
 
