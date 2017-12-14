@@ -3,7 +3,6 @@ C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\project\virus_database_repo\Vi
 C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\project\virus_database_repo\VirusDataApplication\VirusDataApplication\bin\Debug\VirusDataApplication.exe
 C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\project\virus_database_repo\VirusDataApplication\VirusDataApplication\bin\Debug\VirusDataApplication.pdb
 C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\project\virus_database_repo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.csprojResolveAssemblyReference.cache
-C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\project\virus_database_repo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.Form1.resources
 C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\project\virus_database_repo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.Properties.Resources.resources
 C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\project\virus_database_repo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.csproj.GenerateResource.Cache
 C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\project\virus_database_repo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.exe
@@ -163,3 +162,8 @@ C:\Users\Matt\Desktop\VirusDB\VirusDataApplication\VirusDataApplication\obj\Debu
 C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.InsertPublication.resources
 C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.InsertResearcher.resources
 C:\Users\levnikolaj\Documents\K-State\2017-2018\Semester1\CIS560\FinalProject\FinalGitRepo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.InsertStrain.resources
+C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\project\virus_database_repo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.InsertORF.resources
+C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\project\virus_database_repo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.InsertPublication.resources
+C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\project\virus_database_repo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.InsertResearcher.resources
+C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\project\virus_database_repo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.InsertSpecies.resources
+C:\Users\Sam\Desktop\moylan\KSU 2017-2018\CIS 560\project\virus_database_repo\VirusDataApplication\VirusDataApplication\obj\Debug\VirusDataApplication.InsertStrain.resources
